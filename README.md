@@ -14,7 +14,9 @@ This project is an engineering reconstruction of Texas Instruments' `BOOSTXL-TLV
 - The PCB uses the 50.8 mm × 43.18 mm 40-pin BoosterPack envelope, 45.72 mm header spacing, chamfered corners, and a routed two-layer placement.
 - A1 is identified as Murata `IRS-B210ST01-R1` and uses a custom five-pad footprint based on the archived Murata package drawing.
 - J3/J4 use the exact Molex `87898-0204` 2.54-mm SMT land pattern from drawing `SD-87898-001`; the part is not available in JLCPCB's catalog.
-- The local tscircuit autorouter completes 133 PCB connections with 122 vias and a bottom-side GND pour. The current circuit JSON contains zero placement, routing, or connectivity errors.
+- The pinned tscircuit v6 local autorouter completes 133 PCB connections with 122 vias and a bottom-side GND pour. The current circuit JSON contains zero placement, routing, or connectivity errors; rejected lower-via experiments are documented in `docs/autorouting-investigation.md`.
+- U3's published circuit requirements and the search for its missing MPN are documented in `docs/u3-investigation.md`; the source deliberately does not guess the device.
+- Exact imports, custom parts, generic selections, and purchasing blockers are tracked in `manufacturing/procurement-status.csv`.
 - Generated KiCad, SVG, and readable-netlist artifacts are described in `exports/README.md`.
 
 ## Engineering status

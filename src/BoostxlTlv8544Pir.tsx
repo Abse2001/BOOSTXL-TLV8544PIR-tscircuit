@@ -223,6 +223,7 @@ export const BoostxlTlv8544Pir = () => (
     defaultTraceWidth="0.2mm"
     autorouter={{ preset: "auto_local", local: true, traceClearance: "0.15mm" }}
     autorouterEffortLevel="2x"
+    autorouterVersion="v6"
   >
     {/* LaunchPad BoosterPack headers. Exact Samtec part imported from JLCPCB. */}
     <SSQ_110_03_G_D

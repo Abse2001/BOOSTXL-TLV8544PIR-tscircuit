@@ -1,0 +1,14 @@
+category,designators,manufacturer,manufacturer_part_number,JLCPCB_part_number,footprint_source,status,required_action
+op_amp,U1,Texas Instruments,TLV8544PWR,C2867322,JLCPCB exact import,exact_part_imported,Reconfirm stock and assembly tier
+current_monitor,U2,Texas Instruments,INA226AIDGSR,C49851,JLCPCB exact import,exact_part_imported,Reconfirm stock and assembly tier
+switching_diode,D4 D5,Micro Commercial Components,1N4148X-TP,C507292,JLCPCB exact import,exact_part_imported,Reconfirm stock and assembly tier
+ferrite_bead,L1 L2,Murata,BLM18HE152SN1D,C82155,JLCPCB exact import,exact_part_imported,Reconfirm stock and assembly tier
+boosterpack_headers,J1 J2,Samtec,SSQ-110-03-G-D,C3323139,JLCPCB exact import,exact_part_imported,Reconfirm exact G-D variant and stock
+pir_sensor,A1,Murata,IRS-B210ST01-R1,,Custom from archived Murata package drawing,obsolete_no_exact_jlc_match,Verify land pattern and qualify available sensor or redesign
+current_jumpers,J3 J4,Molex,87898-0204,,Custom from Molex SD-87898-001,exact_mpn_no_jlc_match,Source separately and verify physical fit
+buffer_op_amp,U3,Unknown,BUFFER_MPN_NOT_PUBLISHED,,Provisional SOT-23-5,identity_blocker,Read physical top marking or obtain authoritative TI BOM
+pir_lens,H1,Unknown,IML-0669,,Silkscreen envelope only,mechanical_blocker,Identify supplier and model retention geometry
+resistors,R1-R21 NT1-NT3,TBD,TBD,,Native generic footprints,selection_required,Select resistance tolerance power rating package and LCSC IDs
+capacitors,C1-C29,TBD,TBD,,Native generic footprints,selection_required,Select dielectric tolerance voltage polarity package and LCSC IDs
+indicator_leds,D1-D3,TBD,TBD,,Native 0603 footprints,selection_required,Select colors polarity luminous intensity and LCSC IDs
+testpoints,TP1 TP2,TBD,TBD,,Native through-hole testpoint,selection_required,Confirm probe and hole requirements

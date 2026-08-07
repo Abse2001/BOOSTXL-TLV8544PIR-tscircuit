@@ -8,14 +8,15 @@
 - J3/J4 are exact Molex `87898-0204` parts with the manufacturer's recommended two-pad SMT land pattern.
 - The board uses the TI 40-pin BoosterPack 50.8 mm × 43.18 mm maximum envelope and 45.72-mm header-column spacing.
 - Local autorouting completes every connection. The generated circuit JSON has zero tscircuit placement, routing, or connectivity errors.
+- A curated procurement ledger records exact imports, custom footprints, generic-part selections, and blockers in `manufacturing/procurement-status.csv`.
 
 ## Must be resolved before fabrication
 
-1. Identify U3 from physical board markings or an authoritative BOOSTXL BOM, verify its pinout and electrical limits, then replace `BUFFER_MPN_NOT_PUBLISHED`.
+1. Identify U3 from physical board markings or an authoritative BOOSTXL BOM, verify its pinout and electrical limits, then replace `BUFFER_MPN_NOT_PUBLISHED`. The evidence and acceptance criteria are recorded in `docs/u3-investigation.md`.
 2. Measure a physical BoosterPack to confirm the four mounting-hole centers, hole diameters, chamfer geometry, exact board outline, and PIR/lens retention details.
 3. Verify the reconstructed Murata footprint against the original PCB land pattern or a physical sensor. The package terminal locations are sourced, but the chosen solder-land dimensions are an engineering reconstruction.
 4. Confirm passive and LED case sizes, voltage/power ratings, polarities, and procurement choices against hardware.
-5. Review and optimize the two-layer autoroute, especially analog return paths, guard/keepout strategy around the PIR input, bottom GND-pour continuity, and the current 122-via count.
+5. Review and optimize the two-layer autoroute, especially analog return paths, guard/keepout strategy around the PIR input, bottom GND-pour continuity, and the current 122-via count. See `docs/autorouting-investigation.md` for rejected automated alternatives.
 6. Run KiCad DRC with the intended PCB fabricator's constraints, inspect every Gerber/drill layer, and complete ERC, BOM, pick-and-place, assembly, and bring-up reviews.
 
 The generated Gerbers are included to make review easier; their presence is not a fabrication release.
