@@ -1,0 +1,40 @@
+reference,quantity,value_or_part,role,confidence
+U1,1,TLV8544PWR,Quad nanopower op amp for gain filtering and window comparison,high
+U2,1,INA226AIDGSR,I2C current and power monitor,high
+U3,1,Not printed,Five-pin unity-gain buffer in current-measurement path,low
+A1,1,PIR sensor part not printed,Passive infrared sensing element,medium
+H1,1,IML-0669,PIR lens,high
+J1 J2,2,SSQ-110-03-G-D,LaunchPad 1x10 female headers,high
+J3 J4,2,87898-0204,Two-pin current-measurement jumper headers,high
+L1 L2,2,BLM18HE152SN1D,1500-ohm ferrite beads,high
+NT1 NT2 NT3,3,Net tie,Power-rail configuration links,high
+TP1 TP2,2,Ground test point,Instrumentation ground points,high
+D1,1,Red LED,High-threshold indicator,high
+D2,1,Yellow LED,Low-threshold indicator,high
+D3,1,Green LED,Host-ready indicator,high
+D4 D5,2,1N4148X-TP,Small-signal clamp diodes,high
+R1,1,442 ohm 1% 0.125 W,Red LED current limit,high
+R2 R3,2,487 ohm 1% 0.125 W,Yellow and green LED current limit,high
+R4 R5 R10 R19,4,10.0 kohm,Analog output isolation resistors,high
+R6,1,6.81 kohm,First amplifier feedback network,high
+R7 R8 R11 R18 R20,5,15 Mohm,Gain and reference-divider network,high
+R9,1,1.50 Mohm,First amplifier feedback network,high
+R12,1,619 kohm,PIR sensor bias,high
+R13,1,68.1 kohm,Second amplifier input network,high
+R14 R15 R17,3,0 ohm,Configuration links,high
+R16,1,1.30 Mohm,First amplifier bias network,high
+R21,1,15.0 kohm 0.1%,TLV8544 supply-current shunt,high
+C1 C2 C3 C4,4,0.01 uF,LaunchPad signal filtering,high
+C5,1,33 uF,First amplifier feedback filter,high
+C6,1,0.01 uF,First amplifier feedback filter,high
+C7 C15,2,1000 pF,Analog filtering,high
+C8 C13 C17 C18 C19 C21 C22 C23,8,0.1 uF,Reference and supply decoupling,high
+C9,1,3.3 uF,Interstage AC coupling,high
+C10,1,100 uF,PIR supply filtering,high
+C11 C20,2,10 uF,Supply and signal filtering,high
+C12,1,1 uF,PIR supply filtering,high
+C14,1,0.01 uF,PIR supply filtering,high
+C16,1,100 pF,PIR supply filtering,high
+C24 C26 C27,3,0.1 uF 6.3 V X7R,LaunchPad supply filtering,high
+C25 C28,2,10 uF 6.3 V X5R,LaunchPad supply filtering,high
+C29,1,0.1 uF 25 V X7R,5-V LaunchPad supply filtering,high

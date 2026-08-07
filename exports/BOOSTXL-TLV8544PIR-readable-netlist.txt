@@ -1,0 +1,670 @@
+COMPONENTS:
+ - J1: SSQ-110-03-G-D
+ - J2: SSQ-110-03-G-D
+ - C1: 0.01uF 0603 capacitor
+ - C2: 0.01uF 0603 capacitor
+ - C3: 0.01uF 0603 capacitor
+ - C4: 0.01uF 0603 capacitor
+ - A1: PIR_SENSOR_MPN_NOT_PUBLISHED, pinrow5
+ - R12: 619kΩ res0603 resistor
+ - C10: 100uF 1210 capacitor
+ - C11: 10uF 0805 capacitor
+ - C12: 1uF 0603 capacitor
+ - C13: 0.1uF 0603 capacitor
+ - C14: 0.01uF 0603 capacitor
+ - C15: 1000pF 0603 capacitor
+ - C16: 100pF 0603 capacitor
+ - U1: TLV8544PWR
+ - R14: 0Ω res0603 resistor
+ - R16: 1.3MΩ res0603 resistor
+ - R6: 6.81kΩ res0603 resistor
+ - C5: 33uF 1206 capacitor
+ - R9: 1.5MΩ res0603 resistor
+ - C6: 0.01uF 0603 capacitor
+ - D4: D4, source_component
+ - D5: D5, source_component
+ - R4: 10kΩ res0603 resistor
+ - C9: 3.3uF 0805 capacitor
+ - R13: 68.1kΩ res0603 resistor
+ - R7: 15MΩ res0603 resistor
+ - C7: 1000pF 0603 capacitor
+ - R17: 0Ω res0603 resistor
+ - C17: 0.1uF 0603 capacitor
+ - R15: 0Ω res0603 resistor
+ - R5: 10kΩ res0603 resistor
+ - R8: 15MΩ res0603 resistor
+ - R11: 15MΩ res0603 resistor
+ - R18: 15MΩ res0603 resistor
+ - R20: 15MΩ res0603 resistor
+ - C8: 0.1uF 0603 capacitor
+ - C18: 0.1uF 0603 capacitor
+ - R10: 10kΩ res0603 resistor
+ - R19: 10kΩ res0603 resistor
+ - C19: 0.1uF 0603 capacitor
+ - C20: 10uF 0805 capacitor
+ - R1: 442Ω res0603 resistor
+ - D1: D1, source_component
+ - R2: 487Ω res0603 resistor
+ - D2: D2, source_component
+ - R3: 487Ω res0603 resistor
+ - D3: D3, source_component
+ - L1: BLM18HE152SN1D
+ - C24: 0.1uF 0603 capacitor
+ - C25: 10uF 0805 capacitor
+ - L2: BLM18HE152SN1D
+ - C26: 0.1uF 0603 capacitor
+ - C27: 0.1uF 0603 capacitor
+ - C28: 10uF 0805 capacitor
+ - C29: 0.1uF 0603 capacitor
+ - NT1: 0Ω res0603 resistor
+ - NT2: 0Ω res0603 resistor
+ - NT3: 0Ω res0603 resistor
+ - J3: J3, source_component
+ - J4: J4, source_component
+ - R21: 15kΩ res0603 resistor
+ - C22: 0.1uF 0603 capacitor
+ - U3: BUFFER_MPN_NOT_PUBLISHED, sot23_5
+ - C23: 0.1uF 0603 capacitor
+ - U2: INA226AIDGSR
+ - C21: 0.1uF 0603 capacitor
+ - TP1: TP1, source_component
+ - TP2: TP2, source_component
+
+NET: PIR_VIN1
+  - C16 pin1 (+)
+  - C15 pin1 (+)
+  - C14 pin1 (+)
+  - C13 pin1 (+)
+  - C12 pin1 (+)
+  - C11 pin1 (+)
+  - C10 pin1 (+)
+  - R12 pin2
+  - A1 VIN
+
+NET: PIR_VOUT_RAW
+  - R14 pin1
+  - A1 VOUT
+
+NET: PIR_VO
+  - R16 pin1
+  - R14 pin2
+  - U1 IN_A_POS
+
+NET: U1A_AC_RETURN
+  - C5 pin1 (+)
+  - R6 pin2
+
+NET: U1A_INV
+  - D5 cathode (-)
+  - D4 anode (+)
+  - C6 pin2 (-)
+  - R9 pin2
+  - R6 pin1
+  - U1 IN_A_NEG
+
+NET: FIRST_STAGE_AOUT
+  - R4 pin2
+  - C2 pin1 (+)
+  - J1 pin3
+
+NET: U1A_OUT
+  - C9 pin1 (+)
+  - R4 pin1
+  - D5 anode (+)
+  - D4 cathode (-)
+  - C6 pin1 (+)
+  - R9 pin1
+  - U1 OUT_A
+
+NET: INTERSTAGE
+  - R13 pin1
+  - C9 pin2 (-)
+
+NET: U1B_INV
+  - C7 pin2 (-)
+  - R7 pin2
+  - R13 pin2
+  - U1 IN_B_NEG
+
+NET: U1B_REF
+  - C17 pin1 (+)
+  - R17 pin1
+  - U1 IN_B_POS
+
+NET: U1B_OUT
+  - R15 pin1
+  - C7 pin1 (+)
+  - R7 pin1
+  - U1 OUT_B
+
+NET: PIR_SIGNAL_BUS
+  - R5 pin1
+  - R15 pin2
+  - U1 IN_D_NEG
+  - U1 IN_C_POS
+
+NET: PIR_SGL_AOUT
+  - R5 pin2
+  - C4 pin1 (+)
+  - J1 pin11
+
+NET: REF_MID
+  - R18 pin1
+  - R11 pin2
+  - R17 pin2
+
+NET: REF_HIGH
+  - C8 pin1 (+)
+  - R11 pin1
+  - R8 pin2
+  - U1 IN_C_NEG
+
+NET: REF_LOW
+  - C18 pin1 (+)
+  - R20 pin1
+  - R18 pin2
+  - U1 IN_D_POS
+
+NET: U1C_OUT
+  - R10 pin1
+  - U1 OUT_C
+
+NET: PIR_OUT_HI
+  - R10 pin2
+  - C1 pin1 (+)
+  - J1 pin10
+
+NET: U1D_OUT
+  - R19 pin1
+  - U1 OUT_D
+
+NET: PIR_OUT_LO
+  - R19 pin2
+  - C3 pin1 (+)
+  - J1 pin12
+
+NET: RLED
+  - R1 pin1
+  - J1 pin18
+
+NET: D1_ANODE
+  - D1 pin1 (+)
+  - R1 pin2
+
+NET: YLED
+  - R2 pin1
+  - J1 pin20
+
+NET: D2_ANODE
+  - D2 pin1 (+)
+  - R2 pin2
+
+NET: OLED
+  - R3 pin1
+  - J1 pin16
+
+NET: D3_ANODE
+  - D3 pin1 (+)
+  - R3 pin2
+
+NET: V3P3_LPD
+  - L1 pin1
+  - J1 pin1
+
+NET: V5_LPD
+  - L2 pin1
+  - J1 pin2
+
+NET: V3P3_REF
+  - NT2 pin2
+  - R8 pin1
+
+NET: V_POS_PIR
+  - J3 pin1
+  - R12 pin1
+
+NET: V3P3_FILTERED
+  - J4 pin2
+  - J3 pin2
+  - NT3 pin1
+  - NT2 pin1
+  - NT1 pin1
+  - C25 pin1 (+)
+  - C24 pin1 (+)
+  - L1 pin2
+
+NET: V_POS_TLV
+  - U3 IN_POS
+  - R21 pin2
+  - J4 pin1
+  - C20 pin1 (+)
+  - C19 pin1 (+)
+  - U1 V_POS
+
+NET: V5_FILTERED
+  - C23 pin1 (+)
+  - U3 V_POS
+  - C29 pin1 (+)
+  - C28 pin1 (+)
+  - C27 pin1 (+)
+  - C26 pin1 (+)
+  - L2 pin2
+
+NET: I2C_SDA
+  - U2 SDA
+  - J1 pin19
+
+NET: I2C_SCL
+  - U2 SCL
+  - J1 pin17
+
+NET: BUFFER_OUT
+  - U2 VIN_NEG
+  - U3 IN_NEG
+  - U3 OUT
+
+NET: V3P3_TLV
+  - U2 VIN_POS
+  - U2 VBUS
+  - C22 pin1 (+)
+  - R21 pin1
+  - NT1 pin2
+
+NET: V3P3_INA
+  - C21 pin1 (+)
+  - U2 VS_POS
+  - NT3 pin2
+
+NET: GND
+  - TP2 pin1
+  - TP1 pin1
+  - C21 pin2 (-)
+  - U2 GND
+  - U2 A0
+  - U2 A1
+  - C23 pin2 (-)
+  - U3 V_NEG
+  - C22 pin2 (-)
+  - C29 pin2 (-)
+  - C28 pin2 (-)
+  - C27 pin2 (-)
+  - C26 pin2 (-)
+  - C25 pin2 (-)
+  - C24 pin2 (-)
+  - D3 pin2 (-)
+  - D2 pin2 (-)
+  - D1 pin2 (-)
+  - C20 pin2 (-)
+  - C19 pin2 (-)
+  - C18 pin2 (-)
+  - C8 pin2 (-)
+  - R20 pin2
+  - C17 pin2 (-)
+  - C5 pin2 (-)
+  - R16 pin2
+  - U1 V_NEG
+  - C16 pin2 (-)
+  - C15 pin2 (-)
+  - C14 pin2 (-)
+  - C13 pin2 (-)
+  - C12 pin2 (-)
+  - C11 pin2 (-)
+  - C10 pin2 (-)
+  - A1 GND_3
+  - A1 GND_2
+  - A1 GND_1
+  - C4 pin2 (-)
+  - C3 pin2 (-)
+  - C2 pin2 (-)
+  - C1 pin2 (-)
+  - J2 pin20
+  - J1 pin4
+
+
+EMPTY NET PINS:
+  - J1 pin14
+
+COMPONENT_PINS:
+J1 (SSQ-110-03-G-D)
+- pin1: NETS(V3P3_LPD)
+- pin2: NETS(V5_LPD)
+- pin3: NETS(FIRST_STAGE_AOUT)
+- pin4: NETS(GND)
+- pin5: NOT_CONNECTED
+- pin6: NOT_CONNECTED
+- pin7: NOT_CONNECTED
+- pin8: NOT_CONNECTED
+- pin9: NOT_CONNECTED
+- pin10: NETS(PIR_OUT_HI)
+- pin11: NETS(PIR_SGL_AOUT)
+- pin12: NETS(PIR_OUT_LO)
+- pin13: NOT_CONNECTED
+- pin14: NETS(I2C_CS)
+- pin15: NOT_CONNECTED
+- pin16: NETS(OLED)
+- pin17: NETS(I2C_SCL)
+- pin18: NETS(RLED)
+- pin19: NETS(I2C_SDA)
+- pin20: NETS(YLED)
+
+J2 (SSQ-110-03-G-D)
+- pin1: NOT_CONNECTED
+- pin2: NOT_CONNECTED
+- pin3: NOT_CONNECTED
+- pin4: NOT_CONNECTED
+- pin5: NOT_CONNECTED
+- pin6: NOT_CONNECTED
+- pin7: NOT_CONNECTED
+- pin8: NOT_CONNECTED
+- pin9: NOT_CONNECTED
+- pin10: NOT_CONNECTED
+- pin11: NOT_CONNECTED
+- pin12: NOT_CONNECTED
+- pin13: NOT_CONNECTED
+- pin14: NOT_CONNECTED
+- pin15: NOT_CONNECTED
+- pin16: NOT_CONNECTED
+- pin17: NOT_CONNECTED
+- pin18: NOT_CONNECTED
+- pin19: NOT_CONNECTED
+- pin20: NETS(GND)
+
+C1 (0.01uF 0603)
+- pin1(pos, anode, left): NETS(PIR_OUT_HI)
+- pin2(neg, cathode, right): NETS(GND)
+
+C2 (0.01uF 0603)
+- pin1(pos, anode, left): NETS(FIRST_STAGE_AOUT)
+- pin2(neg, cathode, right): NETS(GND)
+
+C3 (0.01uF 0603)
+- pin1(pos, anode, left): NETS(PIR_OUT_LO)
+- pin2(neg, cathode, right): NETS(GND)
+
+C4 (0.01uF 0603)
+- pin1(pos, anode, left): NETS(PIR_SGL_AOUT)
+- pin2(neg, cathode, right): NETS(GND)
+
+A1 (PIR_SENSOR_MPN_NOT_PUBLISHED)
+- pin1(VIN): NETS(PIR_VIN1)
+- pin2(GND_1): NETS(GND)
+- pin3(VOUT): NETS(PIR_VOUT_RAW)
+- pin4(GND_2): NETS(GND)
+- pin5(GND_3): NETS(GND)
+
+R12 (619kΩ res0603)
+- pin1(anode, pos, left): NETS(V_POS_PIR)
+- pin2(cathode, neg, right): NETS(PIR_VIN1)
+
+C10 (100uF 1210)
+- pin1(pos, anode, left): NETS(PIR_VIN1)
+- pin2(neg, cathode, right): NETS(GND)
+
+C11 (10uF 0805)
+- pin1(pos, anode, left): NETS(PIR_VIN1)
+- pin2(neg, cathode, right): NETS(GND)
+
+C12 (1uF 0603)
+- pin1(pos, anode, left): NETS(PIR_VIN1)
+- pin2(neg, cathode, right): NETS(GND)
+
+C13 (0.1uF 0603)
+- pin1(pos, anode, left): NETS(PIR_VIN1)
+- pin2(neg, cathode, right): NETS(GND)
+
+C14 (0.01uF 0603)
+- pin1(pos, anode, left): NETS(PIR_VIN1)
+- pin2(neg, cathode, right): NETS(GND)
+
+C15 (1000pF 0603)
+- pin1(pos, anode, left): NETS(PIR_VIN1)
+- pin2(neg, cathode, right): NETS(GND)
+
+C16 (100pF 0603)
+- pin1(pos, anode, left): NETS(PIR_VIN1)
+- pin2(neg, cathode, right): NETS(GND)
+
+U1 (TLV8544PWR)
+- pin1(OUT_A): NETS(U1A_OUT)
+- pin2(IN_A_NEG): NETS(U1A_INV)
+- pin3(IN_A_POS): NETS(PIR_VO)
+- pin4(V_POS): NETS(V_POS_TLV)
+- pin5(IN_B_POS): NETS(U1B_REF)
+- pin6(IN_B_NEG): NETS(U1B_INV)
+- pin7(OUT_B): NETS(U1B_OUT)
+- pin8(OUT_C): NETS(U1C_OUT)
+- pin9(IN_C_NEG): NETS(REF_HIGH)
+- pin10(IN_C_POS): NETS(PIR_SIGNAL_BUS)
+- pin11(V_NEG): NETS(GND)
+- pin12(IN_D_POS): NETS(REF_LOW)
+- pin13(IN_D_NEG): NETS(PIR_SIGNAL_BUS)
+- pin14(OUT_D): NETS(U1D_OUT)
+
+R14 (0Ω res0603)
+- pin1(anode, pos, left): NETS(PIR_VOUT_RAW)
+- pin2(cathode, neg, right): NETS(PIR_VO)
+
+R16 (1.3MΩ res0603)
+- pin1(anode, pos, left): NETS(PIR_VO)
+- pin2(cathode, neg, right): NETS(GND)
+
+R6 (6.81kΩ res0603)
+- pin1(anode, pos, left): NETS(U1A_INV)
+- pin2(cathode, neg, right): NETS(U1A_AC_RETURN)
+
+C5 (33uF 1206)
+- pin1(pos, anode, left): NETS(U1A_AC_RETURN)
+- pin2(neg, cathode, right): NETS(GND)
+
+R9 (1.5MΩ res0603)
+- pin1(anode, pos, left): NETS(U1A_OUT)
+- pin2(cathode, neg, right): NETS(U1A_INV)
+
+C6 (0.01uF 0603)
+- pin1(pos, anode, left): NETS(U1A_OUT)
+- pin2(neg, cathode, right): NETS(U1A_INV)
+
+D4 (1N4148X-TP)
+- pin1(cathode, neg): NETS(U1A_OUT)
+- pin2(anode, pos): NETS(U1A_INV)
+
+D5 (1N4148X-TP)
+- pin1(cathode, neg): NETS(U1A_INV)
+- pin2(anode, pos): NETS(U1A_OUT)
+
+R4 (10kΩ res0603)
+- pin1(anode, pos, left): NETS(U1A_OUT)
+- pin2(cathode, neg, right): NETS(FIRST_STAGE_AOUT)
+
+C9 (3.3uF 0805)
+- pin1(pos, anode, left): NETS(U1A_OUT)
+- pin2(neg, cathode, right): NETS(INTERSTAGE)
+
+R13 (68.1kΩ res0603)
+- pin1(anode, pos, left): NETS(INTERSTAGE)
+- pin2(cathode, neg, right): NETS(U1B_INV)
+
+R7 (15MΩ res0603)
+- pin1(anode, pos, left): NETS(U1B_OUT)
+- pin2(cathode, neg, right): NETS(U1B_INV)
+
+C7 (1000pF 0603)
+- pin1(pos, anode, left): NETS(U1B_OUT)
+- pin2(neg, cathode, right): NETS(U1B_INV)
+
+R17 (0Ω res0603)
+- pin1(anode, pos, left): NETS(U1B_REF)
+- pin2(cathode, neg, right): NETS(REF_MID)
+
+C17 (0.1uF 0603)
+- pin1(pos, anode, left): NETS(U1B_REF)
+- pin2(neg, cathode, right): NETS(GND)
+
+R15 (0Ω res0603)
+- pin1(anode, pos, left): NETS(U1B_OUT)
+- pin2(cathode, neg, right): NETS(PIR_SIGNAL_BUS)
+
+R5 (10kΩ res0603)
+- pin1(anode, pos, left): NETS(PIR_SIGNAL_BUS)
+- pin2(cathode, neg, right): NETS(PIR_SGL_AOUT)
+
+R8 (15MΩ res0603)
+- pin1(anode, pos, left): NETS(V3P3_REF)
+- pin2(cathode, neg, right): NETS(REF_HIGH)
+
+R11 (15MΩ res0603)
+- pin1(anode, pos, left): NETS(REF_HIGH)
+- pin2(cathode, neg, right): NETS(REF_MID)
+
+R18 (15MΩ res0603)
+- pin1(anode, pos, left): NETS(REF_MID)
+- pin2(cathode, neg, right): NETS(REF_LOW)
+
+R20 (15MΩ res0603)
+- pin1(anode, pos, left): NETS(REF_LOW)
+- pin2(cathode, neg, right): NETS(GND)
+
+C8 (0.1uF 0603)
+- pin1(pos, anode, left): NETS(REF_HIGH)
+- pin2(neg, cathode, right): NETS(GND)
+
+C18 (0.1uF 0603)
+- pin1(pos, anode, left): NETS(REF_LOW)
+- pin2(neg, cathode, right): NETS(GND)
+
+R10 (10kΩ res0603)
+- pin1(anode, pos, left): NETS(U1C_OUT)
+- pin2(cathode, neg, right): NETS(PIR_OUT_HI)
+
+R19 (10kΩ res0603)
+- pin1(anode, pos, left): NETS(U1D_OUT)
+- pin2(cathode, neg, right): NETS(PIR_OUT_LO)
+
+C19 (0.1uF 0603)
+- pin1(pos, anode, left): NETS(V_POS_TLV)
+- pin2(neg, cathode, right): NETS(GND)
+
+C20 (10uF 0805)
+- pin1(pos, anode, left): NETS(V_POS_TLV)
+- pin2(neg, cathode, right): NETS(GND)
+
+R1 (442Ω res0603)
+- pin1(anode, pos, left): NETS(RLED)
+- pin2(cathode, neg, right): NETS(D1_ANODE)
+
+D1
+- pin1(anode, pos, left): NETS(D1_ANODE)
+- pin2(cathode, neg, right): NETS(GND)
+
+R2 (487Ω res0603)
+- pin1(anode, pos, left): NETS(YLED)
+- pin2(cathode, neg, right): NETS(D2_ANODE)
+
+D2
+- pin1(anode, pos, left): NETS(D2_ANODE)
+- pin2(cathode, neg, right): NETS(GND)
+
+R3 (487Ω res0603)
+- pin1(anode, pos, left): NETS(OLED)
+- pin2(cathode, neg, right): NETS(D3_ANODE)
+
+D3
+- pin1(anode, pos, left): NETS(D3_ANODE)
+- pin2(cathode, neg, right): NETS(GND)
+
+L1 (BLM18HE152SN1D)
+- pin1: NETS(V3P3_LPD)
+- pin1: NOT_CONNECTED
+- pin2: NETS(V3P3_FILTERED)
+- pin2: NOT_CONNECTED
+
+C24 (0.1uF 0603)
+- pin1(pos, anode, left): NETS(V3P3_FILTERED)
+- pin2(neg, cathode, right): NETS(GND)
+
+C25 (10uF 0805)
+- pin1(pos, anode, left): NETS(V3P3_FILTERED)
+- pin2(neg, cathode, right): NETS(GND)
+
+L2 (BLM18HE152SN1D)
+- pin1: NETS(V5_LPD)
+- pin1: NOT_CONNECTED
+- pin2: NETS(V5_FILTERED)
+- pin2: NOT_CONNECTED
+
+C26 (0.1uF 0603)
+- pin1(pos, anode, left): NETS(V5_FILTERED)
+- pin2(neg, cathode, right): NETS(GND)
+
+C27 (0.1uF 0603)
+- pin1(pos, anode, left): NETS(V5_FILTERED)
+- pin2(neg, cathode, right): NETS(GND)
+
+C28 (10uF 0805)
+- pin1(pos, anode, left): NETS(V5_FILTERED)
+- pin2(neg, cathode, right): NETS(GND)
+
+C29 (0.1uF 0603)
+- pin1(pos, anode, left): NETS(V5_FILTERED)
+- pin2(neg, cathode, right): NETS(GND)
+
+NT1 (0Ω res0603)
+- pin1(anode, pos, left): NETS(V3P3_FILTERED)
+- pin2(cathode, neg, right): NETS(V3P3_TLV)
+
+NT2 (0Ω res0603)
+- pin1(anode, pos, left): NETS(V3P3_FILTERED)
+- pin2(cathode, neg, right): NETS(V3P3_REF)
+
+NT3 (0Ω res0603)
+- pin1(anode, pos, left): NETS(V3P3_FILTERED)
+- pin2(cathode, neg, right): NETS(V3P3_INA)
+
+J3 (87898-0204)
+- pin1: NETS(V_POS_PIR)
+- pin2: NETS(V3P3_FILTERED)
+
+J4 (87898-0204)
+- pin1: NETS(V_POS_TLV)
+- pin2: NETS(V3P3_FILTERED)
+
+R21 (15kΩ res0603)
+- pin1(anode, pos, left): NETS(V3P3_TLV)
+- pin2(cathode, neg, right): NETS(V_POS_TLV)
+
+C22 (0.1uF 0603)
+- pin1(pos, anode, left): NETS(V3P3_TLV)
+- pin2(neg, cathode, right): NETS(GND)
+
+U3 (BUFFER_MPN_NOT_PUBLISHED)
+- pin1(OUT): NETS(BUFFER_OUT)
+- pin2(V_NEG): NETS(GND)
+- pin3(IN_POS): NETS(V_POS_TLV)
+- pin4(IN_NEG): NETS(BUFFER_OUT)
+- pin5(V_POS): NETS(V5_FILTERED)
+
+C23 (0.1uF 0603)
+- pin1(pos, anode, left): NETS(V5_FILTERED)
+- pin2(neg, cathode, right): NETS(GND)
+
+U2 (INA226AIDGSR)
+- pin1(A1): NETS(GND)
+- pin2(A0): NETS(GND)
+- pin3(Alert): NOT_CONNECTED
+- pin4(SDA): NETS(I2C_SDA)
+- pin5(SCL): NETS(I2C_SCL)
+- pin6(VS_POS): NETS(V3P3_INA)
+- pin7(GND): NETS(GND)
+- pin8(VBUS): NETS(V3P3_TLV)
+- pin9(VIN_NEG): NETS(BUFFER_OUT)
+- pin10(VIN_POS): NETS(V3P3_TLV)
+
+C21 (0.1uF 0603)
+- pin1(pos, anode, left): NETS(V3P3_INA)
+- pin2(neg, cathode, right): NETS(GND)
+
+TP1
+- pin1: NETS(GND)
+
+TP2
+- pin1: NETS(GND)
