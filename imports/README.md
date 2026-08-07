@@ -12,9 +12,9 @@ These components were imported with `tsci import --jlcpcb --download --use-exact
 
 ## Parts without an exact import
 
-- J3/J4: JLCPCB returned no exact result for Molex `87898-0204`; the circuit uses a provisional native 2-pin, 2.54-mm footprint.
-- A1: TI does not print the PIR sensor MPN in SNOU148A; the circuit preserves all five schematic pins with a provisional inline footprint.
+- J3/J4: JLCPCB returned no exact result for Molex `87898-0204`; the circuit uses a custom 2.54-mm SMT footprint with 1.27 mm × 2.96 mm lands from Molex drawing `SD-87898-001`.
+- A1: Cross-reference evidence from TI's related TIDA-01398 BOM and TI E2E identifies the sensor as Murata `IRS-B210ST01-R1`. It is obsolete and has no exact JLCPCB result, so the circuit uses a custom five-pad footprint based on the archived Murata package drawing.
 - U3: TI does not print the unity-gain buffer MPN; the circuit preserves the five-pin follower connection with a provisional SOT-23-5 footprint.
-- H1: `IML-0669` is a mechanical PIR lens and is currently represented by a PCB annotation only.
+- H1: `IML-0669` is a mechanical PIR lens; its nominal 12-mm envelope is represented on silkscreen, but its physical retention features are not modeled.
 
-Do not select a substitute for A1, U3, J3/J4, or H1 without checking the physical board or an authoritative BOM.
+Do not select a substitute for U3, A1, J3/J4, or H1 without checking electrical compatibility, mechanical fit, and current availability.

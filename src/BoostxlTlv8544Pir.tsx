@@ -101,15 +101,29 @@ const C = ({
   />
 )
 
-/** Exact five-pin logical symbol from the schematic; physical PIR MPN is absent. */
+/**
+ * Murata IRS-B210ST01-R1 footprint reconstructed from the archived Murata
+ * package drawing. Pins 2, 4, and 5 are the grounded shield terminals.
+ */
+const PirSensorFootprint = () => (
+  <footprint>
+    <smtpad name="pin1" portHints={["1"]} shape="rect" width="1.2mm" height="0.8mm" pcbX="2.35mm" pcbY="0.95mm" />
+    <smtpad name="pin2" portHints={["2"]} shape="rect" width="1.2mm" height="0.8mm" pcbX="2.35mm" pcbY="0mm" />
+    <smtpad name="pin3" portHints={["3"]} shape="rect" width="1.2mm" height="0.8mm" pcbX="2.35mm" pcbY="-0.95mm" />
+    <smtpad name="pin4" portHints={["4"]} shape="rect" width="1.2mm" height="0.8mm" pcbX="-2.35mm" pcbY="-1.25mm" />
+    <smtpad name="pin5" portHints={["5"]} shape="rect" width="1.2mm" height="0.8mm" pcbX="-2.35mm" pcbY="1.25mm" />
+    <silkscreenrect width="4.7mm" height="4.7mm" strokeWidth="0.15mm" />
+    <silkscreencircle radius="0.3mm" pcbX="1.55mm" pcbY="1.55mm" isFilled />
+  </footprint>
+)
+
 const PirSensor = () => (
   <chip
     name="A1"
-    manufacturerPartNumber="PIR_SENSOR_MPN_NOT_PUBLISHED"
-    footprint="pinrow5"
+    manufacturerPartNumber="IRS-B210ST01-R1"
+    footprint={<PirSensorFootprint />}
     pcbX={15}
-    pcbY={-16}
-    pcbRotation={90}
+    pcbY={-14}
     pinLabels={{
       pin1: ["VIN"],
       pin2: ["GND_1"],
@@ -124,6 +138,43 @@ const PirSensor = () => (
       GND_2: N.GND,
       GND_3: N.GND,
     }}
+  />
+)
+
+/** Molex SD-87898-001 recommended SMT land pattern for the two-circuit part. */
+const Molex878980204Footprint = () => (
+  <footprint>
+    <smtpad name="pin1" portHints={["1"]} shape="rect" width="1.27mm" height="2.96mm" pcbX="-1.27mm" />
+    <smtpad name="pin2" portHints={["2"]} shape="rect" width="1.27mm" height="2.96mm" pcbX="1.27mm" />
+    <silkscreenrect width="5.08mm" height="2.54mm" strokeWidth="0.15mm" />
+    <silkscreencircle radius="0.3mm" pcbX="-2.15mm" pcbY="0.8mm" isFilled />
+  </footprint>
+)
+
+const MolexCurrentJumper = ({
+  name,
+  pcbX,
+  pcbY,
+  pcbRotation = 0,
+  pin1,
+  pin2,
+}: {
+  name: string
+  pcbX: number
+  pcbY: number
+  pcbRotation?: number
+  pin1: string
+  pin2: string
+}) => (
+  <pinheader
+    name={name}
+    pinCount={2}
+    manufacturerPartNumber="87898-0204"
+    footprint={<Molex878980204Footprint />}
+    pcbX={pcbX}
+    pcbY={pcbY}
+    pcbRotation={pcbRotation}
+    connections={{ pin1, pin2 }}
   />
 )
 
@@ -155,15 +206,29 @@ const CurrentSenseBuffer = () => (
 export const BoostxlTlv8544Pir = () => (
   <board
     name="BOOSTXL_TLV8544PIR"
-    width="58mm"
-    height="50mm"
-    routingDisabled
+    width="50.8mm"
+    height="43.18mm"
+    outline={[
+      { x: -25.4, y: -19.05 },
+      { x: -22.86, y: -21.59 },
+      { x: 22.86, y: -21.59 },
+      { x: 25.4, y: -19.05 },
+      { x: 25.4, y: 19.05 },
+      { x: 22.86, y: 21.59 },
+      { x: -22.86, y: 21.59 },
+      { x: -25.4, y: 19.05 },
+    ]}
+    solderMaskColor="red"
+    silkscreenColor="white"
+    defaultTraceWidth="0.2mm"
+    autorouter={{ preset: "auto_local", local: true, traceClearance: "0.15mm" }}
+    autorouterEffortLevel="2x"
   >
     {/* LaunchPad BoosterPack headers. Exact Samtec part imported from JLCPCB. */}
     <SSQ_110_03_G_D
       name="J1"
-      pcbX={-23}
-      pcbY={2}
+      pcbX={-22.86}
+      pcbY={1.27}
       pcbRotation={90}
       connections={{
         pin1: N.V3P3_LPD,
@@ -183,8 +248,8 @@ export const BoostxlTlv8544Pir = () => (
     />
     <SSQ_110_03_G_D
       name="J2"
-      pcbX={23}
-      pcbY={2}
+      pcbX={22.86}
+      pcbY={1.27}
       pcbRotation={90}
       connections={{ pin20: N.GND }}
     />
@@ -198,9 +263,9 @@ export const BoostxlTlv8544Pir = () => (
     {/* PIR sensor bias and seven-decade supply bypass bank. */}
     <PirSensor />
     <R name="R12" resistance="619kohm" from={N.V_PIR} to={N.PIR_VIN1} pcbX={7} pcbY={-9} />
-    <C name="C10" capacitance="100uF" from={N.PIR_VIN1} to={N.GND} pcbX={1} pcbY={-18} footprint="1210" />
-    <C name="C11" capacitance="10uF" from={N.PIR_VIN1} to={N.GND} pcbX={4.5} pcbY={-18} footprint="0805" />
-    <C name="C12" capacitance="1uF" from={N.PIR_VIN1} to={N.GND} pcbX={7.5} pcbY={-18} />
+    <C name="C10" capacitance="100uF" from={N.PIR_VIN1} to={N.GND} pcbX={1} pcbY={-17} footprint="1210" />
+    <C name="C11" capacitance="10uF" from={N.PIR_VIN1} to={N.GND} pcbX={4.5} pcbY={-17} footprint="0805" />
+    <C name="C12" capacitance="1uF" from={N.PIR_VIN1} to={N.GND} pcbX={7.5} pcbY={-17} />
     <C name="C13" capacitance="0.1uF" from={N.PIR_VIN1} to={N.GND} pcbX={0} pcbY={-12} />
     <C name="C14" capacitance="0.01uF" from={N.PIR_VIN1} to={N.GND} pcbX={2.5} pcbY={-12} />
     <C name="C15" capacitance="1000pF" from={N.PIR_VIN1} to={N.GND} pcbX={5} pcbY={-12} />
@@ -284,23 +349,19 @@ export const BoostxlTlv8544Pir = () => (
     <R name="NT3" resistance="0ohm" from={N.V3P3} to={N.V3P3_INA} pcbX={-1} pcbY={19} />
 
     {/* Current-measurement jumpers. Exact Molex 87898-0204 is not in JLCPCB. */}
-    <pinheader
+    <MolexCurrentJumper
       name="J3"
-      pinCount={2}
-      footprint="pinrow2"
-      manufacturerPartNumber="87898-0204"
       pcbX={-18}
-      pcbY={-16}
-      connections={{ pin1: N.V_PIR, pin2: N.V3P3 }}
+      pcbY={-15}
+      pin1={N.V_PIR}
+      pin2={N.V3P3}
     />
-    <pinheader
+    <MolexCurrentJumper
       name="J4"
-      pinCount={2}
-      footprint="pinrow2"
-      manufacturerPartNumber="87898-0204"
       pcbX={7}
       pcbY={15}
-      connections={{ pin1: N.V_TLV, pin2: N.V3P3 }}
+      pin1={N.V_TLV}
+      pin2={N.V3P3}
     />
 
     {/* INA226 supply-current measurement and its unity-gain input buffer. */}
@@ -326,16 +387,27 @@ export const BoostxlTlv8544Pir = () => (
     />
     <C name="C21" capacitance="0.1uF" from={N.V3P3_INA} to={N.GND} pcbX={-8} pcbY={8} />
 
-    <testpoint name="TP1" footprintVariant="through_hole" padDiameter="2.4mm" holeDiameter="1mm" pcbX={8} pcbY={-21} connections={{ pin1: N.GND }} />
+    <testpoint name="TP1" footprintVariant="through_hole" padDiameter="2.4mm" holeDiameter="1mm" pcbX={7.7} pcbY={-20} connections={{ pin1: N.GND }} />
     <testpoint name="TP2" footprintVariant="through_hole" padDiameter="2.4mm" holeDiameter="1mm" pcbX={-3} pcbY={14} connections={{ pin1: N.GND }} />
 
+    {/* A bottom-side ground pour provides a continuous analog return reference. */}
+    <copperpour
+      name="GND_BOTTOM"
+      layer="bottom"
+      connectsTo={N.GND}
+      padMargin="0.25mm"
+      traceMargin="0.2mm"
+      boardEdgeMargin="0.3mm"
+    />
+
     {/* Mechanical references from the annotated TI top view. */}
-    <hole name="MH1" diameter="3mm" pcbX={-25} pcbY={21} />
-    <hole name="MH2" diameter="3mm" pcbX={25} pcbY={21} />
-    <hole name="MH3" diameter="3mm" pcbX={-25} pcbY={-21} />
-    <hole name="MH4" diameter="3mm" pcbX={25} pcbY={-21} />
-    <pcbnotetext text="H1 IML-0669 PIR LENS" pcbX={15} pcbY={-22} fontSize="0.8mm" />
-    <pcbnotetext text="BOOSTXL-TLV8544PIR — ELECTRICAL RECONSTRUCTION" pcbX={0} pcbY={22} fontSize="0.8mm" />
+    <hole name="MH1" diameter="3mm" pcbX={-22.86} pcbY={19.05} />
+    <hole name="MH2" diameter="3mm" pcbX={22.86} pcbY={19.05} />
+    <hole name="MH3" diameter="3mm" pcbX={-22.86} pcbY={-19.05} />
+    <hole name="MH4" diameter="3mm" pcbX={22.86} pcbY={-19.05} />
+    <silkscreencircle radius="6mm" pcbX={15} pcbY={-14} strokeWidth="0.2mm" />
+    <pcbnotetext text="H1 IML-0669 LENS Ø12" pcbX={15} pcbY={-20.4} fontSize="0.6mm" />
+    <pcbnotetext text="BOOSTXL-TLV8544PIR — RECONSTRUCTION" pcbX={0} pcbY={20.3} fontSize="0.7mm" />
   </board>
 )
 

@@ -5,7 +5,7 @@ COMPONENTS:
  - C2: 0.01uF 0603 capacitor
  - C3: 0.01uF 0603 capacitor
  - C4: 0.01uF 0603 capacitor
- - A1: PIR_SENSOR_MPN_NOT_PUBLISHED, pinrow5
+ - A1: IRS-B210ST01-R1
  - R12: 619kΩ res0603 resistor
  - C10: 100uF 1210 capacitor
  - C11: 10uF 0805 capacitor
@@ -385,7 +385,7 @@ C4 (0.01uF 0603)
 - pin1(pos, anode, left): NETS(PIR_SGL_AOUT)
 - pin2(neg, cathode, right): NETS(GND)
 
-A1 (PIR_SENSOR_MPN_NOT_PUBLISHED)
+A1 (IRS-B210ST01-R1)
 - pin1(VIN): NETS(PIR_VIN1)
 - pin2(GND_1): NETS(GND)
 - pin3(VOUT): NETS(PIR_VOUT_RAW)

@@ -16,6 +16,12 @@ Collected on 2026-08-07 from official Texas Instruments pages.
 | `datasheets/INA226-datasheet.pdf` | [INA226](https://www.ti.com/lit/ds/symlink/ina226.pdf) | I2C current/power monitor datasheet. |
 | `boosterpack-standard/launchpad-boosterpack-design-guide-SLAA542.pdf` | [SLAA542](https://www.ti.com/lit/pdf/slaa542) | LaunchPad/BoosterPack mechanical and electrical design guidance. |
 
+## Additional component evidence
+
+- [Molex 87898-0204 product page](https://www.molex.com/en-us/products/part-detail/0878980204) and [SD-87898-001 drawing](https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/878/87898/878980654_sd.pdf): exact J3/J4 series, two circuits, 2.54-mm pitch, and the recommended 1.27 mm × 2.96 mm SMT lands.
+- [Archived Murata PIR sensor catalog](https://www.mouser.com/datasheet/2/281/s21e-522733.pdf): `IRS-B210ST01` 4.7 mm × 4.7 mm five-terminal package and pin arrangement used for the A1 custom footprint.
+- TI's TIDA-01398 BOM identifies A1 as `IRS-B210ST01-R1`; TI E2E discussions also identify that sensor in the BOOSTXL design. This is cross-reference evidence because SNOU148A itself omits A1's part number.
+
 TI's current product page does **not** publish native KiCad, Altium, Gerber, pick-and-place, or BOM files for the exact `BOOSTXL-TLV8544PIR`. A public web and GitHub search also found no trustworthy community-native CAD mirror for this exact board. The published electrical source is the schematic embedded in SNOU148A. The exact PCB layout will therefore need to be reconstructed from the schematic, board photographs, and BoosterPack header standard.
 
 ## Related TIDA-01398 files
@@ -35,6 +41,7 @@ These have not been copied into the project because TI gates them behind myTI/ex
 
 ## Known source gaps
 
-- The exact PIR sensor part number is not printed on the published BoosterPack schematic.
+- The PIR sensor part number is not printed on the published BoosterPack schematic. The `IRS-B210ST01-R1` identification is based on the related TI BOM and TI engineering discussions, not a released BOOSTXL BOM.
 - `U3` is shown as a five-pin unity-gain buffer, but its manufacturer part number/value is not printed.
 - Package/footprint metadata is incomplete for many passives and LEDs; it must be recovered from board imagery or selected deliberately during reconstruction.
+- SLAA542 defines the 40-pin board envelope and header geometry but not this board's mounting-hole coordinates, corner chamfers, or lens retention geometry. Those details remain inferred and must be measured before fabrication.
