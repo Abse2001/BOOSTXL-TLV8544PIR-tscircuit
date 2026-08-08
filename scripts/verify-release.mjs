@@ -40,6 +40,16 @@ assert.deepEqual(
 );
 assert.equal(ofType("source_net").length, 40, "Unexpected source net count");
 assert(ofType("pcb_trace").length > 0, "PCB was not routed");
+const vias = ofType("pcb_via");
+assert(vias.length > 0, "Expected routed vias");
+assert(
+	vias.every((via) => via.hole_diameter >= 0.3),
+	"A via drill is smaller than the board's 0.3-mm minimum",
+);
+assert(
+	vias.every((via) => via.outer_diameter >= 0.45),
+	"A via pad is smaller than the board's 0.45-mm minimum",
+);
 
 const oversizedSchematicLabels = ofType("schematic_net_label")
 	.map((label) => label.text)

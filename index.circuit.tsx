@@ -75,6 +75,8 @@ export default function Circuit() {
 			solderMaskColor="red"
 			silkscreenColor="white"
 			defaultTraceWidth="0.2mm"
+			minViaHoleDiameter="0.3mm"
+			minViaPadDiameter="0.45mm"
 			autorouter={{
 				preset: "auto_local",
 				local: true,
