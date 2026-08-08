@@ -1,40 +1,20 @@
-import type { ChipProps } from "@tscircuit/props";
+import type { InductorProps } from "@tscircuit/props";
 import objPath from "./BLM18HE152SN1D.obj";
 import stepPath from "./BLM18HE152SN1D.step";
 
-const pinLabels = {
-	pin1: ["pin1"],
-	pin2: ["pin2"],
-} as const;
+type BLM18HE152SN1DProps = Omit<InductorProps, "inductance"> & {
+	inductance?: InductorProps["inductance"];
+};
 
-export const BLM18HE152SN1D = (props: ChipProps<typeof pinLabels>) => {
+// Murata specifies this ferrite bead as 1500 ohm at 100 MHz rather than with
+// a nominal inductance. 1500 / (2 * pi * 100 MHz) is 2.387 uH, which is used
+// only as the native inductor's schematic/electrical-model equivalent.
+const equivalentInductanceAt100MHz = "2.387uH";
+
+export const BLM18HE152SN1D = (props: BLM18HE152SN1DProps) => {
 	return (
-		<chip
-			pinLabels={pinLabels}
-			symbol={
-				<symbol>
-					<schematicpath
-						svgPath="M -0.428752 0.001778 A 0.1016 0.09906 0 1 0 -0.226568 0.001524"
-						strokeWidth={0.0254}
-						strokeColor="#880000"
-					/>
-					<schematicpath
-						svgPath="M -0.21336 0.001778 A 0.1016 0.09906 0 1 0 -0.011176 0.001778"
-						strokeWidth={0.0254}
-						strokeColor="#880000"
-					/>
-					<schematicpath
-						svgPath="M 0.001778 0.001778 A 0.1016 0.09906 0 1 0 0.203962 0.001778"
-						strokeWidth={0.0254}
-						strokeColor="#880000"
-					/>
-					<schematicpath
-						svgPath="M 0.22098 0.001778 A 0.1016 0.09906 0 1 0 0.423418 0.001524"
-						strokeWidth={0.0254}
-						strokeColor="#880000"
-					/>
-				</symbol>
-			}
+		<inductor
+			inductance={equivalentInductanceAt100MHz}
 			supplierPartNumbers={{
 				jlcpcb: ["C82155"],
 			}}

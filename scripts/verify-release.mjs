@@ -130,6 +130,58 @@ for (const [name, manufacturerPartNumber] of Object.entries(requiredMpns)) {
 	);
 }
 
+for (const name of ["L1", "L2"]) {
+	const ferriteBead = componentByName.get(name);
+	assert.equal(
+		ferriteBead?.ftype,
+		"simple_inductor",
+		`${name} must use the native inductor component`,
+	);
+	assert.equal(
+		ferriteBead?.inductance,
+		"2.387uH",
+		`${name} equivalent inductance changed`,
+	);
+	assert.deepEqual(
+		ferriteBead?.supplier_part_numbers?.jlcpcb,
+		["C82155"],
+		`${name} must retain the imported JLCPCB part`,
+	);
+
+	const sourcePorts = ofType("source_port").filter(
+		(port) => port.source_component_id === ferriteBead.source_component_id,
+	);
+	assert.equal(
+		sourcePorts.length,
+		2,
+		`${name} must have exactly two source ports`,
+	);
+
+	const schematicComponent = ofType("schematic_component").find(
+		(component) =>
+			component.source_component_id === ferriteBead.source_component_id,
+	);
+	assert.equal(
+		schematicComponent?.symbol_name,
+		"inductor_right",
+		`${name} must use the native inductor schematic symbol`,
+	);
+
+	const sourcePortIds = new Set(sourcePorts.map((port) => port.source_port_id));
+	const schematicPorts = ofType("schematic_port").filter((port) =>
+		sourcePortIds.has(port.source_port_id),
+	);
+	assert.equal(
+		schematicPorts.length,
+		2,
+		`${name} must have exactly two schematic ports`,
+	);
+	assert(
+		schematicPorts.every((port) => port.is_connected),
+		`${name} schematic ports must both be connected`,
+	);
+}
+
 const missingMpn = components
 	.filter((component) => !component.manufacturer_part_number)
 	.map((component) => component.name);
