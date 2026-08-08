@@ -1,21 +1,22 @@
 # JLCPCB / EasyEDA imports
 
-These files were generated with `tsci import --jlcpcb --download --use-exact-footprint` and preserve exact supplier geometry and 3D-model provenance. `index.circuit.tsx` converts them to native elements only when a package-correct footprinter candidate reaches the project's 95% copper-IoU threshold.
+All populated electronic parts other than resistors and capacitors are instantiated directly from components generated with `tsci import --jlcpcb --download --use-exact-footprint`. The exact supplier geometry and downloaded 3D models are retained.
 
-| Designator(s) | Manufacturer part number | JLCPCB/LCSC ID | Source usage |
-| --- | --- | --- | --- |
-| U1 | TLV8544PWR | C2867322 | Native `chip`; 100% IoU; imported STEP/OBJ. |
-| U2 | INA226AIDGSR | C49851 | Native `chip`; 96.23% VSSOP candidate; imported STEP/OBJ. |
-| U3 | TLV333IDBVR | C473369 | Native `chip`; 95.9821% SOT-23-5 candidate; imported STEP/OBJ. |
-| D4, D5 | 1N4148X-TP | C507292 | Native `diode`; 100% IoU; imported STEP/OBJ. |
-| L1, L2 | BLM18HE152SN1D | C82155 | Native `chip`; 100% IoU; imported STEP/OBJ. |
-| J1, J2 | SSQ-110-03-G-D | C3323139 | Exact imported JSX retained; 14.84% best relevant IoU. |
-| A1 | IRA-S210ST01 | C152563 | Exact imported JSX retained; 13.87% copper and 1.31% hole IoU. |
+| Designator(s) | Manufacturer part number | JLCPCB/LCSC ID |
+| --- | --- | --- |
+| U1 | TLV8544PWR | C2867322 |
+| U2 | INA226AIDGSR | C49851 |
+| U3 | TLV333IDBVR | C473369 |
+| D1 | 19-217/R6C-AL1M2VY/3T | C72044 |
+| D2 | 19-213/Y2C-CQ2R2L/3T(CY) | C72038 |
+| D3 | 19-217/G7C-AN1P2/6T | C2986030 |
+| D4, D5 | 1N4148X-TP | C507292 |
+| L1, L2 | BLM18HE152SN1D | C82155 |
+| J1, J2 | SSQ-110-03-G-D | C3323139 |
+| J3, J4 | GPHD101-0202A037R1BA | C5371819 |
+| A1 | IRA-S210ST01 | C152563 |
+| TP1, TP2 | Keystone 5001 | C238122 |
 
-## Separately sourced parts
+The importer sanitized punctuation in several generated TypeScript identifiers and MPN strings. Component identifiers remain valid TypeScript, while the `manufacturerPartNumber` metadata was restored to the supplier's real MPN. The TLV333 import's generated pin aliases were also corrected against the data sheet: pin 2 is `V_NEG` and pin 4 is `IN_NEG`.
 
-- J3/J4 are Molex `87898-0204`. JLCPCB had no exact catalog result, so native `pinheader` elements represent the manufacturer land pattern from SD-87898-001. Source and fit these separately.
-- TP1/TP2 are Keystone `5001` through-hole test points and are intended for hand installation.
-- H1 is the Murata `IML-0688` Fresnel lens. It is mechanical rather than an electrical source component; its 10.8-mm envelope is shown on board silkscreen and its housing requirements are documented separately.
-
-See `docs/footprint-conversion.md` for the comparison record.
+H1 is the Murata `IML-0688` Fresnel lens. It is mechanical rather than an electrical source component; its 10.8-mm envelope is shown on board silkscreen and its housing requirements are documented separately.

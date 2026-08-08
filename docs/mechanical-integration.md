@@ -13,6 +13,12 @@ The source uses millimetres with the board centered at `(0, 0)`:
 
 The outline and placements are scaled from TI's official top view using the known 2.54-mm header grid. The TI BoosterPack standard defines the connector grid, but this particular board visibly extends asymmetrically beyond the basic BoosterPack envelope. Because no exact native board CAD was published, the numbers above are controlled reconstruction dimensions—not metrology of an original unit.
 
+## J3/J4 current jumpers
+
+TI's rendering shows Molex `87898-0204` 1×2, 2.54-mm right-angle SMT headers fitted with removable shunts. That exact Molex part is not available in JLCPCB's assembly catalog, so the board uses imported GREENCONN `GPHD101-0202A037R1BA`, JLCPCB C5371819. It preserves the electrical function, pitch, row count, right-angle orientation, and SMT assembly style, but it is a controlled mechanical replacement rather than a claim of exact body dimensions.
+
+J3 is rotated so the mating end projects through the left edge like TI's board image; J4 points to the right. Fit 2.54-mm shunts such as JLCPCB C5305 for normal operation. Remove a shunt only when inserting an ammeter across that header. Confirm the replacement header's body reach, shunt clearance, and enclosure clearance on the 1:1 overlay.
+
 ## A1 sensor
 
 Murata `IRA-S210ST01` is a lead-type dual-element PIR sensor. Its manufacturer drawing specifies a 9.2-mm-diameter, 4.7-mm-high can, 0.45-mm leads, and drain/source/ground functions. The exact JLCPCB C152563 import supplies three 0.9144-mm drilled plated holes on its nonrectangular lead pattern and the manufacturer-scale courtyard/model.
@@ -37,8 +43,9 @@ Before fabrication, export the PCB SVG/PDF at 100% scale and verify with caliper
 1. both header rows mate without force;
 2. the three mounting holes align and do not clash with the LaunchPad;
 3. the asymmetric outline clears USB connectors, jumpers, antennas, and enclosure walls;
-4. the A1 body and leads fit the exact holes; and
-5. the IML-0688/housing stack centers over A1 without covering solderable parts or colliding with MH3.
+4. J3/J4 bodies and removable shunts match the required access direction without colliding with nearby parts;
+5. the A1 body and leads fit the exact holes; and
+6. the IML-0688/housing stack centers over A1 without covering solderable parts or colliding with MH3.
 
 Record the measured deviations in the hardware revision notes before ordering more than the first-article quantity.
 

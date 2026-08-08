@@ -33,7 +33,7 @@ At R21 = 15.0 kΩ, 15 µV corresponds to 1 nA of worst-case 25 °C input-referre
 
 `sot25_w2.2157mm_pl1.0276mm_pin1location(leftside,bottom)`
 
-That clears the project's 95% rule, so `index.circuit.tsx` uses a native `chip` with explicit correct pin labels and the imported OBJ/STEP files. The generated import JSX is retained only as provenance because its automatically inferred aliases incorrectly combined pin functions.
+That comparison remains useful evidence, but the project's current sourcing rule requires non-passives to be instantiated from JLCPCB imports. `index.circuit.tsx` therefore uses the exact C473369 import. The generated import's incorrect pin aliases were corrected against the TI data sheet: pin 2 is `V_NEG` and pin 4 is `IN_NEG`.
 
 ## Remaining validation
 

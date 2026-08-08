@@ -39,8 +39,17 @@ const requiredMpns = {
 	U3: "TLV333IDBVR",
 	J1: "SSQ-110-03-G-D",
 	J2: "SSQ-110-03-G-D",
-	J3: "87898-0204",
-	J4: "87898-0204",
+	J3: "GPHD101-0202A037R1BA",
+	J4: "GPHD101-0202A037R1BA",
+	D1: "19-217/R6C-AL1M2VY/3T",
+	D2: "19-213/Y2C-CQ2R2L/3T(CY)",
+	D3: "19-217/G7C-AN1P2/6T",
+	D4: "1N4148X-TP",
+	D5: "1N4148X-TP",
+	L1: "BLM18HE152SN1D",
+	L2: "BLM18HE152SN1D",
+	TP1: "5001",
+	TP2: "5001",
 	R21: "RT0603BRD0715KL",
 	C22: "GRM188R71E104KA01D",
 };
@@ -58,18 +67,29 @@ const missingMpn = components
 	.map((component) => component.name);
 assert.deepEqual(missingMpn, [], "Every populated component must have an MPN");
 
-const supplierOptional = new Set(["J3", "J4", "TP1", "TP2"]);
 const missingSupplier = components
-	.filter(
-		(component) =>
-			!component.supplier_part_numbers && !supplierOptional.has(component.name),
-	)
+	.filter((component) => !component.supplier_part_numbers)
 	.map((component) => component.name);
 assert.deepEqual(
 	missingSupplier,
 	[],
 	"Every automatically assembled component must have a supplier part number",
 );
+
+const circuitSource = await Bun.file("index.circuit.tsx").text();
+for (const forbiddenNativeTag of [
+	"chip",
+	"diode",
+	"led",
+	"pinheader",
+	"testpoint",
+	"inductor",
+]) {
+	assert(
+		!circuitSource.includes(`<${forbiddenNativeTag}`),
+		`Non-passive <${forbiddenNativeTag}> must be instantiated from a JLCPCB import`,
+	);
+}
 
 const traceNames = new Set(
 	ofType("source_trace").map((trace) => trace.display_name),

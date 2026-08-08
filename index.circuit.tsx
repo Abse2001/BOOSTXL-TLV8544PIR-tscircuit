@@ -1,15 +1,15 @@
-import diodeObjPath from "./imports/A_1N4148X_TP/A_1N4148X_TP.obj";
-import diodeStepPath from "./imports/A_1N4148X_TP/A_1N4148X_TP.step";
-import beadObjPath from "./imports/BLM18HE152SN1D/BLM18HE152SN1D.obj";
-import beadStepPath from "./imports/BLM18HE152SN1D/BLM18HE152SN1D.step";
-import inaObjPath from "./imports/INA226AIDGSR/INA226AIDGSR.obj";
-import inaStepPath from "./imports/INA226AIDGSR/INA226AIDGSR.step";
+import { A_1N4148X_TP } from "./imports/A_1N4148X_TP/A_1N4148X_TP";
+import { A_19_213_Y2C_CQ2R2L_3T_CY_ } from "./imports/A_19_213_Y2C_CQ2R2L_3T_CY_/A_19_213_Y2C_CQ2R2L_3T_CY_";
+import { A_19_217_G7C_AN1P2_6T } from "./imports/A_19_217_G7C_AN1P2_6T/A_19_217_G7C_AN1P2_6T";
+import { A_19_217_R6C_AL1M2VY_3T } from "./imports/A_19_217_R6C_AL1M2VY_3T/A_19_217_R6C_AL1M2VY_3T";
+import { A_5001 } from "./imports/A_5001/A_5001";
+import { BLM18HE152SN1D } from "./imports/BLM18HE152SN1D/BLM18HE152SN1D";
+import { GPHD101_0202A037R1BA } from "./imports/GPHD101_0202A037R1BA/GPHD101_0202A037R1BA";
+import { INA226AIDGSR } from "./imports/INA226AIDGSR/INA226AIDGSR";
 import { IRA_S210ST01 } from "./imports/IRA_S210ST01/IRA_S210ST01";
 import { SSQ_110_03_G_D } from "./imports/SSQ_110_03_G_D/SSQ_110_03_G_D";
-import tlv333ObjPath from "./imports/TLV333IDBVR/TLV333IDBVR.obj";
-import tlv333StepPath from "./imports/TLV333IDBVR/TLV333IDBVR.step";
-import tlvObjPath from "./imports/TLV8544PWR/TLV8544PWR.obj";
-import tlvStepPath from "./imports/TLV8544PWR/TLV8544PWR.step";
+import { TLV333IDBVR } from "./imports/TLV333IDBVR/TLV333IDBVR";
+import { TLV8544PWR } from "./imports/TLV8544PWR/TLV8544PWR";
 
 /**
  * Nets are named after the labels in TI schematic SNOU148A, Figures 27 and 28.
@@ -261,40 +261,11 @@ export default function Circuit() {
 			/>
 
 			{/* Quad nanopower op-amp: two gain/filter stages plus window comparators. */}
-			<chip
+			<TLV8544PWR
 				name="U1"
-				manufacturerPartNumber="TLV8544PWR"
-				supplierPartNumbers={{ jlcpcb: ["C2867322"] }}
-				footprint="dfn14_p0.65mm_w7.3002mm_pw0.4mm_pl1.7mm"
-				cadModel={{
-					objUrl: tlvObjPath,
-					stepUrl: tlvStepPath,
-					pcbRotationOffset: 0,
-					modelOriginPosition: {
-						x: -0.000012700000013410317,
-						y: 0,
-						z: -0.069083,
-					},
-				}}
 				pcbX={14.5}
 				pcbY={-0.5}
 				pcbRotation={90}
-				pinLabels={{
-					pin1: ["OUT_A"],
-					pin2: ["IN_A_NEG"],
-					pin3: ["IN_A_POS"],
-					pin4: ["V_POS"],
-					pin5: ["IN_B_POS"],
-					pin6: ["IN_B_NEG"],
-					pin7: ["OUT_B"],
-					pin8: ["OUT_C"],
-					pin9: ["IN_C_NEG"],
-					pin10: ["IN_C_POS"],
-					pin11: ["V_NEG"],
-					pin12: ["IN_D_POS"],
-					pin13: ["IN_D_NEG"],
-					pin14: ["OUT_D"],
-				}}
 				connections={{
 					OUT_A: N.U1A_OUT,
 					IN_A_NEG: N.U1A_INV,
@@ -379,36 +350,16 @@ export default function Circuit() {
 				pcbRotation={0}
 				connections={{ pin1: N.U1A_OUT, pin2: N.U1A_INV }}
 			/>
-			<diode
+			<A_1N4148X_TP
 				name="D4"
-				manufacturerPartNumber="1N4148X-TP"
-				supplierPartNumbers={{ jlcpcb: ["C507292"] }}
-				footprint="res_p1.4224mm_pw0.6096mm_ph0.4826mm"
-				cadModel={{
-					objUrl: diodeObjPath,
-					stepUrl: diodeStepPath,
-					pcbRotationOffset: 0,
-					modelOriginPosition: { x: 0, y: -0.0040386000000012245, z: 0 },
-				}}
-				pinLabels={{ pin1: ["cathode", "neg"], pin2: ["anode", "pos"] }}
-				pcbX={12}
-				pcbY={-13}
+				pcbX={11}
+				pcbY={-13.5}
 				connections={{ anode: N.U1A_INV, cathode: N.U1A_OUT }}
 			/>
-			<diode
+			<A_1N4148X_TP
 				name="D5"
-				manufacturerPartNumber="1N4148X-TP"
-				supplierPartNumbers={{ jlcpcb: ["C507292"] }}
-				footprint="res_p1.4224mm_pw0.6096mm_ph0.4826mm"
-				cadModel={{
-					objUrl: diodeObjPath,
-					stepUrl: diodeStepPath,
-					pcbRotationOffset: 0,
-					modelOriginPosition: { x: 0, y: -0.0040386000000012245, z: 0 },
-				}}
-				pinLabels={{ pin1: ["cathode", "neg"], pin2: ["anode", "pos"] }}
-				pcbX={12}
-				pcbY={-11}
+				pcbX={11}
+				pcbY={-11.5}
 				pcbRotation={180}
 				connections={{ anode: N.U1A_OUT, cathode: N.U1A_INV }}
 			/>
@@ -442,7 +393,7 @@ export default function Circuit() {
 				resistance="68.1kohm"
 				footprint="0603"
 				pcbX={13}
-				pcbY={-12}
+				pcbY={-18.5}
 				pcbRotation={0}
 				connections={{ pin1: N.INTERSTAGE, pin2: N.U1B_INV }}
 			/>
@@ -496,8 +447,8 @@ export default function Circuit() {
 				supplierPartNumbers={{ jlcpcb: ["C21189"] }}
 				resistance="0ohm"
 				footprint="0603"
-				pcbX={10.5}
-				pcbY={1.5}
+				pcbX={5}
+				pcbY={3.5}
 				pcbRotation={90}
 				connections={{ pin1: N.U1B_OUT, pin2: N.PIR_SIGNAL_BUS }}
 			/>
@@ -520,8 +471,8 @@ export default function Circuit() {
 				supplierPartNumbers={{ jlcpcb: ["C3016870"] }}
 				resistance="15Mohm"
 				footprint="0805"
-				pcbX={15}
-				pcbY={16}
+				pcbX={20}
+				pcbY={15}
 				pcbRotation={90}
 				connections={{ pin1: N.V3P3_REF, pin2: N.REF_HIGH }}
 			/>
@@ -637,12 +588,8 @@ export default function Circuit() {
 				pcbRotation={0}
 				connections={{ pin1: N.RLED, pin2: "net.D1_ANODE" }}
 			/>
-			<led
+			<A_19_217_R6C_AL1M2VY_3T
 				name="D1"
-				manufacturerPartNumber="EL0603/R6C-A01/DT"
-				supplierPartNumbers={{ jlcpcb: ["C883165"] }}
-				color="red"
-				footprint="0603"
 				pcbX={-5}
 				pcbY={-4}
 				connections={{ anode: "net.D1_ANODE", cathode: N.GND }}
@@ -658,12 +605,8 @@ export default function Circuit() {
 				pcbRotation={0}
 				connections={{ pin1: N.YLED, pin2: "net.D2_ANODE" }}
 			/>
-			<led
+			<A_19_213_Y2C_CQ2R2L_3T_CY_
 				name="D2"
-				manufacturerPartNumber="19-213/Y2C-CQ2R2L/3T(CY)"
-				supplierPartNumbers={{ jlcpcb: ["C72038"] }}
-				color="yellow"
-				footprint="0603"
 				pcbX={-5}
 				pcbY={-7.5}
 				connections={{ anode: "net.D2_ANODE", cathode: N.GND }}
@@ -679,34 +622,16 @@ export default function Circuit() {
 				pcbRotation={0}
 				connections={{ pin1: N.OLED, pin2: "net.D3_ANODE" }}
 			/>
-			<led
+			<A_19_217_G7C_AN1P2_6T
 				name="D3"
-				manufacturerPartNumber="19-217/GHC-YN1P2B18X/6T"
-				supplierPartNumbers={{ jlcpcb: ["C2986031"] }}
-				color="green"
-				footprint="0603"
 				pcbX={-5}
 				pcbY={0}
 				connections={{ anode: "net.D3_ANODE", cathode: N.GND }}
 			/>
 
 			{/* 3.3-V and 5-V filtering at the LaunchPad connector. */}
-			<chip
+			<BLM18HE152SN1D
 				name="L1"
-				manufacturerPartNumber="BLM18HE152SN1D"
-				supplierPartNumbers={{ jlcpcb: ["C82155"] }}
-				footprint="res_p1.3998mm_pw0.8mm_ph0.864mm"
-				cadModel={{
-					objUrl: beadObjPath,
-					stepUrl: beadStepPath,
-					pcbRotationOffset: 180,
-					modelOriginPosition: {
-						x: 0.0023875999999063424,
-						y: 0.015976600000044527,
-						z: -0.25,
-					},
-				}}
-				pinLabels={{ pin1: ["pin1"], pin2: ["pin2"] }}
 				pcbX={-20}
 				pcbY={20}
 				connections={{ pin1: N.V3P3_LPD, pin2: N.V3P3 }}
@@ -733,22 +658,8 @@ export default function Circuit() {
 				pcbRotation={90}
 				connections={{ pin1: N.V3P3, pin2: N.GND }}
 			/>
-			<chip
+			<BLM18HE152SN1D
 				name="L2"
-				manufacturerPartNumber="BLM18HE152SN1D"
-				supplierPartNumbers={{ jlcpcb: ["C82155"] }}
-				footprint="res_p1.3998mm_pw0.8mm_ph0.864mm"
-				cadModel={{
-					objUrl: beadObjPath,
-					stepUrl: beadStepPath,
-					pcbRotationOffset: 180,
-					modelOriginPosition: {
-						x: 0.0023875999999063424,
-						y: 0.015976600000044527,
-						z: -0.25,
-					},
-				}}
-				pinLabels={{ pin1: ["pin1"], pin2: ["pin2"] }}
 				pcbX={-11}
 				pcbY={18.5}
 				connections={{ pin1: N.V5_LPD, pin2: N.V5 }}
@@ -805,7 +716,7 @@ export default function Circuit() {
 				supplierPartNumbers={{ jlcpcb: ["C21189"] }}
 				resistance="0ohm"
 				footprint="0603"
-				pcbX={-18}
+				pcbX={-16.5}
 				pcbY={20}
 				pcbRotation={0}
 				connections={{ pin1: N.V3P3, pin2: N.V3P3_TLV }}
@@ -816,8 +727,8 @@ export default function Circuit() {
 				supplierPartNumbers={{ jlcpcb: ["C21189"] }}
 				resistance="0ohm"
 				footprint="0603"
-				pcbX={18.5}
-				pcbY={16.5}
+				pcbX={20.5}
+				pcbY={19}
 				pcbRotation={0}
 				connections={{ pin1: N.V3P3_TLV, pin2: N.V3P3_REF }}
 			/>
@@ -833,23 +744,20 @@ export default function Circuit() {
 				connections={{ pin1: N.V3P3_TLV, pin2: N.V3P3_INA }}
 			/>
 
-			{/* Current-measurement jumpers. Exact Molex 87898-0204 is not in JLCPCB. */}
-			<pinheader
+			{/* Current-measurement jumpers. JLCPCB right-angle SMT replacement matches
+			    the TI board's 1x2, 2.54-mm removable-shunt arrangement. */}
+			<GPHD101_0202A037R1BA
 				name="J3"
-				pinCount={2}
-				manufacturerPartNumber="87898-0204"
-				footprint="res_p2.54mm_pw1.27mm_ph2.96mm"
-				pcbX={-28}
+				pcbX={-24}
 				pcbY={-17}
+				pcbRotation={270}
 				connections={{ pin1: N.V_PIR, pin2: N.V3P3 }}
 			/>
-			<pinheader
+			<GPHD101_0202A037R1BA
 				name="J4"
-				pinCount={2}
-				manufacturerPartNumber="87898-0204"
-				footprint="res_p2.54mm_pw1.27mm_ph2.96mm"
-				pcbX={10.5}
+				pcbX={6}
 				pcbY={18}
+				pcbRotation={90}
 				connections={{ pin1: N.V_TLV, pin2: N.V3P3 }}
 			/>
 
@@ -860,8 +768,8 @@ export default function Circuit() {
 				supplierPartNumbers={{ jlcpcb: ["C326733"] }}
 				resistance="15kohm"
 				footprint="0603"
-				pcbX={5}
-				pcbY={14.5}
+				pcbX={2.5}
+				pcbY={12.5}
 				pcbRotation={90}
 				connections={{ pin1: N.V3P3_TLV, pin2: N.V_TLV }}
 			/>
@@ -871,31 +779,15 @@ export default function Circuit() {
 				supplierPartNumbers={{ jlcpcb: ["C77050"] }}
 				capacitance="0.1uF"
 				footprint="0603"
-				pcbX={5}
-				pcbY={19.5}
+				pcbX={2.5}
+				pcbY={9.5}
 				pcbRotation={90}
 				connections={{ pin1: N.V3P3_TLV, pin2: N.V_TLV }}
 			/>
-			<chip
+			<TLV333IDBVR
 				name="U3"
-				manufacturerPartNumber="TLV333IDBVR"
-				supplierPartNumbers={{ jlcpcb: ["C473369"] }}
-				footprint="sot25_w2.2157mm_pl1.0276mm_pin1location(leftside,bottom)"
-				cadModel={{
-					objUrl: tlv333ObjPath,
-					stepUrl: tlv333StepPath,
-					pcbRotationOffset: 0,
-					modelOriginPosition: { x: 0, y: 0, z: 0 },
-				}}
 				pcbX={1.5}
 				pcbY={16.5}
-				pinLabels={{
-					pin1: ["OUT"],
-					pin2: ["V_NEG"],
-					pin3: ["IN_POS"],
-					pin4: ["IN_NEG"],
-					pin5: ["V_POS"],
-				}}
 				connections={{
 					OUT: N.BUFFER_OUT,
 					IN_NEG: N.BUFFER_OUT,
@@ -915,32 +807,11 @@ export default function Circuit() {
 				pcbRotation={90}
 				connections={{ pin1: N.V5, pin2: N.GND }}
 			/>
-			<chip
+			<INA226AIDGSR
 				name="U2"
-				manufacturerPartNumber="INA226AIDGSR"
-				supplierPartNumbers={{ jlcpcb: ["C49851"] }}
-				footprint="vssop10_p0.4999mm_pw0.28mm_pl1.62mm"
-				cadModel={{
-					objUrl: inaObjPath,
-					stepUrl: inaStepPath,
-					pcbRotationOffset: 0,
-					modelOriginPosition: { x: 0, y: 0, z: 0 },
-				}}
 				pcbX={-3.5}
 				pcbY={10}
 				pcbRotation={90}
-				pinLabels={{
-					pin1: ["A1"],
-					pin2: ["A0"],
-					pin3: ["Alert"],
-					pin4: ["SDA"],
-					pin5: ["SCL"],
-					pin6: ["VS_POS"],
-					pin7: ["GND"],
-					pin8: ["VBUS"],
-					pin9: ["VIN_NEG"],
-					pin10: ["VIN_POS"],
-				}}
 				connections={{
 					A1: N.GND,
 					A0: N.GND,
@@ -965,26 +836,8 @@ export default function Circuit() {
 				connections={{ pin1: N.V3P3_INA, pin2: N.GND }}
 			/>
 
-			<testpoint
-				name="TP1"
-				manufacturerPartNumber="5001"
-				footprintVariant="through_hole"
-				padDiameter="2.4mm"
-				holeDiameter="1mm"
-				pcbX={9}
-				pcbY={-23}
-				connections={{ pin1: N.GND }}
-			/>
-			<testpoint
-				name="TP2"
-				manufacturerPartNumber="5001"
-				footprintVariant="through_hole"
-				padDiameter="2.4mm"
-				holeDiameter="1mm"
-				pcbX={-11}
-				pcbY={23}
-				connections={{ pin1: N.GND }}
-			/>
+			<A_5001 name="TP1" pcbX={9} pcbY={-23} connections={{ pin1: N.GND }} />
+			<A_5001 name="TP2" pcbX={-11} pcbY={23} connections={{ pin1: N.GND }} />
 
 			{/* A bottom-side ground pour provides a continuous analog return reference. */}
 			<copperpour

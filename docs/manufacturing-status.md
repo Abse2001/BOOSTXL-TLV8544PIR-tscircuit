@@ -6,9 +6,9 @@
 - C22 is across R21 between `3.3VTLV` and `V+_TLV`; it is not a ground bypass. NT2 and NT3 branch from `3.3VTLV`, matching TI's functional rail split.
 - U3 is no longer an unidentified placeholder. `TLV333IDBVR` is documented as a qualified substitute with correct SOT-23-5 pinout, 5-V operation, common-mode range, unity-gain stability, offset, imported model, and JLCPCB ID.
 - The obsolete five-pad PIR reconstruction is removed. A1 is Murata `IRA-S210ST01` C152563 using the exact three-lead JLCPCB footprint and model; H1 is its matching `IML-0688` lens.
-- Every electrical component has a fixed value and manufacturer part number. Automatically assembled parts have JLCPCB/LCSC IDs; J3/J4 and TP1/TP2 are explicitly separately sourced.
-- All exact-import versus footprinter decisions are recorded against the 95% IoU policy.
-- The 60.96 mm × 50.8 mm two-layer board routes completely: 131 PCB traces, 102 vias, bottom GND pour, and zero generated circuit error elements.
+- Every electrical component has a fixed value, manufacturer part number, and JLCPCB/LCSC ID. All non-resistor/non-capacitor electronic parts are instantiated from exact JLCPCB imports.
+- J3/J4 use imported JLCPCB C5371819, a 1×2, 2.54-mm right-angle SMT header oriented like TI's current jumpers; the removable shunts remain separate assembly items.
+- The 60.96 mm × 50.8 mm two-layer board routes completely: 131 PCB traces, 119 vias, bottom GND pour, and zero generated circuit error elements.
 - `bun run release-check` fails if critical topology, MPN coverage, board geometry, routing, or error status regresses.
 - Registry release `1.0.5` is published at `https://tscircuit.com/abse/boostxl-tlv8544pir`. Its J1/J2 and U1 online 3D views use the exact imported OBJ models because the registry rejects the larger STEP files; the full STEP files remain in GitHub and the manufacturing exports.
 

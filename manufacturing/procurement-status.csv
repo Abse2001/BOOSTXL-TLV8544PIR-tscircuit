@@ -7,8 +7,9 @@ pir_lens,H1,Murata,IML-0688,,10.8 mm square mechanical envelope,matched_mechanic
 switching_diode,D4 D5,Micro Commercial Components,1N4148X-TP,C507292,SOD-523,exact_jlc_part,Reconfirm stock and polarity
 ferrite_bead,L1 L2,Murata,BLM18HE152SN1D,C82155,0603,exact_jlc_part,Reconfirm stock
 boosterpack_headers,J1 J2,Samtec,SSQ-110-03-G-D,C3323139,Exact imported 2x10 THT,exact_jlc_part,Reconfirm G-D variant stock and mating height
-current_jumpers,J3 J4,Molex,87898-0204,,Manufacturer land pattern,source_separately,Verify fit and fit removable shunts
-testpoints,TP1 TP2,Keystone,5001,,1.0 mm THT hole,hand_install,Confirm probe compatibility and source separately
+current_jumpers,J3 J4,GREENCONN,GPHD101-0202A037R1BA,C5371819,"Exact imported 1x2 2.54 mm right-angle SMT",selected_jlc_replacement,Verify physical reach and fit removable 2.54 mm shunts
+jumper_shunts,SH-J3 SH-J4,BOOMELE,2.54Short Circuit Cap Opening,C5305,1x2 2.54 mm removable shunt,mechanical_assembly_item,Fit after assembly and remove only when inserting an ammeter
+testpoints,TP1 TP2,Keystone,5001,C238122,Exact imported THT test point,exact_jlc_part,Confirm probe compatibility and wave-solder process
 resistor,R1,Yageo,AC0805FR-07442RL,C228838,0805 442 ohm 1% 0.125 W,selected_jlc_part,Reconfirm stock
 resistor,R2 R3,Stackpole,RMCS0805FT487R,C7289906,0805 487 ohm 1% 0.125 W,selected_jlc_part,Reconfirm stock
 resistor,R4 R5 R10 R19,UniOhm,CQ03WAF1002T5E,C516551,0603 10 kohm 1%,selected_jlc_part,Reconfirm stock
@@ -29,6 +30,6 @@ capacitor,C10,HRE,CGA1206X5R107M100NT,C6119961,1206 100 uF 10 V X5R,selected_jlc
 capacitor,C11 C20 C25 C28,Murata,GRM188R60J106ME47D,C77041,0603 10 uF 6.3 V X5R,selected_jlc_part,Reconfirm stock and effective capacitance
 capacitor,C12,TDK,C1608X7R1C105KT000N,C76617,0603 1 uF 16 V X7R,selected_jlc_part,Reconfirm stock
 capacitor,C16,Murata,GRM1885C1H101JA01D,C71664,0603 100 pF 50 V C0G,selected_jlc_part,Reconfirm stock
-indicator_led,D1,Everlight,EL0603/R6C-A01/DT,C883165,0603 red,selected_jlc_part,Verify polarity and brightness
+indicator_led,D1,Everlight,19-217/R6C-AL1M2VY/3T,C72044,0603 red,selected_jlc_part,Verify polarity and brightness
 indicator_led,D2,Everlight,19-213/Y2C-CQ2R2L/3T(CY),C72038,0603 yellow,selected_jlc_part,Verify polarity and brightness
-indicator_led,D3,Everlight,19-217/GHC-YN1P2B18X/6T,C2986031,0603 green,selected_jlc_part,Verify polarity and brightness
+indicator_led,D3,Everlight,19-217/G7C-AN1P2/6T,C2986030,0603 yellow-green,selected_jlc_part,Verify polarity and brightness

@@ -59,16 +59,16 @@ COMPONENTS:
  - NT1: 0Ω res0603 resistor
  - NT2: 0Ω res0603 resistor
  - NT3: 0Ω res0603 resistor
- - J3: J3, source_component
- - J4: J4, source_component
+ - J3: GPHD101-0202A037R1BA
+ - J4: GPHD101-0202A037R1BA
  - R21: 15kΩ res0603 resistor
  - C22: 0.1uF 0603 capacitor
  - U3: TLV333IDBVR
  - C23: 0.1uF 0603 capacitor
  - U2: INA226AIDGSR
  - C21: 0.1uF 0603 capacitor
- - TP1: TP1, source_component
- - TP2: TP2, source_component
+ - TP1: 5001
+ - TP2: 5001
 
 NET: PIR_VIN1
   - C16 pin1 (+)
@@ -188,7 +188,7 @@ NET: RLED
   - J1 pin18
 
 NET: D1_ANODE
-  - D1 pin1 (+)
+  - D1 anode (+)
   - R1 pin2
 
 NET: YLED
@@ -196,7 +196,7 @@ NET: YLED
   - J1 pin20
 
 NET: D2_ANODE
-  - D2 pin1 (+)
+  - D2 anode (+)
   - R2 pin2
 
 NET: OLED
@@ -204,7 +204,7 @@ NET: OLED
   - J1 pin16
 
 NET: D3_ANODE
-  - D3 pin1 (+)
+  - D3 anode (+)
   - R3 pin2
 
 NET: V3P3_LPD
@@ -291,9 +291,9 @@ NET: GND
   - C26 pin2 (-)
   - C25 pin2 (-)
   - C24 pin2 (-)
-  - D3 pin2 (-)
-  - D2 pin2 (-)
-  - D1 pin2 (-)
+  - D3 cathode (-)
+  - D2 cathode (-)
+  - D1 cathode (-)
   - C20 pin2 (-)
   - C19 pin2 (-)
   - C18 pin2 (-)
@@ -461,12 +461,12 @@ C6 (0.01uF 0603)
 - pin2(neg, cathode, right): NETS(U1A_INV)
 
 D4 (1N4148X-TP)
-- pin1(cathode, neg, left): NETS(U1A_OUT)
-- pin2(anode, pos, right): NETS(U1A_INV)
+- pin1(cathode, neg): NETS(U1A_OUT)
+- pin2(anode, pos): NETS(U1A_INV)
 
 D5 (1N4148X-TP)
-- pin1(cathode, neg, left): NETS(U1A_INV)
-- pin2(anode, pos, right): NETS(U1A_OUT)
+- pin1(cathode, neg): NETS(U1A_INV)
+- pin2(anode, pos): NETS(U1A_OUT)
 
 R4 (10kΩ res0603)
 - pin1(anode, pos, left): NETS(U1A_OUT)
@@ -548,29 +548,31 @@ R1 (442Ω res0805)
 - pin1(anode, pos, left): NETS(RLED)
 - pin2(cathode, neg, right): NETS(D1_ANODE)
 
-D1 (EL0603/R6C-A01/DT)
-- pin1(anode, pos, left): NETS(D1_ANODE)
-- pin2(cathode, neg, right): NETS(GND)
+D1 (19-217/R6C-AL1M2VY/3T)
+- pin1(cathode, neg): NETS(GND)
+- pin2(anode, pos): NETS(D1_ANODE)
 
 R2 (487Ω res0805)
 - pin1(anode, pos, left): NETS(YLED)
 - pin2(cathode, neg, right): NETS(D2_ANODE)
 
 D2 (19-213/Y2C-CQ2R2L/3T(CY))
-- pin1(anode, pos, left): NETS(D2_ANODE)
-- pin2(cathode, neg, right): NETS(GND)
+- pin1(cathode, neg): NETS(GND)
+- pin2(anode, pos): NETS(D2_ANODE)
 
 R3 (487Ω res0805)
 - pin1(anode, pos, left): NETS(OLED)
 - pin2(cathode, neg, right): NETS(D3_ANODE)
 
-D3 (19-217/GHC-YN1P2B18X/6T)
-- pin1(anode, pos, left): NETS(D3_ANODE)
-- pin2(cathode, neg, right): NETS(GND)
+D3 (19-217/G7C-AN1P2/6T)
+- pin1(anode, pos): NETS(D3_ANODE)
+- pin2(cathode, neg): NETS(GND)
 
 L1 (BLM18HE152SN1D)
-- pin1(left): NETS(V3P3_LPD)
-- pin2(right): NETS(V3P3_FILTERED)
+- pin1: NETS(V3P3_LPD)
+- pin1: NOT_CONNECTED
+- pin2: NETS(V3P3_FILTERED)
+- pin2: NOT_CONNECTED
 
 C24 (0.1uF 0603)
 - pin1(pos, anode, left): NETS(V3P3_FILTERED)
@@ -581,8 +583,10 @@ C25 (10uF 0603)
 - pin2(neg, cathode, right): NETS(GND)
 
 L2 (BLM18HE152SN1D)
-- pin1(left): NETS(V5_LPD)
-- pin2(right): NETS(V5_FILTERED)
+- pin1: NETS(V5_LPD)
+- pin1: NOT_CONNECTED
+- pin2: NETS(V5_FILTERED)
+- pin2: NOT_CONNECTED
 
 C26 (0.1uF 0603)
 - pin1(pos, anode, left): NETS(V5_FILTERED)
@@ -612,13 +616,13 @@ NT3 (0Ω res0603)
 - pin1(anode, pos, left): NETS(V3P3_TLV)
 - pin2(cathode, neg, right): NETS(V3P3_INA)
 
-J3 (87898-0204)
-- pin1(left): NETS(V_POS_PIR)
-- pin2(right): NETS(V3P3_FILTERED)
+J3 (GPHD101-0202A037R1BA)
+- pin1: NETS(V_POS_PIR)
+- pin2: NETS(V3P3_FILTERED)
 
-J4 (87898-0204)
-- pin1(left): NETS(V_POS_TLV)
-- pin2(right): NETS(V3P3_FILTERED)
+J4 (GPHD101-0202A037R1BA)
+- pin1: NETS(V_POS_TLV)
+- pin2: NETS(V3P3_FILTERED)
 
 R21 (15kΩ res0603)
 - pin1(anode, pos, left): NETS(V3P3_TLV)
@@ -630,10 +634,15 @@ C22 (0.1uF 0603)
 
 U3 (TLV333IDBVR)
 - pin1(OUT): NETS(BUFFER_OUT)
+- pin1(OUT): NOT_CONNECTED
 - pin2(V_NEG): NETS(GND)
+- pin2(V_NEG): NOT_CONNECTED
 - pin3(IN_POS): NETS(V_POS_TLV)
+- pin3(IN_POS): NOT_CONNECTED
 - pin4(IN_NEG): NETS(BUFFER_OUT)
+- pin4(IN_NEG): NOT_CONNECTED
 - pin5(V_POS): NETS(V5_FILTERED)
+- pin5(V_POS): NOT_CONNECTED
 
 C23 (0.1uF 0603)
 - pin1(pos, anode, left): NETS(V5_FILTERED)
