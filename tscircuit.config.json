@@ -1,4 +1,5 @@
 {
-  "$schema": "https://cdn.jsdelivr.net/npm/@tscircuit/cli/types/tscircuit.config.schema.json",
-  "mainEntrypoint": "index.circuit.tsx"
+	"$schema": "https://cdn.jsdelivr.net/npm/@tscircuit/cli/types/tscircuit.config.schema.json",
+	"mainEntrypoint": "index.circuit.tsx",
+	"ignoredFiles": ["tmp/**", "reference/**", "exports/**"]
 }

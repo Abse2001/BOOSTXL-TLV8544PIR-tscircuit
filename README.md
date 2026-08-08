@@ -18,6 +18,11 @@ This is an engineering reconstruction of Texas Instruments' `BOOSTXL-TLV8544PIR`
 
 This is an **orderable prototype release candidate**, not a production-proven clone. The electrical values, topology, MPNs, footprints, and supplier IDs are now traceable. Before paying for assembly, print the 1:1 mechanical overlay and confirm the reconstructed outline/header/hole/lens geometry against the intended LaunchPad. After assembly, execute `docs/bring-up-plan.md`; the IRA-S210 substitution and lens housing require first-article qualification.
 
+- Public source and manufacturing package: <https://github.com/Abse2001/BOOSTXL-TLV8544PIR-tscircuit>
+- Published tscircuit package: <https://tscircuit.com/abse/boostxl-tlv8544pir> (`1.0.5`)
+
+The registry build uses the exact OBJ models for J1/J2 and U1 because its per-file upload limit rejects their larger STEP files. The complete STEP models remain in this repository and in the manufacturing exports; electrical and PCB geometry are unchanged.
+
 See:
 
 - `docs/design-verification.md` for value provenance and calculated checkpoints;

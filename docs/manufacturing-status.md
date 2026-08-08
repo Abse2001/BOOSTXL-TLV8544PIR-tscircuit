@@ -10,6 +10,7 @@
 - All exact-import versus footprinter decisions are recorded against the 95% IoU policy.
 - The 60.96 mm × 50.8 mm two-layer board routes completely: 131 PCB traces, 102 vias, bottom GND pour, and zero generated circuit error elements.
 - `bun run release-check` fails if critical topology, MPN coverage, board geometry, routing, or error status regresses.
+- Registry release `1.0.5` is published at `https://tscircuit.com/abse/boostxl-tlv8544pir`. Its J1/J2 and U1 online 3D views use the exact imported OBJ models because the registry rejects the larger STEP files; the full STEP files remain in GitHub and the manufacturing exports.
 
 ## Prototype release gates
 
