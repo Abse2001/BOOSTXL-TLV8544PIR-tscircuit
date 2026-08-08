@@ -4,7 +4,9 @@ All files in this directory were regenerated from the same circuit state that pa
 
 | File | Contents |
 | --- | --- |
-| `BOOSTXL-TLV8544PIR-schematic.svg` | Current electrical schematic view. |
+| `BOOSTXL-TLV8544PIR-schematic.svg` | Both TI-style schematic sheets in one stacked review drawing. |
+| `BOOSTXL-TLV8544PIR-schematic-page-1.svg` | PIR signal conditioning, LaunchPad connectors, and user LEDs. |
+| `BOOSTXL-TLV8544PIR-schematic-page-2.svg` | 3.3-V/5-V filtering, rail splits, current monitor, and U3 buffer. |
 | `BOOSTXL-TLV8544PIR-routed-pcb.svg` | Courtyard-visible two-layer routed PCB preview. |
 | `BOOSTXL-TLV8544PIR-assembly.svg` | Top assembly drawing with the exact three-lead A1 package. |
 | `BOOSTXL-TLV8544PIR-readable-netlist.txt` | Human-readable 70-component/40-net report including selected MPNs. |

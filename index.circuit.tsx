@@ -83,9 +83,42 @@ export default function Circuit() {
 			autorouterEffortLevel="2x"
 			autorouterVersion="v6"
 		>
+			<schematicsheet
+				name="PAGE1"
+				displayName="BOOSTXL-TLV8544PIR Schematic Page 1"
+				sheetIndex={1}
+			/>
+			<schematicsheet
+				name="PAGE2"
+				displayName="BOOSTXL-TLV8544PIR Schematic Page 2"
+				sheetIndex={2}
+			/>
+
+			<group
+				name="PAGE1_CIRCUIT"
+				schSheetName="PAGE1"
+				pcbX={0}
+				pcbY={0}
+			>
+			<schematictext
+				text="PIR SENSOR SIGNAL CONDITIONING"
+				schX={0}
+				schY={10}
+				fontSize={0.42}
+				color="#006464"
+			/>
+			<schematictext
+				text="LAUNCHPAD CONNECTORS AND USER LEDS"
+				schX={0}
+				schY={1.2}
+				fontSize={0.34}
+				color="#006464"
+			/>
 			{/* LaunchPad BoosterPack headers. Exact Samtec part imported from JLCPCB. */}
 			<SSQ_110_03_G_D
 				name="J1"
+				schX={-9.5}
+				schY={-1.5}
 				pcbX={-17.78}
 				pcbY={5.08}
 				pcbRotation={90}
@@ -107,6 +140,8 @@ export default function Circuit() {
 			/>
 			<SSQ_110_03_G_D
 				name="J2"
+				schX={-3.5}
+				schY={-1.5}
 				pcbX={25.4}
 				pcbY={5.08}
 				pcbRotation={90}
@@ -116,6 +151,9 @@ export default function Circuit() {
 			{/* LaunchPad signal filtering. */}
 			<capacitor
 				name="C1"
+				schX={-13}
+				schY={-0.7}
+				schRotation="270deg"
 				manufacturerPartNumber="GRM188R71H103KA01D"
 				supplierPartNumbers={{ jlcpcb: ["C77053"] }}
 				capacitance="0.01uF"
@@ -127,6 +165,9 @@ export default function Circuit() {
 			/>
 			<capacitor
 				name="C2"
+				schX={-6}
+				schY={-0.7}
+				schRotation="270deg"
 				manufacturerPartNumber="GRM188R71H103KA01D"
 				supplierPartNumbers={{ jlcpcb: ["C77053"] }}
 				capacitance="0.01uF"
@@ -138,6 +179,9 @@ export default function Circuit() {
 			/>
 			<capacitor
 				name="C3"
+				schX={-13}
+				schY={-2.8}
+				schRotation="270deg"
 				manufacturerPartNumber="GRM188R71H103KA01D"
 				supplierPartNumbers={{ jlcpcb: ["C77053"] }}
 				capacitance="0.01uF"
@@ -149,6 +193,9 @@ export default function Circuit() {
 			/>
 			<capacitor
 				name="C4"
+				schX={-6}
+				schY={-2.8}
+				schRotation="270deg"
 				manufacturerPartNumber="GRM188R71H103KA01D"
 				supplierPartNumbers={{ jlcpcb: ["C77053"] }}
 				capacitance="0.01uF"
@@ -163,6 +210,8 @@ export default function Circuit() {
 			    retained because the best footprinter match was only 13.87%. */}
 			<IRA_S210ST01
 				name="A1"
+				schX={-5.4}
+				schY={6}
 				pcbX={20.5}
 				pcbY={-17}
 				connections={{
@@ -173,6 +222,9 @@ export default function Circuit() {
 			/>
 			<resistor
 				name="R12"
+				schX={-13}
+				schY={7.4}
+				schRotation="270deg"
 				manufacturerPartNumber="RC0603FR-07619KL"
 				supplierPartNumbers={{ jlcpcb: ["C245988"] }}
 				resistance="619kohm"
@@ -184,6 +236,9 @@ export default function Circuit() {
 			/>
 			<capacitor
 				name="C10"
+				schX={-12.5}
+				schY={4.5}
+				schRotation="270deg"
 				manufacturerPartNumber="CGA1206X5R107M100NT"
 				supplierPartNumbers={{ jlcpcb: ["C6119961"] }}
 				capacitance="100uF"
@@ -195,6 +250,9 @@ export default function Circuit() {
 			/>
 			<capacitor
 				name="C11"
+				schX={-11.5}
+				schY={4.5}
+				schRotation="270deg"
 				manufacturerPartNumber="GRM188R60J106ME47D"
 				supplierPartNumbers={{ jlcpcb: ["C77041"] }}
 				capacitance="10uF"
@@ -206,6 +264,9 @@ export default function Circuit() {
 			/>
 			<capacitor
 				name="C12"
+				schX={-10.5}
+				schY={4.5}
+				schRotation="270deg"
 				manufacturerPartNumber="C1608X7R1C105KT000N"
 				supplierPartNumbers={{ jlcpcb: ["C76617"] }}
 				capacitance="1uF"
@@ -217,6 +278,9 @@ export default function Circuit() {
 			/>
 			<capacitor
 				name="C13"
+				schX={-9.5}
+				schY={4.5}
+				schRotation="270deg"
 				manufacturerPartNumber="GRM188R71E104KA01D"
 				supplierPartNumbers={{ jlcpcb: ["C77050"] }}
 				capacitance="0.1uF"
@@ -228,6 +292,9 @@ export default function Circuit() {
 			/>
 			<capacitor
 				name="C14"
+				schX={-8.5}
+				schY={4.5}
+				schRotation="270deg"
 				manufacturerPartNumber="GRM188R71H103KA01D"
 				supplierPartNumbers={{ jlcpcb: ["C77053"] }}
 				capacitance="0.01uF"
@@ -239,6 +306,9 @@ export default function Circuit() {
 			/>
 			<capacitor
 				name="C15"
+				schX={-7.5}
+				schY={4.5}
+				schRotation="270deg"
 				manufacturerPartNumber="GRM1885C1H102JA01D"
 				supplierPartNumbers={{ jlcpcb: ["C77026"] }}
 				capacitance="1000pF"
@@ -250,6 +320,9 @@ export default function Circuit() {
 			/>
 			<capacitor
 				name="C16"
+				schX={-6.5}
+				schY={4.5}
+				schRotation="270deg"
 				manufacturerPartNumber="GRM1885C1H101JA01D"
 				supplierPartNumbers={{ jlcpcb: ["C71664"] }}
 				capacitance="100pF"
@@ -263,6 +336,9 @@ export default function Circuit() {
 			{/* Quad nanopower op-amp: two gain/filter stages plus window comparators. */}
 			<TLV8544PWR
 				name="U1"
+				schX={6}
+				schY={2.5}
+				symbol={<symbol />}
 				pcbX={14.5}
 				pcbY={-0.5}
 				pcbRotation={90}
@@ -283,9 +359,73 @@ export default function Circuit() {
 					OUT_D: N.U1D_OUT,
 				}}
 			/>
+			{/* Native multi-unit schematic projections keep the exact imported U1
+			    package on the PCB while drawing the four op-amps like TI does. */}
+			<schematicsymbol
+				name="U1A"
+				displayName="U1A"
+				chipRef=".U1"
+				symbolName="opamp_with_power"
+				schX={-2.4}
+				schY={6}
+				connections={{
+					inp1: ".U1 > .IN_A_POS",
+					inp2: ".U1 > .IN_A_NEG",
+					out: ".U1 > .OUT_A",
+					"V+": ".U1 > .V_POS",
+					"V-": ".U1 > .V_NEG",
+				}}
+			/>
+			<schematicsymbol
+				name="U1B"
+				displayName="U1B"
+				chipRef=".U1"
+				symbolName="opamp_with_power"
+				schX={2.4}
+				schY={6}
+				connections={{
+					inp1: ".U1 > .IN_B_POS",
+					inp2: ".U1 > .IN_B_NEG",
+					out: ".U1 > .OUT_B",
+					"V+": ".U1 > .V_POS",
+					"V-": ".U1 > .V_NEG",
+				}}
+			/>
+			<schematicsymbol
+				name="U1C"
+				displayName="U1C"
+				chipRef=".U1"
+				symbolName="opamp_with_power"
+				schX={10.1}
+				schY={8.2}
+				connections={{
+					inp1: ".U1 > .IN_C_POS",
+					inp2: ".U1 > .IN_C_NEG",
+					out: ".U1 > .OUT_C",
+					"V+": ".U1 > .V_POS",
+					"V-": ".U1 > .V_NEG",
+				}}
+			/>
+			<schematicsymbol
+				name="U1D"
+				displayName="U1D"
+				chipRef=".U1"
+				symbolName="opamp_with_power"
+				schX={10.1}
+				schY={4.8}
+				connections={{
+					inp1: ".U1 > .IN_D_POS",
+					inp2: ".U1 > .IN_D_NEG",
+					out: ".U1 > .OUT_D",
+					"V+": ".U1 > .V_POS",
+					"V-": ".U1 > .V_NEG",
+				}}
+			/>
 
 			<resistor
 				name="R14"
+				schX={-3.9}
+				schY={6}
 				manufacturerPartNumber="0603WAF0000T5E"
 				supplierPartNumbers={{ jlcpcb: ["C21189"] }}
 				resistance="0ohm"
@@ -297,6 +437,9 @@ export default function Circuit() {
 			/>
 			<resistor
 				name="R16"
+				schX={-3.9}
+				schY={4.5}
+				schRotation="270deg"
 				manufacturerPartNumber="1RC0603F1304"
 				supplierPartNumbers={{ jlcpcb: ["C54531191"] }}
 				resistance="1.30Mohm"
@@ -308,6 +451,9 @@ export default function Circuit() {
 			/>
 			<resistor
 				name="R6"
+				schX={-4.1}
+				schY={8.3}
+				schRotation="270deg"
 				manufacturerPartNumber="1RC0603F6811"
 				supplierPartNumbers={{ jlcpcb: ["C54531559"] }}
 				resistance="6.81kohm"
@@ -319,6 +465,9 @@ export default function Circuit() {
 			/>
 			<capacitor
 				name="C5"
+				schX={-4.1}
+				schY={9.6}
+				schRotation="270deg"
 				manufacturerPartNumber="C2012X5R1A336MTJ00E"
 				supplierPartNumbers={{ jlcpcb: ["C342635"] }}
 				capacitance="33uF"
@@ -330,6 +479,8 @@ export default function Circuit() {
 			/>
 			<resistor
 				name="R9"
+				schX={-2.4}
+				schY={8.2}
 				manufacturerPartNumber="1RC0603F1504"
 				supplierPartNumbers={{ jlcpcb: ["C54531218"] }}
 				resistance="1.50Mohm"
@@ -341,6 +492,8 @@ export default function Circuit() {
 			/>
 			<capacitor
 				name="C6"
+				schX={-2.4}
+				schY={9}
 				manufacturerPartNumber="GRM188R71H103KA01D"
 				supplierPartNumbers={{ jlcpcb: ["C77053"] }}
 				capacitance="0.01uF"
@@ -352,12 +505,16 @@ export default function Circuit() {
 			/>
 			<A_1N4148X_TP
 				name="D4"
+				schX={-2.4}
+				schY={9.8}
 				pcbX={11}
 				pcbY={-13.5}
 				connections={{ anode: N.U1A_INV, cathode: N.U1A_OUT }}
 			/>
 			<A_1N4148X_TP
 				name="D5"
+				schX={-2.4}
+				schY={7.4}
 				pcbX={11}
 				pcbY={-11.5}
 				pcbRotation={180}
@@ -365,6 +522,8 @@ export default function Circuit() {
 			/>
 			<resistor
 				name="R4"
+				schX={-0.6}
+				schY={7.5}
 				manufacturerPartNumber="CQ03WAF1002T5E"
 				supplierPartNumbers={{ jlcpcb: ["C516551"] }}
 				resistance="10kohm"
@@ -377,6 +536,8 @@ export default function Circuit() {
 
 			<capacitor
 				name="C9"
+				schX={-0.6}
+				schY={6}
 				manufacturerPartNumber="C2012X5R1A335M125AA"
 				supplierPartNumbers={{ jlcpcb: ["C3851074"] }}
 				capacitance="3.3uF"
@@ -388,6 +549,8 @@ export default function Circuit() {
 			/>
 			<resistor
 				name="R13"
+				schX={0.9}
+				schY={6}
 				manufacturerPartNumber="RK73H1JTTD6812F"
 				supplierPartNumbers={{ jlcpcb: ["C830353"] }}
 				resistance="68.1kohm"
@@ -399,6 +562,8 @@ export default function Circuit() {
 			/>
 			<resistor
 				name="R7"
+				schX={2.4}
+				schY={8.2}
 				manufacturerPartNumber="SCR0805F15M"
 				supplierPartNumbers={{ jlcpcb: ["C3016870"] }}
 				resistance="15Mohm"
@@ -410,6 +575,8 @@ export default function Circuit() {
 			/>
 			<capacitor
 				name="C7"
+				schX={2.4}
+				schY={9}
 				manufacturerPartNumber="GRM1885C1H102JA01D"
 				supplierPartNumbers={{ jlcpcb: ["C77026"] }}
 				capacitance="1000pF"
@@ -421,6 +588,8 @@ export default function Circuit() {
 			/>
 			<resistor
 				name="R17"
+				schX={3.3}
+				schY={4.5}
 				manufacturerPartNumber="0603WAF0000T5E"
 				supplierPartNumbers={{ jlcpcb: ["C21189"] }}
 				resistance="0ohm"
@@ -432,6 +601,9 @@ export default function Circuit() {
 			/>
 			<capacitor
 				name="C17"
+				schX={1.5}
+				schY={4.5}
+				schRotation="270deg"
 				manufacturerPartNumber="GRM188R71E104KA01D"
 				supplierPartNumbers={{ jlcpcb: ["C77050"] }}
 				capacitance="0.1uF"
@@ -443,6 +615,8 @@ export default function Circuit() {
 			/>
 			<resistor
 				name="R15"
+				schX={4}
+				schY={6}
 				manufacturerPartNumber="0603WAF0000T5E"
 				supplierPartNumbers={{ jlcpcb: ["C21189"] }}
 				resistance="0ohm"
@@ -454,6 +628,8 @@ export default function Circuit() {
 			/>
 			<resistor
 				name="R5"
+				schX={5.5}
+				schY={7.5}
 				manufacturerPartNumber="CQ03WAF1002T5E"
 				supplierPartNumbers={{ jlcpcb: ["C516551"] }}
 				resistance="10kohm"
@@ -467,6 +643,9 @@ export default function Circuit() {
 			{/* 3/4-VCC and 1/4-VCC window-comparator references. */}
 			<resistor
 				name="R8"
+				schX={7.2}
+				schY={9.5}
+				schRotation="270deg"
 				manufacturerPartNumber="SCR0805F15M"
 				supplierPartNumbers={{ jlcpcb: ["C3016870"] }}
 				resistance="15Mohm"
@@ -478,6 +657,9 @@ export default function Circuit() {
 			/>
 			<resistor
 				name="R11"
+				schX={7.2}
+				schY={8}
+				schRotation="270deg"
 				manufacturerPartNumber="SCR0805F15M"
 				supplierPartNumbers={{ jlcpcb: ["C3016870"] }}
 				resistance="15Mohm"
@@ -489,6 +671,9 @@ export default function Circuit() {
 			/>
 			<resistor
 				name="R18"
+				schX={7.2}
+				schY={5}
+				schRotation="270deg"
 				manufacturerPartNumber="SCR0805F15M"
 				supplierPartNumbers={{ jlcpcb: ["C3016870"] }}
 				resistance="15Mohm"
@@ -500,6 +685,9 @@ export default function Circuit() {
 			/>
 			<resistor
 				name="R20"
+				schX={7.2}
+				schY={3.5}
+				schRotation="270deg"
 				manufacturerPartNumber="SCR0805F15M"
 				supplierPartNumbers={{ jlcpcb: ["C3016870"] }}
 				resistance="15Mohm"
@@ -511,6 +699,9 @@ export default function Circuit() {
 			/>
 			<capacitor
 				name="C8"
+				schX={8.2}
+				schY={8.5}
+				schRotation="270deg"
 				manufacturerPartNumber="GRM188R71E104KA01D"
 				supplierPartNumbers={{ jlcpcb: ["C77050"] }}
 				capacitance="0.1uF"
@@ -522,6 +713,9 @@ export default function Circuit() {
 			/>
 			<capacitor
 				name="C18"
+				schX={8.2}
+				schY={4}
+				schRotation="270deg"
 				manufacturerPartNumber="GRM188R71E104KA01D"
 				supplierPartNumbers={{ jlcpcb: ["C77050"] }}
 				capacitance="0.1uF"
@@ -533,6 +727,8 @@ export default function Circuit() {
 			/>
 			<resistor
 				name="R10"
+				schX={12}
+				schY={8.2}
 				manufacturerPartNumber="CQ03WAF1002T5E"
 				supplierPartNumbers={{ jlcpcb: ["C516551"] }}
 				resistance="10kohm"
@@ -544,6 +740,8 @@ export default function Circuit() {
 			/>
 			<resistor
 				name="R19"
+				schX={12}
+				schY={4.8}
 				manufacturerPartNumber="CQ03WAF1002T5E"
 				supplierPartNumbers={{ jlcpcb: ["C516551"] }}
 				resistance="10kohm"
@@ -555,6 +753,9 @@ export default function Circuit() {
 			/>
 			<capacitor
 				name="C19"
+				schX={6}
+				schY={3.1}
+				schRotation="270deg"
 				manufacturerPartNumber="GRM188R71E104KA01D"
 				supplierPartNumbers={{ jlcpcb: ["C77050"] }}
 				capacitance="0.1uF"
@@ -566,6 +767,9 @@ export default function Circuit() {
 			/>
 			<capacitor
 				name="C20"
+				schX={7.2}
+				schY={3.1}
+				schRotation="270deg"
 				manufacturerPartNumber="GRM188R60J106ME47D"
 				supplierPartNumbers={{ jlcpcb: ["C77041"] }}
 				capacitance="10uF"
@@ -579,6 +783,9 @@ export default function Circuit() {
 			{/* Indicator LEDs driven by the LaunchPad. */}
 			<resistor
 				name="R1"
+				schX={4}
+				schY={-1}
+				schRotation="270deg"
 				manufacturerPartNumber="AC0805FR-07442RL"
 				supplierPartNumbers={{ jlcpcb: ["C228838"] }}
 				resistance="442ohm"
@@ -590,12 +797,18 @@ export default function Circuit() {
 			/>
 			<A_19_217_R6C_AL1M2VY_3T
 				name="D1"
+				schX={4}
+				schY={-2.8}
+				schRotation="90deg"
 				pcbX={-5}
 				pcbY={-4}
 				connections={{ anode: "net.D1_ANODE", cathode: N.GND }}
 			/>
 			<resistor
 				name="R2"
+				schX={8}
+				schY={-1}
+				schRotation="270deg"
 				manufacturerPartNumber="RMCS0805FT487R"
 				supplierPartNumbers={{ jlcpcb: ["C7289906"] }}
 				resistance="487ohm"
@@ -607,12 +820,18 @@ export default function Circuit() {
 			/>
 			<A_19_213_Y2C_CQ2R2L_3T_CY_
 				name="D2"
+				schX={8}
+				schY={-2.8}
+				schRotation="90deg"
 				pcbX={-5}
 				pcbY={-7.5}
 				connections={{ anode: "net.D2_ANODE", cathode: N.GND }}
 			/>
 			<resistor
 				name="R3"
+				schX={12}
+				schY={-1}
+				schRotation="270deg"
 				manufacturerPartNumber="RMCS0805FT487R"
 				supplierPartNumbers={{ jlcpcb: ["C7289906"] }}
 				resistance="487ohm"
@@ -624,20 +843,72 @@ export default function Circuit() {
 			/>
 			<A_19_217_G7C_AN1P2_6T
 				name="D3"
+				schX={12}
+				schY={-2.8}
+				schRotation="90deg"
 				pcbX={-5}
 				pcbY={0}
 				connections={{ anode: "net.D3_ANODE", cathode: N.GND }}
+			/>
+			<A_5001
+				name="TP1"
+				schX={-12.5}
+				schY={2.5}
+				pcbX={9}
+				pcbY={-23}
+				connections={{ pin1: N.GND }}
+			/>
+			</group>
+
+			<group
+				name="PAGE2_CIRCUIT"
+				schSheetName="PAGE2"
+				pcbX={0}
+				pcbY={0}
+			>
+			<schematictext
+				text="POWER FILTERING AND CURRENT MONITOR"
+				schX={0}
+				schY={6}
+				fontSize={0.38}
+				color="#006464"
+			/>
+			<netlabel
+				net="V5_LPD"
+				connectsTo=".L2 > .pin1"
+				schX={-13.5}
+				schY={-1}
+				anchorSide="right"
+			/>
+			<netlabel
+				net="V5_FILTERED"
+				connectsTo=".L2 > .pin2"
+				schX={-11.5}
+				schY={-1}
+				anchorSide="left"
+			/>
+			<netlabel
+				net="V5_FILTERED"
+				connectsTo=".U3 > .V_POS"
+				schX={7.5}
+				schY={3.6}
+				anchorSide="bottom"
 			/>
 
 			{/* 3.3-V and 5-V filtering at the LaunchPad connector. */}
 			<BLM18HE152SN1D
 				name="L1"
+				schX={-12.5}
+				schY={3}
 				pcbX={-20}
 				pcbY={20}
 				connections={{ pin1: N.V3P3_LPD, pin2: N.V3P3 }}
 			/>
 			<capacitor
 				name="C24"
+				schX={-9.5}
+				schY={2.7}
+				schRotation="270deg"
 				manufacturerPartNumber="GRM188R71E104KA01D"
 				supplierPartNumbers={{ jlcpcb: ["C77050"] }}
 				capacitance="0.1uF"
@@ -649,6 +920,9 @@ export default function Circuit() {
 			/>
 			<capacitor
 				name="C25"
+				schX={-8}
+				schY={2.7}
+				schRotation="270deg"
 				manufacturerPartNumber="GRM188R60J106ME47D"
 				supplierPartNumbers={{ jlcpcb: ["C77041"] }}
 				capacitance="10uF"
@@ -660,12 +934,17 @@ export default function Circuit() {
 			/>
 			<BLM18HE152SN1D
 				name="L2"
+				schX={-12.5}
+				schY={-1}
 				pcbX={-11}
 				pcbY={18.5}
 				connections={{ pin1: N.V5_LPD, pin2: N.V5 }}
 			/>
 			<capacitor
 				name="C26"
+				schX={-9.5}
+				schY={-1.3}
+				schRotation="270deg"
 				manufacturerPartNumber="GRM188R71E104KA01D"
 				supplierPartNumbers={{ jlcpcb: ["C77050"] }}
 				capacitance="0.1uF"
@@ -677,6 +956,9 @@ export default function Circuit() {
 			/>
 			<capacitor
 				name="C27"
+				schX={-8}
+				schY={-1.3}
+				schRotation="270deg"
 				manufacturerPartNumber="GRM188R71E104KA01D"
 				supplierPartNumbers={{ jlcpcb: ["C77050"] }}
 				capacitance="0.1uF"
@@ -688,6 +970,9 @@ export default function Circuit() {
 			/>
 			<capacitor
 				name="C28"
+				schX={-6.5}
+				schY={-1.3}
+				schRotation="270deg"
 				manufacturerPartNumber="GRM188R60J106ME47D"
 				supplierPartNumbers={{ jlcpcb: ["C77041"] }}
 				capacitance="10uF"
@@ -699,6 +984,9 @@ export default function Circuit() {
 			/>
 			<capacitor
 				name="C29"
+				schX={-5}
+				schY={-1.3}
+				schRotation="270deg"
 				manufacturerPartNumber="GRM188R71E104KA01D"
 				supplierPartNumbers={{ jlcpcb: ["C77050"] }}
 				capacitance="0.1uF"
@@ -712,6 +1000,8 @@ export default function Circuit() {
 			{/* TI net ties split the filtered 3.3-V rail into functional domains. */}
 			<resistor
 				name="NT1"
+				schX={-3.5}
+				schY={3}
 				manufacturerPartNumber="0603WAF0000T5E"
 				supplierPartNumbers={{ jlcpcb: ["C21189"] }}
 				resistance="0ohm"
@@ -723,6 +1013,8 @@ export default function Circuit() {
 			/>
 			<resistor
 				name="NT2"
+				schX={-1.5}
+				schY={3}
 				manufacturerPartNumber="0603WAF0000T5E"
 				supplierPartNumbers={{ jlcpcb: ["C21189"] }}
 				resistance="0ohm"
@@ -734,6 +1026,8 @@ export default function Circuit() {
 			/>
 			<resistor
 				name="NT3"
+				schX={0.5}
+				schY={3}
 				manufacturerPartNumber="0603WAF0000T5E"
 				supplierPartNumbers={{ jlcpcb: ["C21189"] }}
 				resistance="0ohm"
@@ -747,6 +1041,8 @@ export default function Circuit() {
 			{/* Vertical current-measurement headers with removable 2.54-mm shunts. */}
 			<DZ254S_11_02_48
 				name="J3"
+				schX={-6}
+				schY={3}
 				pcbX={-26.5}
 				pcbY={-14.5}
 				pcbRotation={0}
@@ -754,6 +1050,8 @@ export default function Circuit() {
 			/>
 			<DZ254S_11_02_48
 				name="J4"
+				schX={3}
+				schY={3}
 				pcbX={6}
 				pcbY={18}
 				pcbRotation={90}
@@ -763,6 +1061,8 @@ export default function Circuit() {
 			{/* INA226 supply-current measurement and its unity-gain input buffer. */}
 			<resistor
 				name="R21"
+				schX={5}
+				schY={3}
 				manufacturerPartNumber="RT0603BRD0715KL"
 				supplierPartNumbers={{ jlcpcb: ["C326733"] }}
 				resistance="15kohm"
@@ -774,6 +1074,9 @@ export default function Circuit() {
 			/>
 			<capacitor
 				name="C22"
+				schX={5}
+				schY={1.3}
+				schRotation="270deg"
 				manufacturerPartNumber="GRM188R71E104KA01D"
 				supplierPartNumbers={{ jlcpcb: ["C77050"] }}
 				capacitance="0.1uF"
@@ -785,6 +1088,9 @@ export default function Circuit() {
 			/>
 			<TLV333IDBVR
 				name="U3"
+				schX={7.5}
+				schY={3}
+				symbol={<symbol />}
 				pcbX={1.5}
 				pcbY={16.5}
 				connections={{
@@ -795,8 +1101,26 @@ export default function Circuit() {
 					V_NEG: N.GND,
 				}}
 			/>
+			<schematicsymbol
+				name="U3A"
+				displayName="U3"
+				chipRef=".U3"
+				symbolName="opamp_with_power"
+				schX={7.5}
+				schY={3}
+				connections={{
+					inp1: ".U3 > .IN_POS",
+					inp2: ".U3 > .IN_NEG",
+					out: ".U3 > .OUT",
+					"V+": ".U3 > .V_POS",
+					"V-": ".U3 > .V_NEG",
+				}}
+			/>
 			<capacitor
 				name="C23"
+				schX={7.5}
+				schY={0}
+				schRotation="270deg"
 				manufacturerPartNumber="GRM188R71E104KA01D"
 				supplierPartNumbers={{ jlcpcb: ["C77050"] }}
 				capacitance="0.1uF"
@@ -808,6 +1132,8 @@ export default function Circuit() {
 			/>
 			<INA226AIDGSR
 				name="U2"
+				schX={10.5}
+				schY={3}
 				pcbX={-3.5}
 				pcbY={10}
 				pcbRotation={90}
@@ -825,6 +1151,9 @@ export default function Circuit() {
 			/>
 			<capacitor
 				name="C21"
+				schX={10.5}
+				schY={0}
+				schRotation="270deg"
 				manufacturerPartNumber="GRM188R71E104KA01D"
 				supplierPartNumbers={{ jlcpcb: ["C77050"] }}
 				capacitance="0.1uF"
@@ -835,8 +1164,15 @@ export default function Circuit() {
 				connections={{ pin1: N.V3P3_INA, pin2: N.GND }}
 			/>
 
-			<A_5001 name="TP1" pcbX={9} pcbY={-23} connections={{ pin1: N.GND }} />
-			<A_5001 name="TP2" pcbX={-11} pcbY={23} connections={{ pin1: N.GND }} />
+			<A_5001
+				name="TP2"
+				schX={9}
+				schY={0}
+				pcbX={-11}
+				pcbY={23}
+				connections={{ pin1: N.GND }}
+			/>
+			</group>
 
 			{/* A bottom-side ground pour provides a continuous analog return reference. */}
 			<copperpour

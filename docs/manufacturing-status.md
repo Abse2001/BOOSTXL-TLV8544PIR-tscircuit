@@ -10,7 +10,7 @@
 - J3/J4 use imported JLCPCB C5160785, a 1×2, 2.54-mm vertical SMT header with upright 6-mm pins like TI's current jumpers; the removable shunts remain separate assembly items.
 - The 60.96 mm × 50.8 mm two-layer board routes completely: 131 PCB traces, 118 vias, bottom GND pour, and zero generated circuit error elements.
 - `bun run release-check` fails if critical topology, MPN coverage, board geometry, routing, error status, or the Gerber-mode `tsci check shorts` result regresses.
-- Registry release `1.0.9` is published at `https://tscircuit.com/abse/boostxl-tlv8544pir`. Its online 3D views use the exact imported OBJ models because the registry upload can time out on larger STEP files; the full STEP files remain in GitHub and the manufacturing exports.
+- Registry release `1.0.10` is published at `https://tscircuit.com/abse/boostxl-tlv8544pir`. Its online 3D views use the exact imported OBJ models because the registry upload can time out on larger STEP files; the full STEP files remain in GitHub and the manufacturing exports.
 
 ## Prototype release gates
 

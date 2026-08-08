@@ -15,6 +15,10 @@ COMPONENTS:
  - C15: 1000pF 0603 capacitor
  - C16: 100pF 0603 capacitor
  - U1: TLV8544PWR
+ - U1A:
+ - U1B:
+ - U1C:
+ - U1D:
  - R14: 0Ω res0603 resistor
  - R16: 1.3MΩ res0603 resistor
  - R6: 6.81kΩ res0603 resistor
@@ -48,6 +52,7 @@ COMPONENTS:
  - D2: D2, source_component
  - R3: 487Ω res0805 resistor
  - D3: D3, source_component
+ - TP1: 5001
  - L1: BLM18HE152SN1D
  - C24: 0.1uF 0603 capacitor
  - C25: 10uF 0603 capacitor
@@ -64,10 +69,10 @@ COMPONENTS:
  - R21: 15kΩ res0603 resistor
  - C22: 0.1uF 0603 capacitor
  - U3: TLV333IDBVR
+ - U3A:
  - C23: 0.1uF 0603 capacitor
  - U2: INA226AIDGSR
  - C21: 0.1uF 0603 capacitor
- - TP1: 5001
  - TP2: 5001
 
 NET: PIR_VIN1
@@ -242,11 +247,11 @@ NET: V_POS_TLV
 
 NET: V5_FILTERED
   - C23 pin1 (+)
-  - U3 V_POS
   - C29 pin1 (+)
   - C28 pin1 (+)
   - C27 pin1 (+)
   - C26 pin1 (+)
+  - U3 V_POS
   - L2 pin2
 
 NET: I2C_SDA
@@ -278,7 +283,6 @@ NET: V3P3_INA
 
 NET: GND
   - TP2 pin1
-  - TP1 pin1
   - C21 pin2 (-)
   - U2 GND
   - U2 A0
@@ -291,6 +295,7 @@ NET: GND
   - C26 pin2 (-)
   - C25 pin2 (-)
   - C24 pin2 (-)
+  - TP1 pin1
   - D3 cathode (-)
   - D2 cathode (-)
   - D1 cathode (-)
@@ -368,20 +373,20 @@ J2 (SSQ-110-03-G-D)
 - pin20: NETS(GND)
 
 C1 (0.01uF 0603)
-- pin1(pos, anode, left): NETS(PIR_OUT_HI)
-- pin2(neg, cathode, right): NETS(GND)
+- pin1(anode, pos, left): NETS(PIR_OUT_HI)
+- pin2(cathode, neg, right): NETS(GND)
 
 C2 (0.01uF 0603)
-- pin1(pos, anode, left): NETS(FIRST_STAGE_AOUT)
-- pin2(neg, cathode, right): NETS(GND)
+- pin1(anode, pos, left): NETS(FIRST_STAGE_AOUT)
+- pin2(cathode, neg, right): NETS(GND)
 
 C3 (0.01uF 0603)
-- pin1(pos, anode, left): NETS(PIR_OUT_LO)
-- pin2(neg, cathode, right): NETS(GND)
+- pin1(anode, pos, left): NETS(PIR_OUT_LO)
+- pin2(cathode, neg, right): NETS(GND)
 
 C4 (0.01uF 0603)
-- pin1(pos, anode, left): NETS(PIR_SGL_AOUT)
-- pin2(neg, cathode, right): NETS(GND)
+- pin1(anode, pos, left): NETS(PIR_SGL_AOUT)
+- pin2(cathode, neg, right): NETS(GND)
 
 A1 (IRA-S210ST01)
 - pin1(d): NETS(PIR_VIN1)
@@ -393,32 +398,32 @@ R12 (619kΩ res0603)
 - pin2(cathode, neg, right): NETS(PIR_VIN1)
 
 C10 (100uF 1206)
-- pin1(pos, anode, left): NETS(PIR_VIN1)
-- pin2(neg, cathode, right): NETS(GND)
+- pin1(anode, pos, left): NETS(PIR_VIN1)
+- pin2(cathode, neg, right): NETS(GND)
 
 C11 (10uF 0603)
-- pin1(pos, anode, left): NETS(PIR_VIN1)
-- pin2(neg, cathode, right): NETS(GND)
+- pin1(anode, pos, left): NETS(PIR_VIN1)
+- pin2(cathode, neg, right): NETS(GND)
 
 C12 (1uF 0603)
-- pin1(pos, anode, left): NETS(PIR_VIN1)
-- pin2(neg, cathode, right): NETS(GND)
+- pin1(anode, pos, left): NETS(PIR_VIN1)
+- pin2(cathode, neg, right): NETS(GND)
 
 C13 (0.1uF 0603)
-- pin1(pos, anode, left): NETS(PIR_VIN1)
-- pin2(neg, cathode, right): NETS(GND)
+- pin1(anode, pos, left): NETS(PIR_VIN1)
+- pin2(cathode, neg, right): NETS(GND)
 
 C14 (0.01uF 0603)
-- pin1(pos, anode, left): NETS(PIR_VIN1)
-- pin2(neg, cathode, right): NETS(GND)
+- pin1(anode, pos, left): NETS(PIR_VIN1)
+- pin2(cathode, neg, right): NETS(GND)
 
 C15 (1000pF 0603)
-- pin1(pos, anode, left): NETS(PIR_VIN1)
-- pin2(neg, cathode, right): NETS(GND)
+- pin1(anode, pos, left): NETS(PIR_VIN1)
+- pin2(cathode, neg, right): NETS(GND)
 
 C16 (100pF 0603)
-- pin1(pos, anode, left): NETS(PIR_VIN1)
-- pin2(neg, cathode, right): NETS(GND)
+- pin1(anode, pos, left): NETS(PIR_VIN1)
+- pin2(cathode, neg, right): NETS(GND)
 
 U1 (TLV8544PWR)
 - pin1(OUT_A): NETS(U1A_OUT)
@@ -436,6 +441,14 @@ U1 (TLV8544PWR)
 - pin13(IN_D_NEG): NETS(PIR_SIGNAL_BUS)
 - pin14(OUT_D): NETS(U1D_OUT)
 
+U1A
+
+U1B
+
+U1C
+
+U1D
+
 R14 (0Ω res0603)
 - pin1(anode, pos, left): NETS(PIR_VOUT_RAW)
 - pin2(cathode, neg, right): NETS(PIR_VO)
@@ -449,8 +462,8 @@ R6 (6.81kΩ res0603)
 - pin2(cathode, neg, right): NETS(U1A_AC_RETURN)
 
 C5 (33uF 0805)
-- pin1(pos, anode, left): NETS(U1A_AC_RETURN)
-- pin2(neg, cathode, right): NETS(GND)
+- pin1(anode, pos, left): NETS(U1A_AC_RETURN)
+- pin2(cathode, neg, right): NETS(GND)
 
 R9 (1.5MΩ res0603)
 - pin1(anode, pos, left): NETS(U1A_OUT)
@@ -493,8 +506,8 @@ R17 (0Ω res0603)
 - pin2(cathode, neg, right): NETS(REF_MID)
 
 C17 (0.1uF 0603)
-- pin1(pos, anode, left): NETS(U1B_REF)
-- pin2(neg, cathode, right): NETS(GND)
+- pin1(anode, pos, left): NETS(U1B_REF)
+- pin2(cathode, neg, right): NETS(GND)
 
 R15 (0Ω res0603)
 - pin1(anode, pos, left): NETS(U1B_OUT)
@@ -521,12 +534,12 @@ R20 (15MΩ res0805)
 - pin2(cathode, neg, right): NETS(GND)
 
 C8 (0.1uF 0603)
-- pin1(pos, anode, left): NETS(REF_HIGH)
-- pin2(neg, cathode, right): NETS(GND)
+- pin1(anode, pos, left): NETS(REF_HIGH)
+- pin2(cathode, neg, right): NETS(GND)
 
 C18 (0.1uF 0603)
-- pin1(pos, anode, left): NETS(REF_LOW)
-- pin2(neg, cathode, right): NETS(GND)
+- pin1(anode, pos, left): NETS(REF_LOW)
+- pin2(cathode, neg, right): NETS(GND)
 
 R10 (10kΩ res0603)
 - pin1(anode, pos, left): NETS(U1C_OUT)
@@ -537,12 +550,12 @@ R19 (10kΩ res0603)
 - pin2(cathode, neg, right): NETS(PIR_OUT_LO)
 
 C19 (0.1uF 0603)
-- pin1(pos, anode, left): NETS(V_POS_TLV)
-- pin2(neg, cathode, right): NETS(GND)
+- pin1(anode, pos, left): NETS(V_POS_TLV)
+- pin2(cathode, neg, right): NETS(GND)
 
 C20 (10uF 0603)
-- pin1(pos, anode, left): NETS(V_POS_TLV)
-- pin2(neg, cathode, right): NETS(GND)
+- pin1(anode, pos, left): NETS(V_POS_TLV)
+- pin2(cathode, neg, right): NETS(GND)
 
 R1 (442Ω res0805)
 - pin1(anode, pos, left): NETS(RLED)
@@ -568,6 +581,9 @@ D3 (19-217/G7C-AN1P2/6T)
 - pin1(anode, pos): NETS(D3_ANODE)
 - pin2(cathode, neg): NETS(GND)
 
+TP1 (5001)
+- pin1: NETS(GND)
+
 L1 (BLM18HE152SN1D)
 - pin1: NETS(V3P3_LPD)
 - pin1: NOT_CONNECTED
@@ -575,12 +591,12 @@ L1 (BLM18HE152SN1D)
 - pin2: NOT_CONNECTED
 
 C24 (0.1uF 0603)
-- pin1(pos, anode, left): NETS(V3P3_FILTERED)
-- pin2(neg, cathode, right): NETS(GND)
+- pin1(anode, pos, left): NETS(V3P3_FILTERED)
+- pin2(cathode, neg, right): NETS(GND)
 
 C25 (10uF 0603)
-- pin1(pos, anode, left): NETS(V3P3_FILTERED)
-- pin2(neg, cathode, right): NETS(GND)
+- pin1(anode, pos, left): NETS(V3P3_FILTERED)
+- pin2(cathode, neg, right): NETS(GND)
 
 L2 (BLM18HE152SN1D)
 - pin1: NETS(V5_LPD)
@@ -589,20 +605,20 @@ L2 (BLM18HE152SN1D)
 - pin2: NOT_CONNECTED
 
 C26 (0.1uF 0603)
-- pin1(pos, anode, left): NETS(V5_FILTERED)
-- pin2(neg, cathode, right): NETS(GND)
+- pin1(anode, pos, left): NETS(V5_FILTERED)
+- pin2(cathode, neg, right): NETS(GND)
 
 C27 (0.1uF 0603)
-- pin1(pos, anode, left): NETS(V5_FILTERED)
-- pin2(neg, cathode, right): NETS(GND)
+- pin1(anode, pos, left): NETS(V5_FILTERED)
+- pin2(cathode, neg, right): NETS(GND)
 
 C28 (10uF 0603)
-- pin1(pos, anode, left): NETS(V5_FILTERED)
-- pin2(neg, cathode, right): NETS(GND)
+- pin1(anode, pos, left): NETS(V5_FILTERED)
+- pin2(cathode, neg, right): NETS(GND)
 
 C29 (0.1uF 0603)
-- pin1(pos, anode, left): NETS(V5_FILTERED)
-- pin2(neg, cathode, right): NETS(GND)
+- pin1(anode, pos, left): NETS(V5_FILTERED)
+- pin2(cathode, neg, right): NETS(GND)
 
 NT1 (0Ω res0603)
 - pin1(anode, pos, left): NETS(V3P3_FILTERED)
@@ -629,24 +645,21 @@ R21 (15kΩ res0603)
 - pin2(cathode, neg, right): NETS(V_POS_TLV)
 
 C22 (0.1uF 0603)
-- pin1(pos, anode, left): NETS(V3P3_TLV)
-- pin2(neg, cathode, right): NETS(V_POS_TLV)
+- pin1(anode, pos, left): NETS(V3P3_TLV)
+- pin2(cathode, neg, right): NETS(V_POS_TLV)
 
 U3 (TLV333IDBVR)
 - pin1(OUT): NETS(BUFFER_OUT)
-- pin1(OUT): NOT_CONNECTED
 - pin2(V_NEG): NETS(GND)
-- pin2(V_NEG): NOT_CONNECTED
 - pin3(IN_POS): NETS(V_POS_TLV)
-- pin3(IN_POS): NOT_CONNECTED
 - pin4(IN_NEG): NETS(BUFFER_OUT)
-- pin4(IN_NEG): NOT_CONNECTED
 - pin5(V_POS): NETS(V5_FILTERED)
-- pin5(V_POS): NOT_CONNECTED
+
+U3A
 
 C23 (0.1uF 0603)
-- pin1(pos, anode, left): NETS(V5_FILTERED)
-- pin2(neg, cathode, right): NETS(GND)
+- pin1(anode, pos, left): NETS(V5_FILTERED)
+- pin2(cathode, neg, right): NETS(GND)
 
 U2 (INA226AIDGSR)
 - pin1(A1): NETS(GND)
@@ -661,11 +674,8 @@ U2 (INA226AIDGSR)
 - pin10(VIN_POS): NETS(V3P3_TLV)
 
 C21 (0.1uF 0603)
-- pin1(pos, anode, left): NETS(V3P3_INA)
-- pin2(neg, cathode, right): NETS(GND)
-
-TP1 (5001)
-- pin1: NETS(GND)
+- pin1(anode, pos, left): NETS(V3P3_INA)
+- pin2(cathode, neg, right): NETS(GND)
 
 TP2 (5001)
 - pin1: NETS(GND)

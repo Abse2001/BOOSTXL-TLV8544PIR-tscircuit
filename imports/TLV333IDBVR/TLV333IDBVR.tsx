@@ -22,17 +22,17 @@ export const TLV333IDBVR = (props: ChipProps<typeof pinLabels>) => {
 						aliases={["V_POS"]}
 						direction="up"
 						schX={0}
-						schY={10.16}
-						schStemLength={5.08}
+						schY={1.016}
+						schStemLength={0.508}
 					/>
 					<port
 						name="pin1"
 						pinNumber={1}
 						aliases={["OUT"]}
 						direction="right"
-						schX={10.16}
+						schX={1.016}
 						schY={0}
-						schStemLength={5.08}
+						schStemLength={0.508}
 					/>
 					<port
 						name="pin2"
@@ -40,75 +40,75 @@ export const TLV333IDBVR = (props: ChipProps<typeof pinLabels>) => {
 						aliases={["V_NEG"]}
 						direction="down"
 						schX={0}
-						schY={-10.16}
-						schStemLength={5.08}
+						schY={-1.016}
+						schStemLength={0.508}
 					/>
 					<port
 						name="pin3"
 						pinNumber={3}
 						aliases={["IN_POS"]}
 						direction="left"
-						schX={-10.16}
-						schY={-2.54}
-						schStemLength={5.08}
+						schX={-1.016}
+						schY={-0.254}
+						schStemLength={0.508}
 					/>
 					<port
 						name="pin4"
 						pinNumber={4}
 						aliases={["IN_NEG"]}
 						direction="left"
-						schX={-10.16}
-						schY={2.54}
-						schStemLength={5.08}
+						schX={-1.016}
+						schY={0.254}
+						schStemLength={0.508}
 					/>
 					<schematicpath
 						points={[
-							{ x: 0, y: -2.54 },
-							{ x: 0, y: -5.08 },
+							{ x: 0, y: -0.254 },
+							{ x: 0, y: -0.508 },
 						]}
-						strokeWidth={0.254}
+						strokeWidth={0.0254}
 						strokeColor="#880000"
 					/>
 					<schematicpath
 						points={[
-							{ x: 0, y: 5.08 },
-							{ x: 0, y: 2.54 },
+							{ x: 0, y: 0.508 },
+							{ x: 0, y: 0.254 },
 						]}
-						strokeWidth={0.254}
+						strokeWidth={0.0254}
 						strokeColor="#880000"
 					/>
 					<schematicpath
 						points={[
-							{ x: -3.302, y: -1.778 },
-							{ x: -3.302, y: -3.302 },
+							{ x: -0.3302, y: -0.1778 },
+							{ x: -0.3302, y: -0.3302 },
 						]}
-						strokeWidth={0.254}
+						strokeWidth={0.0254}
 						strokeColor="#880000"
 					/>
 					<schematicpath
 						points={[
-							{ x: -4.064, y: -2.54 },
-							{ x: -2.54, y: -2.54 },
+							{ x: -0.4064, y: -0.254 },
+							{ x: -0.254, y: -0.254 },
 						]}
-						strokeWidth={0.254}
+						strokeWidth={0.0254}
 						strokeColor="#880000"
 					/>
 					<schematicpath
 						points={[
-							{ x: -4.064, y: 2.54 },
-							{ x: -2.54, y: 2.54 },
+							{ x: -0.4064, y: 0.254 },
+							{ x: -0.254, y: 0.254 },
 						]}
-						strokeWidth={0.254}
+						strokeWidth={0.0254}
 						strokeColor="#880000"
 					/>
 					<schematicpath
 						points={[
-							{ x: -5.08, y: -5.08 },
-							{ x: 5.08, y: 0 },
-							{ x: -5.08, y: 5.08 },
-							{ x: -5.08, y: -5.08 },
+							{ x: -0.508, y: -0.508 },
+							{ x: 0.508, y: 0 },
+							{ x: -0.508, y: 0.508 },
+							{ x: -0.508, y: -0.508 },
 						]}
-						strokeWidth={0.254}
+						strokeWidth={0.0254}
 						strokeColor="#880000"
 					/>
 				</symbol>

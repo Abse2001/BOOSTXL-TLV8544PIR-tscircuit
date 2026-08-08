@@ -18,37 +18,37 @@ export const BLM18HE152SN1D = (props: ChipProps<typeof pinLabels>) => {
 						pinNumber={2}
 						aliases={["2"]}
 						direction="right"
-						schX={5.08}
+						schX={0.508}
 						schY={0}
-						schStemLength={0.762}
+						schStemLength={0.0762}
 					/>
 					<port
 						name="pin1"
 						pinNumber={1}
 						aliases={["1"]}
 						direction="left"
-						schX={-5.08}
+						schX={-0.508}
 						schY={0}
-						schStemLength={0.762}
+						schStemLength={0.0762}
 					/>
 					<schematicpath
-						svgPath="M -4.28752 0.01778 A 1.016 0.9906 0 1 0 -2.26568 0.01524"
-						strokeWidth={0.254}
+						svgPath="M -0.428752 0.001778 A 0.1016 0.09906 0 1 0 -0.226568 0.001524"
+						strokeWidth={0.0254}
 						strokeColor="#880000"
 					/>
 					<schematicpath
-						svgPath="M -2.1336 0.01778 A 1.016 0.9906 0 1 0 -0.11176 0.01778"
-						strokeWidth={0.254}
+						svgPath="M -0.21336 0.001778 A 0.1016 0.09906 0 1 0 -0.011176 0.001778"
+						strokeWidth={0.0254}
 						strokeColor="#880000"
 					/>
 					<schematicpath
-						svgPath="M 0.01778 0.01778 A 1.016 0.9906 0 1 0 2.03962 0.01778"
-						strokeWidth={0.254}
+						svgPath="M 0.001778 0.001778 A 0.1016 0.09906 0 1 0 0.203962 0.001778"
+						strokeWidth={0.0254}
 						strokeColor="#880000"
 					/>
 					<schematicpath
-						svgPath="M 2.2098 0.01778 A 1.016 0.9906 0 1 0 4.23418 0.01524"
-						strokeWidth={0.254}
+						svgPath="M 0.22098 0.001778 A 0.1016 0.09906 0 1 0 0.423418 0.001524"
+						strokeWidth={0.0254}
 						strokeColor="#880000"
 					/>
 				</symbol>

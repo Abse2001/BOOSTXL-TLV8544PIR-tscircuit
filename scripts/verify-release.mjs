@@ -18,8 +18,26 @@ assert.deepEqual(
 	"Circuit JSON contains release-blocking errors",
 );
 
-const components = ofType("source_component");
-assert.equal(components.length, 70, "Unexpected source component count");
+const sourceComponents = ofType("source_component");
+const physicalSourceComponentIds = new Set(
+	ofType("pcb_component").map((component) => component.source_component_id),
+);
+const components = sourceComponents.filter((component) =>
+	physicalSourceComponentIds.has(component.source_component_id),
+);
+const schematicOnlyComponents = sourceComponents
+	.filter(
+		(component) =>
+			!physicalSourceComponentIds.has(component.source_component_id),
+	)
+	.map((component) => component.name)
+	.sort();
+assert.equal(components.length, 70, "Unexpected physical component count");
+assert.deepEqual(
+	schematicOnlyComponents,
+	["U1A", "U1B", "U1C", "U1D", "U3A"],
+	"Unexpected schematic-only component projections",
+);
 assert.equal(ofType("source_net").length, 40, "Unexpected source net count");
 assert(ofType("pcb_trace").length > 0, "PCB was not routed");
 
@@ -119,6 +137,7 @@ for (const connection of requiredConnections) {
 }
 
 console.log(
-	`Release checks passed: ${components.length} components, ${ofType("source_net").length} nets, ` +
+	`Release checks passed: ${components.length} physical components, ${schematicOnlyComponents.length} schematic-only projections, ` +
+		`${ofType("source_net").length} nets, ` +
 		`${ofType("pcb_trace").length} PCB traces, ${ofType("pcb_via").length} vias, 0 errors.`,
 );
