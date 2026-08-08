@@ -12,14 +12,14 @@ This is an engineering reconstruction of Texas Instruments' `BOOSTXL-TLV8544PIR`
 - Every populated electrical component has a manufacturer part number and a JLCPCB/LCSC part number. J3/J4 now use the exact imported C5371819 right-angle SMT replacement, and TP1/TP2 use imported Keystone 5001 C238122.
 - The reconstructed board is 60.96 mm × 50.8 mm. Its 43.18-mm header-center spacing (45.72 mm between outer header columns), asymmetric overhang, three holes, and outline are inferred from TI's scale image and BoosterPack grid because TI did not publish native PCB CAD for this board.
 - The local v6 router completes 131 PCB traces with 119 vias and a bottom GND pour. The circuit JSON contains zero placement, routing, or connectivity errors.
-- `bun run release-check` enforces component count, net count, routing, zero circuit errors, critical MPNs, supplier coverage, and the corrected C22/NT/U3/A1 topology.
+- `bun run release-check` enforces component count, net count, routing, zero circuit errors, critical MPNs, supplier coverage, the corrected C22/NT/U3/A1 topology, and a Gerber-mode `tsci check shorts` pass.
 
 ## Release status
 
 This is an **orderable prototype release candidate**, not a production-proven clone. The electrical values, topology, MPNs, footprints, and supplier IDs are now traceable. Before paying for assembly, print the 1:1 mechanical overlay and confirm the reconstructed outline/header/hole/lens geometry against the intended LaunchPad. After assembly, execute `docs/bring-up-plan.md`; the IRA-S210 substitution and lens housing require first-article qualification.
 
 - Public source and manufacturing package: <https://github.com/Abse2001/BOOSTXL-TLV8544PIR-tscircuit>
-- Published tscircuit package: <https://tscircuit.com/abse/boostxl-tlv8544pir> (`1.0.7`)
+- Published tscircuit package: <https://tscircuit.com/abse/boostxl-tlv8544pir> (`1.0.8`)
 
 The registry build uses the exact OBJ models for J1/J2 and U1 because its per-file upload limit rejects their larger STEP files. The complete STEP models remain in this repository and in the manufacturing exports; electrical and PCB geometry are unchanged.
 
