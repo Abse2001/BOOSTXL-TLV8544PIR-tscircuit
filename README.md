@@ -9,12 +9,12 @@ This project is an engineering reconstruction of Texas Instruments' `BOOSTXL-TLV
 - TI's exact two-page BoosterPack schematic has been downloaded, rendered, and visually verified.
 - TI's annotated top-view board rendering has also been extracted for placement and footprint research.
 - A first-pass component/value inventory has been transcribed to `reference/boostxl-tlv8544pir/component-inventory.csv`.
-- The 70-component, 40-net electrical reconstruction is implemented in `src/BoostxlTlv8544Pir.tsx`.
-- Exact JLCPCB/EasyEDA footprints and 3D models are imported for U1, U2, D4/D5, L1/L2, and J1/J2; see `imports/README.md`.
+- The complete 70-component, 40-net board is implemented directly in `index.circuit.tsx`; there are no local wrapper components or secondary board source files.
+- Native tscircuit elements are used throughout. JLCPCB/EasyEDA assets supply exact part metadata and 3D models; exact imported JSX is retained only for J1/J2 because their best footprinter match is below the 95% copper-IoU threshold. See `docs/footprint-conversion.md` and `imports/README.md`.
 - The PCB uses the 50.8 mm × 43.18 mm 40-pin BoosterPack envelope, 45.72 mm header spacing, chamfered corners, and a routed two-layer placement.
 - A1 is identified as Murata `IRS-B210ST01-R1` and uses a custom five-pad footprint based on the archived Murata package drawing.
 - J3/J4 use the exact Molex `87898-0204` 2.54-mm SMT land pattern from drawing `SD-87898-001`; the part is not available in JLCPCB's catalog.
-- The pinned tscircuit v6 local autorouter completes 133 PCB connections with 122 vias and a bottom-side GND pour. The current circuit JSON contains zero placement, routing, or connectivity errors; rejected lower-via experiments are documented in `docs/autorouting-investigation.md`.
+- The pinned tscircuit v6 local autorouter completes 133 PCB connections with 100 vias and a bottom-side GND pour. The current circuit JSON contains zero placement, routing, or connectivity errors; routing experiments are documented in `docs/autorouting-investigation.md`.
 - U3's published circuit requirements and the search for its missing MPN are documented in `docs/u3-investigation.md`; the source deliberately does not guess the device.
 - Exact imports, custom parts, generic selections, and purchasing blockers are tracked in `manufacturing/procurement-status.csv`.
 - Generated KiCad, SVG, and readable-netlist artifacts are described in `exports/README.md`.

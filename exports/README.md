@@ -14,4 +14,4 @@
 
 ## Important manufacturing status
 
-The pinned tscircuit v6 build is placement- and routing-DRC clean, with 133 PCB traces, 122 vias, and a bottom GND pour. These exports are still **review artifacts, not released manufacturing files**. The U3 identity, mounting-hole positions, board-corner geometry, PIR lens retention, and physical fit must be verified before fabrication. A human PCB review should also optimize the autorouted topology and via count for this nanopower analog design.
+The pinned tscircuit v6 build is placement- and routing-DRC clean, with 133 PCB traces, 100 vias, and a bottom GND pour. These exports are still **review artifacts, not released manufacturing files**. The U3 identity, mounting-hole positions, board-corner geometry, PIR lens retention, and physical fit must be verified before fabrication. A human PCB review should also optimize the autorouted topology and via count for this nanopower analog design.
