@@ -14,7 +14,7 @@ export const TLV333IDBVR = (props: ChipProps<typeof pinLabels>) => {
 	return (
 		<chip
 			pinLabels={pinLabels}
-			symbol={
+			symbol={props.noSchematicRepresentation ? undefined : (
 				<symbol>
 					<port
 						name="pin5"
@@ -112,7 +112,7 @@ export const TLV333IDBVR = (props: ChipProps<typeof pinLabels>) => {
 						strokeColor="#880000"
 					/>
 				</symbol>
-			}
+			)}
 			supplierPartNumbers={{
 				jlcpcb: ["C473369"],
 			}}

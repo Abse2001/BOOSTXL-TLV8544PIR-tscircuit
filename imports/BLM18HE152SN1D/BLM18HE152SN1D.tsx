@@ -13,24 +13,6 @@ export const BLM18HE152SN1D = (props: ChipProps<typeof pinLabels>) => {
 			pinLabels={pinLabels}
 			symbol={
 				<symbol>
-					<port
-						name="pin2"
-						pinNumber={2}
-						aliases={["2"]}
-						direction="right"
-						schX={0.508}
-						schY={0}
-						schStemLength={0.0762}
-					/>
-					<port
-						name="pin1"
-						pinNumber={1}
-						aliases={["1"]}
-						direction="left"
-						schX={-0.508}
-						schY={0}
-						schStemLength={0.0762}
-					/>
 					<schematicpath
 						svgPath="M -0.428752 0.001778 A 0.1016 0.09906 0 1 0 -0.226568 0.001524"
 						strokeWidth={0.0254}

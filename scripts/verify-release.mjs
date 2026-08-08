@@ -95,6 +95,23 @@ assert.deepEqual(
 );
 
 const circuitSource = await Bun.file("index.circuit.tsx").text();
+assert.equal(
+	(circuitSource.match(/<schematicsection/g) ?? []).length,
+	5,
+	"Expected five native schematic sections",
+);
+for (const sectionName of [
+	"PIR_SIGNAL_CONDITIONING",
+	"LAUNCHPAD_CONNECTORS",
+	"USER_LEDS",
+	"POWER_FILTERING",
+	"CURRENT_MONITOR",
+]) {
+	assert(
+		circuitSource.includes(`name="${sectionName}"`),
+		`Missing native schematic section: ${sectionName}`,
+	);
+}
 for (const forbiddenNativeTag of [
 	"chip",
 	"diode",
