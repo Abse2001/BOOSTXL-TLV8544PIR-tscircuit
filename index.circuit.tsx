@@ -26,23 +26,23 @@ const N = {
 	V3P3_INA: "net.V33_INA",
 	V_TLV: "net.V_TLV",
 	V_PIR: "net.V_PIR",
-	PIR_VIN1: "net.PIR_IN",
-	PIR_VOUT_RAW: "net.PIR_RAW",
-	PIR_VO: "net.PIR_VO",
-	U1A_INV: "net.A_INV",
-	U1A_AC_RETURN: "net.AC_RET",
-	U1A_OUT: "net.A_OUT",
+	PIR_VIN1: "net.PIRIN",
+	PIR_VOUT_RAW: "net.RAW",
+	PIR_VO: "net.PIRVO",
+	U1A_INV: "net.AINV",
+	U1A_AC_RETURN: "net.AC",
+	U1A_OUT: "net.AOUT",
 	INTERSTAGE: "net.INTER",
-	U1B_INV: "net.B_INV",
-	U1B_REF: "net.B_REF",
-	U1B_OUT: "net.B_OUT",
-	PIR_SIGNAL_BUS: "net.PIR_BUS",
-	REF_HIGH: "net.REF_HI",
-	REF_MID: "net.REF_MID",
-	REF_LOW: "net.REF_LO",
-	U1C_OUT: "net.C_OUT",
-	U1D_OUT: "net.D_OUT",
-	BUFFER_OUT: "net.BUF_OUT",
+	U1B_INV: "net.BINV",
+	U1B_REF: "net.BREF",
+	U1B_OUT: "net.BOUT",
+	PIR_SIGNAL_BUS: "net.BUS",
+	REF_HIGH: "net.HI",
+	REF_MID: "net.MID",
+	REF_LOW: "net.LO",
+	U1C_OUT: "net.COUT",
+	U1D_OUT: "net.DOUT",
+	BUFFER_OUT: "net.BUF",
 	// tscircuit net identifiers cannot begin with a digit; this is TI's 1STAG_AOUT.
 	FIRST_STAGE_AOUT: "net.STG1_OUT",
 	PIR_SGL_AOUT: "net.PIR_SGL",
@@ -87,42 +87,57 @@ export default function Circuit() {
 		>
 			<schematicsheet
 				name="PAGE1"
-				displayName="BOOSTXL-TLV8544PIR Schematic Page 1"
+				displayName="PIR Sensor Signal Conditioning"
 				sheetIndex={1}
 			/>
 			<schematicsheet
 				name="PAGE2"
-				displayName="BOOSTXL-TLV8544PIR Schematic Page 2"
+				displayName="LaunchPad Interface and Headers"
 				sheetIndex={2}
+			/>
+			<schematicsheet
+				name="PAGE3"
+				displayName="User Status LEDs"
+				sheetIndex={3}
+			/>
+			<schematicsheet
+				name="PAGE4"
+				displayName="Power Filtering and Rail Distribution"
+				sheetIndex={4}
+			/>
+			<schematicsheet
+				name="PAGE5"
+				displayName="INA226 Current Monitor and Buffer"
+				sheetIndex={5}
 			/>
 
 			<group
-				name="PAGE1_CIRCUIT"
-				schSheetName="PAGE1"
+				name="PAGE2_LAUNCHPAD_INTERFACE"
+				schSheetName="PAGE2"
+				schX={7}
+				schY={2}
 				pcbX={0}
 				pcbY={0}
 			>
 			<schematicsection
-				name="PIR_SIGNAL_CONDITIONING"
-				displayName="PIR Sensor Signal Conditioning"
-				sectionTitleFontSize="0.28mm"
-			/>
-			<schematicsection
 				name="LAUNCHPAD_CONNECTORS"
-				displayName="CC2650 LaunchPad Connectors"
+				displayName=""
 				sectionTitleFontSize="0.24mm"
 			/>
-			<schematicsection
-				name="USER_LEDS"
-				displayName="User LEDs"
-				sectionTitleFontSize="0.24mm"
+			<schematictext
+				text="LaunchPad Headers"
+				schX={-13.6}
+				schY={0.9}
+				fontSize={0.22}
+				anchor="center_left"
 			/>
 			{/* LaunchPad BoosterPack headers. Exact Samtec part imported from JLCPCB. */}
 			<SSQ_110_03_G_D
 				name="J1"
 				schSectionName="LAUNCHPAD_CONNECTORS"
-				schX={-9.5}
-				schY={-1.5}
+				schX={-9}
+				schY={-2}
+				schWidth="3.2mm"
 				pcbX={-17.78}
 				pcbY={5.08}
 				pcbRotation={90}
@@ -145,8 +160,9 @@ export default function Circuit() {
 			<SSQ_110_03_G_D
 				name="J2"
 				schSectionName="LAUNCHPAD_CONNECTORS"
-				schX={-3.5}
-				schY={-1.5}
+				schX={-1.8}
+				schY={-2}
+				schWidth="3.2mm"
 				pcbX={25.4}
 				pcbY={5.08}
 				pcbRotation={90}
@@ -157,7 +173,7 @@ export default function Circuit() {
 			<capacitor
 				name="C1"
 				schSectionName="LAUNCHPAD_CONNECTORS"
-				schX={-13}
+				schX={-13.3}
 				schY={-0.7}
 				schRotation="270deg"
 				manufacturerPartNumber="GRM188R71H103KA01D"
@@ -172,7 +188,7 @@ export default function Circuit() {
 			<capacitor
 				name="C2"
 				schSectionName="LAUNCHPAD_CONNECTORS"
-				schX={-6}
+				schX={-5.2}
 				schY={-0.7}
 				schRotation="270deg"
 				manufacturerPartNumber="GRM188R71H103KA01D"
@@ -187,8 +203,8 @@ export default function Circuit() {
 			<capacitor
 				name="C3"
 				schSectionName="LAUNCHPAD_CONNECTORS"
-				schX={-13}
-				schY={-2.8}
+				schX={-13.3}
+				schY={-3}
 				schRotation="270deg"
 				manufacturerPartNumber="GRM188R71H103KA01D"
 				supplierPartNumbers={{ jlcpcb: ["C77053"] }}
@@ -202,8 +218,8 @@ export default function Circuit() {
 			<capacitor
 				name="C4"
 				schSectionName="LAUNCHPAD_CONNECTORS"
-				schX={-6}
-				schY={-2.8}
+				schX={-5.2}
+				schY={-3}
 				schRotation="270deg"
 				manufacturerPartNumber="GRM188R71H103KA01D"
 				supplierPartNumbers={{ jlcpcb: ["C77053"] }}
@@ -214,14 +230,42 @@ export default function Circuit() {
 				pcbRotation={90}
 				connections={{ pin1: N.PIR_SGL_AOUT, pin2: N.GND }}
 			/>
+			</group>
+
+			<group
+				name="PAGE1_PIR_SIGNAL"
+				schSheetName="PAGE1"
+				schY={-5.5}
+				pcbX={0}
+				pcbY={0}
+			>
+			<schematicsection
+				name="PIR_SIGNAL_CONDITIONING"
+				displayName=""
+				sectionTitleFontSize="0.24mm"
+			/>
+			<schematictext
+				text="PIR Sensor Signal Conditioning"
+				schX={-13.6}
+				schY={10.2}
+				fontSize={0.24}
+				anchor="center_left"
+			/>
 
 			{/* Murata's supported analog PIR sensor. Its exact JLCPCB footprint is
 			    retained because the best footprinter match was only 13.87%. */}
 			<IRA_S210ST01
 				name="A1"
 				schSectionName="PIR_SIGNAL_CONDITIONING"
-				schX={-5.4}
-				schY={6}
+				schX={-6.2}
+				schY={6.2}
+				schWidth="2.2mm"
+				schHeight="1.6mm"
+				schPinArrangement={{
+					leftSide: ["d"],
+					rightSide: ["s"],
+					bottomSide: ["g"],
+				}}
 				pcbX={20.5}
 				pcbY={-17}
 				connections={{
@@ -233,8 +277,8 @@ export default function Circuit() {
 			<resistor
 				name="R12"
 				schSectionName="PIR_SIGNAL_CONDITIONING"
-				schX={-13}
-				schY={7.4}
+				schX={-13.2}
+				schY={7.8}
 				schRotation="270deg"
 				manufacturerPartNumber="RC0603FR-07619KL"
 				supplierPartNumbers={{ jlcpcb: ["C245988"] }}
@@ -249,7 +293,7 @@ export default function Circuit() {
 				name="C10"
 				schSectionName="PIR_SIGNAL_CONDITIONING"
 				schX={-13}
-				schY={4.5}
+				schY={4}
 				schRotation="270deg"
 				manufacturerPartNumber="CGA1206X5R107M100NT"
 				supplierPartNumbers={{ jlcpcb: ["C6119961"] }}
@@ -264,7 +308,7 @@ export default function Circuit() {
 				name="C11"
 				schSectionName="PIR_SIGNAL_CONDITIONING"
 				schX={-11.7}
-				schY={4.5}
+				schY={4}
 				schRotation="270deg"
 				manufacturerPartNumber="GRM188R60J106ME47D"
 				supplierPartNumbers={{ jlcpcb: ["C77041"] }}
@@ -279,7 +323,7 @@ export default function Circuit() {
 				name="C12"
 				schSectionName="PIR_SIGNAL_CONDITIONING"
 				schX={-10.4}
-				schY={4.5}
+				schY={4}
 				schRotation="270deg"
 				manufacturerPartNumber="C1608X7R1C105KT000N"
 				supplierPartNumbers={{ jlcpcb: ["C76617"] }}
@@ -294,7 +338,7 @@ export default function Circuit() {
 				name="C13"
 				schSectionName="PIR_SIGNAL_CONDITIONING"
 				schX={-9.1}
-				schY={4.5}
+				schY={4}
 				schRotation="270deg"
 				manufacturerPartNumber="GRM188R71E104KA01D"
 				supplierPartNumbers={{ jlcpcb: ["C77050"] }}
@@ -309,7 +353,7 @@ export default function Circuit() {
 				name="C14"
 				schSectionName="PIR_SIGNAL_CONDITIONING"
 				schX={-7.8}
-				schY={4.5}
+				schY={4}
 				schRotation="270deg"
 				manufacturerPartNumber="GRM188R71H103KA01D"
 				supplierPartNumbers={{ jlcpcb: ["C77053"] }}
@@ -324,7 +368,7 @@ export default function Circuit() {
 				name="C15"
 				schSectionName="PIR_SIGNAL_CONDITIONING"
 				schX={-6.5}
-				schY={4.5}
+				schY={4}
 				schRotation="270deg"
 				manufacturerPartNumber="GRM1885C1H102JA01D"
 				supplierPartNumbers={{ jlcpcb: ["C77026"] }}
@@ -339,7 +383,7 @@ export default function Circuit() {
 				name="C16"
 				schSectionName="PIR_SIGNAL_CONDITIONING"
 				schX={-5.2}
-				schY={4.5}
+				schY={4}
 				schRotation="270deg"
 				manufacturerPartNumber="GRM1885C1H101JA01D"
 				supplierPartNumbers={{ jlcpcb: ["C71664"] }}
@@ -384,8 +428,8 @@ export default function Circuit() {
 				displayName="U1A"
 				chipRef=".U1"
 				symbolName="opamp_with_power"
-				schX={-2.4}
-				schY={6}
+				schX={-2.2}
+				schY={6.2}
 				connections={{
 					inp1: ".U1 > .IN_A_POS",
 					inp2: ".U1 > .IN_A_NEG",
@@ -400,8 +444,8 @@ export default function Circuit() {
 				displayName="U1B"
 				chipRef=".U1"
 				symbolName="opamp_with_power"
-				schX={2.4}
-				schY={6}
+				schX={4.2}
+				schY={6.2}
 				connections={{
 					inp1: ".U1 > .IN_B_POS",
 					inp2: ".U1 > .IN_B_NEG",
@@ -416,8 +460,8 @@ export default function Circuit() {
 				displayName="U1C"
 				chipRef=".U1"
 				symbolName="opamp_with_power"
-				schX={10.1}
-				schY={8.2}
+				schX={11.6}
+				schY={9}
 				connections={{
 					inp1: ".U1 > .IN_C_POS",
 					inp2: ".U1 > .IN_C_NEG",
@@ -432,8 +476,8 @@ export default function Circuit() {
 				displayName="U1D"
 				chipRef=".U1"
 				symbolName="opamp_with_power"
-				schX={10.1}
-				schY={4.8}
+				schX={11.6}
+				schY={5.2}
 				connections={{
 					inp1: ".U1 > .IN_D_POS",
 					inp2: ".U1 > .IN_D_NEG",
@@ -446,8 +490,8 @@ export default function Circuit() {
 			<resistor
 				name="R14"
 				schSectionName="PIR_SIGNAL_CONDITIONING"
-				schX={-3.9}
-				schY={6}
+				schX={-4.3}
+				schY={6.2}
 				manufacturerPartNumber="0603WAF0000T5E"
 				supplierPartNumbers={{ jlcpcb: ["C21189"] }}
 				resistance="0ohm"
@@ -460,8 +504,8 @@ export default function Circuit() {
 			<resistor
 				name="R16"
 				schSectionName="PIR_SIGNAL_CONDITIONING"
-				schX={-3.9}
-				schY={4.5}
+				schX={-3.7}
+				schY={3.7}
 				schRotation="270deg"
 				manufacturerPartNumber="1RC0603F1304"
 				supplierPartNumbers={{ jlcpcb: ["C54531191"] }}
@@ -475,7 +519,7 @@ export default function Circuit() {
 			<resistor
 				name="R6"
 				schSectionName="PIR_SIGNAL_CONDITIONING"
-				schX={-4.1}
+				schX={-4.5}
 				schY={8.3}
 				schRotation="270deg"
 				manufacturerPartNumber="1RC0603F6811"
@@ -490,7 +534,7 @@ export default function Circuit() {
 			<capacitor
 				name="C5"
 				schSectionName="PIR_SIGNAL_CONDITIONING"
-				schX={-4.1}
+				schX={-4.5}
 				schY={9.6}
 				schRotation="270deg"
 				manufacturerPartNumber="C2012X5R1A336MTJ00E"
@@ -505,8 +549,8 @@ export default function Circuit() {
 			<resistor
 				name="R9"
 				schSectionName="PIR_SIGNAL_CONDITIONING"
-				schX={-2.4}
-				schY={8.2}
+				schX={-2.2}
+				schY={8.4}
 				manufacturerPartNumber="1RC0603F1504"
 				supplierPartNumbers={{ jlcpcb: ["C54531218"] }}
 				resistance="1.50Mohm"
@@ -519,8 +563,8 @@ export default function Circuit() {
 			<capacitor
 				name="C6"
 				schSectionName="PIR_SIGNAL_CONDITIONING"
-				schX={-2.4}
-				schY={9}
+				schX={-2.2}
+				schY={9.3}
 				manufacturerPartNumber="GRM188R71H103KA01D"
 				supplierPartNumbers={{ jlcpcb: ["C77053"] }}
 				capacitance="0.01uF"
@@ -533,8 +577,8 @@ export default function Circuit() {
 			<A_1N4148X_TP
 				name="D4"
 				schSectionName="PIR_SIGNAL_CONDITIONING"
-				schX={-2.4}
-				schY={9.8}
+				schX={-2.2}
+				schY={10.2}
 				pcbX={11}
 				pcbY={-13.5}
 				connections={{ anode: N.U1A_INV, cathode: N.U1A_OUT }}
@@ -542,8 +586,8 @@ export default function Circuit() {
 			<A_1N4148X_TP
 				name="D5"
 				schSectionName="PIR_SIGNAL_CONDITIONING"
-				schX={-2.4}
-				schY={7.4}
+				schX={-2.2}
+				schY={7.5}
 				pcbX={11}
 				pcbY={-11.5}
 				pcbRotation={180}
@@ -552,8 +596,8 @@ export default function Circuit() {
 			<resistor
 				name="R4"
 				schSectionName="PIR_SIGNAL_CONDITIONING"
-				schX={-0.6}
-				schY={7.5}
+				schX={0}
+				schY={8}
 				manufacturerPartNumber="CQ03WAF1002T5E"
 				supplierPartNumbers={{ jlcpcb: ["C516551"] }}
 				resistance="10kohm"
@@ -567,8 +611,8 @@ export default function Circuit() {
 			<capacitor
 				name="C9"
 				schSectionName="PIR_SIGNAL_CONDITIONING"
-				schX={-0.6}
-				schY={6}
+				schX={0.2}
+				schY={6.2}
 				manufacturerPartNumber="C2012X5R1A335M125AA"
 				supplierPartNumbers={{ jlcpcb: ["C3851074"] }}
 				capacitance="3.3uF"
@@ -581,8 +625,8 @@ export default function Circuit() {
 			<resistor
 				name="R13"
 				schSectionName="PIR_SIGNAL_CONDITIONING"
-				schX={0.9}
-				schY={6}
+				schX={2}
+				schY={6.2}
 				manufacturerPartNumber="RK73H1JTTD6812F"
 				supplierPartNumbers={{ jlcpcb: ["C830353"] }}
 				resistance="68.1kohm"
@@ -595,8 +639,8 @@ export default function Circuit() {
 			<resistor
 				name="R7"
 				schSectionName="PIR_SIGNAL_CONDITIONING"
-				schX={2.4}
-				schY={8.2}
+				schX={4.2}
+				schY={9}
 				manufacturerPartNumber="SCR0805F15M"
 				supplierPartNumbers={{ jlcpcb: ["C3016870"] }}
 				resistance="15Mohm"
@@ -609,8 +653,8 @@ export default function Circuit() {
 			<capacitor
 				name="C7"
 				schSectionName="PIR_SIGNAL_CONDITIONING"
-				schX={2.4}
-				schY={9}
+				schX={4.2}
+				schY={10.2}
 				manufacturerPartNumber="GRM1885C1H102JA01D"
 				supplierPartNumbers={{ jlcpcb: ["C77026"] }}
 				capacitance="1000pF"
@@ -623,8 +667,8 @@ export default function Circuit() {
 			<resistor
 				name="R17"
 				schSectionName="PIR_SIGNAL_CONDITIONING"
-				schX={3.3}
-				schY={4.5}
+				schX={4}
+				schY={4.2}
 				manufacturerPartNumber="0603WAF0000T5E"
 				supplierPartNumbers={{ jlcpcb: ["C21189"] }}
 				resistance="0ohm"
@@ -637,8 +681,8 @@ export default function Circuit() {
 			<capacitor
 				name="C17"
 				schSectionName="PIR_SIGNAL_CONDITIONING"
-				schX={1.5}
-				schY={4.5}
+				schX={2.2}
+				schY={4.2}
 				schRotation="270deg"
 				manufacturerPartNumber="GRM188R71E104KA01D"
 				supplierPartNumbers={{ jlcpcb: ["C77050"] }}
@@ -652,8 +696,8 @@ export default function Circuit() {
 			<resistor
 				name="R15"
 				schSectionName="PIR_SIGNAL_CONDITIONING"
-				schX={4}
-				schY={6}
+				schX={6.2}
+				schY={6.2}
 				manufacturerPartNumber="0603WAF0000T5E"
 				supplierPartNumbers={{ jlcpcb: ["C21189"] }}
 				resistance="0ohm"
@@ -666,8 +710,8 @@ export default function Circuit() {
 			<resistor
 				name="R5"
 				schSectionName="PIR_SIGNAL_CONDITIONING"
-				schX={5.5}
-				schY={7.5}
+				schX={6.5}
+				schY={8}
 				manufacturerPartNumber="CQ03WAF1002T5E"
 				supplierPartNumbers={{ jlcpcb: ["C516551"] }}
 				resistance="10kohm"
@@ -682,8 +726,8 @@ export default function Circuit() {
 			<resistor
 				name="R8"
 				schSectionName="PIR_SIGNAL_CONDITIONING"
-				schX={7.2}
-				schY={9.5}
+				schX={8.2}
+				schY={10.5}
 				schRotation="270deg"
 				manufacturerPartNumber="SCR0805F15M"
 				supplierPartNumbers={{ jlcpcb: ["C3016870"] }}
@@ -697,8 +741,8 @@ export default function Circuit() {
 			<resistor
 				name="R11"
 				schSectionName="PIR_SIGNAL_CONDITIONING"
-				schX={7.2}
-				schY={8}
+				schX={8.2}
+				schY={8.6}
 				schRotation="270deg"
 				manufacturerPartNumber="SCR0805F15M"
 				supplierPartNumbers={{ jlcpcb: ["C3016870"] }}
@@ -712,8 +756,8 @@ export default function Circuit() {
 			<resistor
 				name="R18"
 				schSectionName="PIR_SIGNAL_CONDITIONING"
-				schX={7.2}
-				schY={5}
+				schX={8.2}
+				schY={5.8}
 				schRotation="270deg"
 				manufacturerPartNumber="SCR0805F15M"
 				supplierPartNumbers={{ jlcpcb: ["C3016870"] }}
@@ -727,8 +771,8 @@ export default function Circuit() {
 			<resistor
 				name="R20"
 				schSectionName="PIR_SIGNAL_CONDITIONING"
-				schX={7.2}
-				schY={3.5}
+				schX={8.2}
+				schY={3.7}
 				schRotation="270deg"
 				manufacturerPartNumber="SCR0805F15M"
 				supplierPartNumbers={{ jlcpcb: ["C3016870"] }}
@@ -742,8 +786,8 @@ export default function Circuit() {
 			<capacitor
 				name="C8"
 				schSectionName="PIR_SIGNAL_CONDITIONING"
-				schX={8.8}
-				schY={8.5}
+				schX={9.8}
+				schY={9}
 				schRotation="270deg"
 				manufacturerPartNumber="GRM188R71E104KA01D"
 				supplierPartNumbers={{ jlcpcb: ["C77050"] }}
@@ -757,8 +801,8 @@ export default function Circuit() {
 			<capacitor
 				name="C18"
 				schSectionName="PIR_SIGNAL_CONDITIONING"
-				schX={8.8}
-				schY={4}
+				schX={9.8}
+				schY={4.4}
 				schRotation="270deg"
 				manufacturerPartNumber="GRM188R71E104KA01D"
 				supplierPartNumbers={{ jlcpcb: ["C77050"] }}
@@ -772,8 +816,8 @@ export default function Circuit() {
 			<resistor
 				name="R10"
 				schSectionName="PIR_SIGNAL_CONDITIONING"
-				schX={12}
-				schY={8.2}
+				schX={13.8}
+				schY={9}
 				manufacturerPartNumber="CQ03WAF1002T5E"
 				supplierPartNumbers={{ jlcpcb: ["C516551"] }}
 				resistance="10kohm"
@@ -786,8 +830,8 @@ export default function Circuit() {
 			<resistor
 				name="R19"
 				schSectionName="PIR_SIGNAL_CONDITIONING"
-				schX={12}
-				schY={4.8}
+				schX={13.8}
+				schY={5.2}
 				manufacturerPartNumber="CQ03WAF1002T5E"
 				supplierPartNumbers={{ jlcpcb: ["C516551"] }}
 				resistance="10kohm"
@@ -800,8 +844,8 @@ export default function Circuit() {
 			<capacitor
 				name="C19"
 				schSectionName="PIR_SIGNAL_CONDITIONING"
-				schX={5.5}
-				schY={2.5}
+				schX={6.5}
+				schY={2.3}
 				schRotation="270deg"
 				manufacturerPartNumber="GRM188R71E104KA01D"
 				supplierPartNumbers={{ jlcpcb: ["C77050"] }}
@@ -815,8 +859,8 @@ export default function Circuit() {
 			<capacitor
 				name="C20"
 				schSectionName="PIR_SIGNAL_CONDITIONING"
-				schX={6.7}
-				schY={2.5}
+				schX={7.8}
+				schY={2.3}
 				schRotation="270deg"
 				manufacturerPartNumber="GRM188R60J106ME47D"
 				supplierPartNumbers={{ jlcpcb: ["C77041"] }}
@@ -826,6 +870,37 @@ export default function Circuit() {
 				pcbY={-6}
 				pcbRotation={90}
 				connections={{ pin1: N.V_TLV, pin2: N.GND }}
+			/>
+			<A_5001
+				name="TP1"
+				schSectionName="PIR_SIGNAL_CONDITIONING"
+				schX={-12.5}
+				schY={1.8}
+				pcbX={9}
+				pcbY={-23}
+				connections={{ pin1: N.GND }}
+			/>
+			</group>
+
+			<group
+				name="PAGE3_USER_LEDS"
+				schSheetName="PAGE3"
+				schX={-8}
+				schY={1}
+				pcbX={0}
+				pcbY={0}
+			>
+			<schematicsection
+				name="USER_LEDS"
+				displayName=""
+				sectionTitleFontSize="0.24mm"
+			/>
+			<schematictext
+				text="User LEDs"
+				schX={4}
+				schY={0.9}
+				fontSize={0.22}
+				anchor="center_left"
 			/>
 
 			{/* Indicator LEDs driven by the LaunchPad. */}
@@ -842,7 +917,7 @@ export default function Circuit() {
 				pcbX={-11.5}
 				pcbY={-4}
 				pcbRotation={0}
-				connections={{ pin1: N.RLED, pin2: "net.D1_ANODE" }}
+				connections={{ pin1: N.RLED, pin2: "net.D1A" }}
 			/>
 			<A_19_217_R6C_AL1M2VY_3T
 				name="D1"
@@ -852,7 +927,7 @@ export default function Circuit() {
 				schRotation="90deg"
 				pcbX={-5}
 				pcbY={-4}
-				connections={{ anode: "net.D1_ANODE", cathode: N.GND }}
+				connections={{ anode: "net.D1A", cathode: N.GND }}
 			/>
 			<resistor
 				name="R2"
@@ -867,7 +942,7 @@ export default function Circuit() {
 				pcbX={-11.5}
 				pcbY={-7.5}
 				pcbRotation={0}
-				connections={{ pin1: N.YLED, pin2: "net.D2_ANODE" }}
+				connections={{ pin1: N.YLED, pin2: "net.D2A" }}
 			/>
 			<A_19_213_Y2C_CQ2R2L_3T_CY_
 				name="D2"
@@ -877,7 +952,7 @@ export default function Circuit() {
 				schRotation="90deg"
 				pcbX={-5}
 				pcbY={-7.5}
-				connections={{ anode: "net.D2_ANODE", cathode: N.GND }}
+				connections={{ anode: "net.D2A", cathode: N.GND }}
 			/>
 			<resistor
 				name="R3"
@@ -892,7 +967,7 @@ export default function Circuit() {
 				pcbX={-11.5}
 				pcbY={0}
 				pcbRotation={0}
-				connections={{ pin1: N.OLED, pin2: "net.D3_ANODE" }}
+				connections={{ pin1: N.OLED, pin2: "net.D3A" }}
 			/>
 			<A_19_217_G7C_AN1P2_6T
 				name="D3"
@@ -902,41 +977,36 @@ export default function Circuit() {
 				schRotation="90deg"
 				pcbX={-5}
 				pcbY={0}
-				connections={{ anode: "net.D3_ANODE", cathode: N.GND }}
-			/>
-			<A_5001
-				name="TP1"
-				schSectionName="PIR_SIGNAL_CONDITIONING"
-				schX={-12.5}
-				schY={2.5}
-				pcbX={9}
-				pcbY={-23}
-				connections={{ pin1: N.GND }}
+				connections={{ anode: "net.D3A", cathode: N.GND }}
 			/>
 			</group>
 
 			<group
-				name="PAGE2_CIRCUIT"
-				schSheetName="PAGE2"
+				name="PAGE4_POWER_FILTERING"
+				schSheetName="PAGE4"
+				schX={5}
+				schY={-1.5}
 				pcbX={0}
 				pcbY={0}
 			>
 			<schematicsection
 				name="POWER_FILTERING"
-				displayName="Power Filtering and Rail Split"
-				sectionTitleFontSize="0.26mm"
+				displayName=""
+				sectionTitleFontSize="0.2mm"
 			/>
-			<schematicsection
-				name="CURRENT_MONITOR"
-				displayName="Current Monitor and Buffer"
-				sectionTitleFontSize="0.26mm"
+			<schematictext
+				text="Power Filtering"
+				schX={-12.8}
+				schY={4.5}
+				fontSize={0.22}
+				anchor="center_left"
 			/>
 			{/* 3.3-V and 5-V filtering at the LaunchPad connector. */}
 			<BLM18HE152SN1D
 				name="L1"
 				schSectionName="POWER_FILTERING"
-				schX={-12.5}
-				schY={3}
+				schX={-11.5}
+				schY={3.2}
 				pcbX={-20}
 				pcbY={20}
 				connections={{ pin1: N.V3P3_LPD, pin2: N.V3P3 }}
@@ -944,8 +1014,8 @@ export default function Circuit() {
 			<capacitor
 				name="C24"
 				schSectionName="POWER_FILTERING"
-				schX={-9.5}
-				schY={2.7}
+				schX={-8.5}
+				schY={2.8}
 				schRotation="270deg"
 				manufacturerPartNumber="GRM188R71E104KA01D"
 				supplierPartNumbers={{ jlcpcb: ["C77050"] }}
@@ -959,8 +1029,8 @@ export default function Circuit() {
 			<capacitor
 				name="C25"
 				schSectionName="POWER_FILTERING"
-				schX={-8}
-				schY={2.7}
+				schX={-7}
+				schY={2.8}
 				schRotation="270deg"
 				manufacturerPartNumber="GRM188R60J106ME47D"
 				supplierPartNumbers={{ jlcpcb: ["C77041"] }}
@@ -974,8 +1044,8 @@ export default function Circuit() {
 			<BLM18HE152SN1D
 				name="L2"
 				schSectionName="POWER_FILTERING"
-				schX={-12.5}
-				schY={-1}
+				schX={-11.5}
+				schY={-1.2}
 				pcbX={-11}
 				pcbY={18.5}
 			/>
@@ -994,8 +1064,8 @@ export default function Circuit() {
 			<capacitor
 				name="C26"
 				schSectionName="POWER_FILTERING"
-				schX={-9.5}
-				schY={-1.3}
+				schX={-8.5}
+				schY={-1.5}
 				schRotation="270deg"
 				manufacturerPartNumber="GRM188R71E104KA01D"
 				supplierPartNumbers={{ jlcpcb: ["C77050"] }}
@@ -1009,8 +1079,8 @@ export default function Circuit() {
 			<capacitor
 				name="C27"
 				schSectionName="POWER_FILTERING"
-				schX={-8}
-				schY={-1.3}
+				schX={-7}
+				schY={-1.5}
 				schRotation="270deg"
 				manufacturerPartNumber="GRM188R71E104KA01D"
 				supplierPartNumbers={{ jlcpcb: ["C77050"] }}
@@ -1024,8 +1094,8 @@ export default function Circuit() {
 			<capacitor
 				name="C28"
 				schSectionName="POWER_FILTERING"
-				schX={-6.5}
-				schY={-1.3}
+				schX={-5.5}
+				schY={-1.5}
 				schRotation="270deg"
 				manufacturerPartNumber="GRM188R60J106ME47D"
 				supplierPartNumbers={{ jlcpcb: ["C77041"] }}
@@ -1039,8 +1109,8 @@ export default function Circuit() {
 			<capacitor
 				name="C29"
 				schSectionName="POWER_FILTERING"
-				schX={-5}
-				schY={-1.3}
+				schX={-4}
+				schY={-1.5}
 				schRotation="270deg"
 				manufacturerPartNumber="GRM188R71E104KA01D"
 				supplierPartNumbers={{ jlcpcb: ["C77050"] }}
@@ -1056,8 +1126,8 @@ export default function Circuit() {
 			<resistor
 				name="NT1"
 				schSectionName="POWER_FILTERING"
-				schX={-3.5}
-				schY={3}
+				schX={-2.5}
+				schY={3.2}
 				manufacturerPartNumber="0603WAF0000T5E"
 				supplierPartNumbers={{ jlcpcb: ["C21189"] }}
 				resistance="0ohm"
@@ -1070,8 +1140,8 @@ export default function Circuit() {
 			<resistor
 				name="NT2"
 				schSectionName="POWER_FILTERING"
-				schX={-1.5}
-				schY={3}
+				schX={-0.4}
+				schY={3.2}
 				manufacturerPartNumber="0603WAF0000T5E"
 				supplierPartNumbers={{ jlcpcb: ["C21189"] }}
 				resistance="0ohm"
@@ -1084,8 +1154,8 @@ export default function Circuit() {
 			<resistor
 				name="NT3"
 				schSectionName="POWER_FILTERING"
-				schX={0.5}
-				schY={3}
+				schX={1.8}
+				schY={3.2}
 				manufacturerPartNumber="0603WAF0000T5E"
 				supplierPartNumbers={{ jlcpcb: ["C21189"] }}
 				resistance="0ohm"
@@ -1100,18 +1170,42 @@ export default function Circuit() {
 			<DZ254S_11_02_48
 				name="J3"
 				schSectionName="POWER_FILTERING"
-				schX={-6}
-				schY={3}
+				schX={-4.8}
+				schY={3.2}
+				schWidth="2mm"
 				pcbX={-26.5}
 				pcbY={-14.5}
 				pcbRotation={0}
 				connections={{ pin1: N.V_PIR, pin2: N.V3P3 }}
 			/>
+			</group>
+
+			<group
+				name="PAGE5_CURRENT_MONITOR"
+				schSheetName="PAGE5"
+				schX={-9}
+				schY={-2}
+				pcbX={0}
+				pcbY={0}
+			>
+			<schematicsection
+				name="CURRENT_MONITOR"
+				displayName=""
+				sectionTitleFontSize="0.2mm"
+			/>
+			<schematictext
+				text="Current Monitor"
+				schX={3.7}
+				schY={4.5}
+				fontSize={0.22}
+				anchor="center_left"
+			/>
 			<DZ254S_11_02_48
 				name="J4"
 				schSectionName="CURRENT_MONITOR"
-				schX={4}
-				schY={3}
+				schX={4.7}
+				schY={3.2}
+				schWidth="2mm"
 				pcbX={6}
 				pcbY={18}
 				pcbRotation={90}
@@ -1122,8 +1216,8 @@ export default function Circuit() {
 			<resistor
 				name="R21"
 				schSectionName="CURRENT_MONITOR"
-				schX={5.5}
-				schY={3}
+				schX={6.8}
+				schY={3.2}
 				manufacturerPartNumber="RT0603BRD0715KL"
 				supplierPartNumbers={{ jlcpcb: ["C326733"] }}
 				resistance="15kohm"
@@ -1136,8 +1230,8 @@ export default function Circuit() {
 			<capacitor
 				name="C22"
 				schSectionName="CURRENT_MONITOR"
-				schX={5.5}
-				schY={1.3}
+				schX={6.8}
+				schY={1.1}
 				schRotation="270deg"
 				manufacturerPartNumber="GRM188R71E104KA01D"
 				supplierPartNumbers={{ jlcpcb: ["C77050"] }}
@@ -1152,8 +1246,8 @@ export default function Circuit() {
 				name="U3"
 				schSectionName="CURRENT_MONITOR"
 				noSchematicRepresentation
-				schX={7.5}
-				schY={3}
+				schX={8.8}
+				schY={3.2}
 				pcbX={1.5}
 				pcbY={16.5}
 				connections={{
@@ -1170,8 +1264,8 @@ export default function Circuit() {
 				displayName="U3"
 				chipRef=".U3"
 				symbolName="opamp_with_power"
-				schX={7.5}
-				schY={3}
+				schX={8.8}
+				schY={3.2}
 				connections={{
 					inp1: ".U3 > .IN_POS",
 					inp2: ".U3 > .IN_NEG",
@@ -1182,27 +1276,14 @@ export default function Circuit() {
 			/>
 			<trace
 				name="U3_FB"
-				schDisplayLabel="FB"
 				from=".U3A > .pin4"
 				to=".U3A > .pin2"
-			/>
-			<trace
-				name="U3_BUF"
-				schDisplayLabel="BUF"
-				from=".U3A > .pin4"
-				to=".U2 > .VIN_NEG"
-			/>
-			<trace
-				name="U3_V5"
-				schDisplayLabel="V5_FILT"
-				from=".U3A > .pin5"
-				to={N.V5}
 			/>
 			<capacitor
 				name="C23"
 				schSectionName="CURRENT_MONITOR"
-				schX={7.5}
-				schY={0}
+				schX={8.8}
+				schY={-0.3}
 				schRotation="270deg"
 				manufacturerPartNumber="GRM188R71E104KA01D"
 				supplierPartNumbers={{ jlcpcb: ["C77050"] }}
@@ -1216,8 +1297,10 @@ export default function Circuit() {
 			<INA226AIDGSR
 				name="U2"
 				schSectionName="CURRENT_MONITOR"
-				schX={10.5}
-				schY={3}
+				schX={13.2}
+				schY={3.2}
+				schWidth="3mm"
+				schHeight="3.2mm"
 				pcbX={-3.5}
 				pcbY={10}
 				pcbRotation={90}
@@ -1236,8 +1319,8 @@ export default function Circuit() {
 			<capacitor
 				name="C21"
 				schSectionName="CURRENT_MONITOR"
-				schX={10.5}
-				schY={0}
+				schX={13.2}
+				schY={-0.3}
 				schRotation="270deg"
 				manufacturerPartNumber="GRM188R71E104KA01D"
 				supplierPartNumbers={{ jlcpcb: ["C77050"] }}
@@ -1252,8 +1335,8 @@ export default function Circuit() {
 			<A_5001
 				name="TP2"
 				schSectionName="CURRENT_MONITOR"
-				schX={9}
-				schY={0}
+				schX={11.2}
+				schY={-0.3}
 				pcbX={-11}
 				pcbY={23}
 				connections={{ pin1: N.GND }}

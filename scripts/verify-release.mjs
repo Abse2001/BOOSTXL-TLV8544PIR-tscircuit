@@ -68,27 +68,10 @@ assert.equal(
 const sheetIdByName = new Map(
 	ofType("schematic_sheet").map((sheet) => [sheet.name, sheet.schematic_sheet_id]),
 );
-const page1DividerLabels = ofType("schematic_net_label").filter(
-	(label) =>
-		label.schematic_sheet_id === sheetIdByName.get("PAGE1") &&
-		label.anchor_position.y > 0 &&
-		label.anchor_position.y < 1.5,
-);
 assert.deepEqual(
-	page1DividerLabels.map((label) => label.text),
-	[],
-	"A Page 1 net label intrudes into the horizontal section divider",
-);
-const page2DividerLabels = ofType("schematic_net_label").filter(
-	(label) =>
-		label.schematic_sheet_id === sheetIdByName.get("PAGE2") &&
-		label.anchor_position.x > 1.5 &&
-		label.anchor_position.x < 2.5,
-);
-assert.deepEqual(
-	page2DividerLabels.map((label) => label.text),
-	[],
-	"A Page 2 net label intrudes into the vertical section divider",
+	[...sheetIdByName.keys()].sort(),
+	["PAGE1", "PAGE2", "PAGE3", "PAGE4", "PAGE5"],
+	"Expected five purpose-specific schematic sheets",
 );
 
 const board = ofType("pcb_board")[0];
@@ -234,7 +217,7 @@ const traceNames = new Set(
 const explicitTraceNames = new Set(
 	ofType("source_trace").map((trace) => trace.name).filter(Boolean),
 );
-for (const traceName of ["V5_IN", "V5_FILT", "U3_FB", "U3_BUF", "U3_V5"]) {
+for (const traceName of ["V5_IN", "V5_FILT", "U3_FB"]) {
 	assert(
 		explicitTraceNames.has(traceName),
 		`Required compact named trace is missing: ${traceName}`,
@@ -247,13 +230,13 @@ const requiredConnections = [
 	".NT2 > .pin2 to net.V33_REF",
 	".NT3 > .pin1 to net.V33_TLV",
 	".NT3 > .pin2 to net.V33_INA",
-	".U3 > .OUT to net.BUF_OUT",
-	".U3 > .IN_NEG to net.BUF_OUT",
+	".U3 > .OUT to net.BUF",
+	".U3 > .IN_NEG to net.BUF",
 	".U3 > .IN_POS to net.V_TLV",
 	".U3 > .V_POS to net.V5_FILT",
 	".U3 > .V_NEG to net.GND",
-	".A1 > .d to net.PIR_IN",
-	".A1 > .s to net.PIR_RAW",
+	".A1 > .d to net.PIRIN",
+	".A1 > .s to net.RAW",
 	".A1 > .g to net.GND",
 ];
 
