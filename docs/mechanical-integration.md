@@ -15,9 +15,9 @@ The outline and placements are scaled from TI's official top view using the know
 
 ## J3/J4 current jumpers
 
-TI's rendering shows Molex `87898-0204` 1×2, 2.54-mm right-angle SMT headers fitted with removable shunts. That exact Molex part is not available in JLCPCB's assembly catalog, so the board uses imported GREENCONN `GPHD101-0202A037R1BA`, JLCPCB C5371819. It preserves the electrical function, pitch, row count, right-angle orientation, and SMT assembly style, but it is a controlled mechanical replacement rather than a claim of exact body dimensions.
+TI's rendering and Molex's catalog show `87898-0204` as a 1×2, 2.54-mm vertical SMT header fitted with a removable shunt. JLCPCB lists that exact Molex part as C3331260 for pre-order, but it is not available through the current tscircuit/EasyEDA importer. The board therefore uses the stocked, exactly imported DEALON `DZ254S-11-02-48`, JLCPCB C5160785. It preserves the electrical function, pitch, row count, vertical SMT mounting, 6-mm upright pins, and removable-shunt interface.
 
-J3 is rotated so the mating end projects through the left edge like TI's board image; J4 points to the right. Fit 2.54-mm shunts such as JLCPCB C5305 for normal operation. Remove a shunt only when inserting an ammeter across that header. Confirm the replacement header's body reach, shunt clearance, and enclosure clearance on the 1:1 overlay.
+J3 is placed just inside the left edge with its two upright pins running left-to-right, matching TI's top view; J4 uses the same vertical header rotated 90 degrees near the top edge. Fit 2.54-mm shunts such as JLCPCB C5305 for normal operation. Remove a shunt only when inserting an ammeter across that header. Confirm header and shunt clearance on the 1:1 overlay.
 
 ## A1 sensor
 

@@ -14,7 +14,7 @@ Earlier footprinter comparisons remain useful geometry evidence, but they no lon
 | J1, J2 | C3323139 / SSQ-110-03-G-D | 0.1484 | Exact JLCPCB import. |
 | A1 | C152563 / IRA-S210ST01 | 0.1387 copper; 0.0131 holes | Exact JLCPCB import. |
 | D1-D3 | C72044, C72038, C2986030 | Not required | Exact JLCPCB imports. |
-| J3, J4 | C5371819 / GPHD101-0202A037R1BA | Not required | Exact right-angle SMT JLCPCB import. |
+| J3, J4 | C5160785 / DZ254S-11-02-48 | Not required | Exact vertical SMT JLCPCB import; upright pins match TI's top view. |
 | TP1, TP2 | C238122 / Keystone 5001 | Not required | Exact through-hole JLCPCB import. |
 
 The release verifier rejects native `<chip>`, `<diode>`, `<led>`, `<pinheader>`, `<testpoint>`, or `<inductor>` instantiations in `index.circuit.tsx` so this policy cannot silently regress.

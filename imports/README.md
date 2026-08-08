@@ -13,7 +13,7 @@ All populated electronic parts other than resistors and capacitors are instantia
 | D4, D5 | 1N4148X-TP | C507292 |
 | L1, L2 | BLM18HE152SN1D | C82155 |
 | J1, J2 | SSQ-110-03-G-D | C3323139 |
-| J3, J4 | GPHD101-0202A037R1BA | C5371819 |
+| J3, J4 | DZ254S-11-02-48 | C5160785 |
 | A1 | IRA-S210ST01 | C152563 |
 | TP1, TP2 | Keystone 5001 | C238122 |
 

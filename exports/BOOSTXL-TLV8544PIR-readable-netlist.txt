@@ -59,8 +59,8 @@ COMPONENTS:
  - NT1: 0Ω res0603 resistor
  - NT2: 0Ω res0603 resistor
  - NT3: 0Ω res0603 resistor
- - J3: GPHD101-0202A037R1BA
- - J4: GPHD101-0202A037R1BA
+ - J3: DZ254S-11-02-48
+ - J4: DZ254S-11-02-48
  - R21: 15kΩ res0603 resistor
  - C22: 0.1uF 0603 capacitor
  - U3: TLV333IDBVR
@@ -616,11 +616,11 @@ NT3 (0Ω res0603)
 - pin1(anode, pos, left): NETS(V3P3_TLV)
 - pin2(cathode, neg, right): NETS(V3P3_INA)
 
-J3 (GPHD101-0202A037R1BA)
+J3 (DZ254S-11-02-48)
 - pin1: NETS(V_POS_PIR)
 - pin2: NETS(V3P3_FILTERED)
 
-J4 (GPHD101-0202A037R1BA)
+J4 (DZ254S-11-02-48)
 - pin1: NETS(V_POS_TLV)
 - pin2: NETS(V3P3_FILTERED)
 

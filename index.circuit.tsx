@@ -4,7 +4,7 @@ import { A_19_217_G7C_AN1P2_6T } from "./imports/A_19_217_G7C_AN1P2_6T/A_19_217_
 import { A_19_217_R6C_AL1M2VY_3T } from "./imports/A_19_217_R6C_AL1M2VY_3T/A_19_217_R6C_AL1M2VY_3T";
 import { A_5001 } from "./imports/A_5001/A_5001";
 import { BLM18HE152SN1D } from "./imports/BLM18HE152SN1D/BLM18HE152SN1D";
-import { GPHD101_0202A037R1BA } from "./imports/GPHD101_0202A037R1BA/GPHD101_0202A037R1BA";
+import { DZ254S_11_02_48 } from "./imports/DZ254S_11_02_48/DZ254S_11_02_48";
 import { INA226AIDGSR } from "./imports/INA226AIDGSR/INA226AIDGSR";
 import { IRA_S210ST01 } from "./imports/IRA_S210ST01/IRA_S210ST01";
 import { SSQ_110_03_G_D } from "./imports/SSQ_110_03_G_D/SSQ_110_03_G_D";
@@ -744,16 +744,15 @@ export default function Circuit() {
 				connections={{ pin1: N.V3P3_TLV, pin2: N.V3P3_INA }}
 			/>
 
-			{/* Current-measurement jumpers. JLCPCB right-angle SMT replacement matches
-			    the TI board's 1x2, 2.54-mm removable-shunt arrangement. */}
-			<GPHD101_0202A037R1BA
+			{/* Vertical current-measurement headers with removable 2.54-mm shunts. */}
+			<DZ254S_11_02_48
 				name="J3"
-				pcbX={-24}
-				pcbY={-17}
-				pcbRotation={270}
+				pcbX={-26.5}
+				pcbY={-14.5}
+				pcbRotation={0}
 				connections={{ pin1: N.V_PIR, pin2: N.V3P3 }}
 			/>
-			<GPHD101_0202A037R1BA
+			<DZ254S_11_02_48
 				name="J4"
 				pcbX={6}
 				pcbY={18}
@@ -802,7 +801,7 @@ export default function Circuit() {
 				supplierPartNumbers={{ jlcpcb: ["C77050"] }}
 				capacitance="0.1uF"
 				footprint="0603"
-				pcbX={3}
+				pcbX={1.5}
 				pcbY={21}
 				pcbRotation={90}
 				connections={{ pin1: N.V5, pin2: N.GND }}

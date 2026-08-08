@@ -1,6 +1,6 @@
 # Autorouting investigation
 
-The checked-in design pins tscircuit's local capacity autorouter to `v6`, uses `2x` effort, a 0.20-mm nominal trace width, and 0.15-mm trace clearance. A fresh route of the direct `index.circuit.tsx` implementation with exact JLCPCB imports completes 131 PCB traces with 119 vias and zero generated circuit-JSON error elements.
+The checked-in design pins tscircuit's local capacity autorouter to `v6`, uses `2x` effort, a 0.20-mm nominal trace width, and 0.15-mm trace clearance. A fresh route of the direct `index.circuit.tsx` implementation with exact JLCPCB imports completes 131 PCB traces with 118 vias and zero generated circuit-JSON error elements.
 
 Two lower-via experiments were rejected on 2026-08-07:
 
@@ -9,4 +9,4 @@ Two lower-via experiments were rejected on 2026-08-07:
 
 An uncached `v1` router run also failed to converge within the bounded benchmark window, while `v6` completes in roughly 50 seconds on the same workstation. No failed experiment is retained in the source or generated exports.
 
-The 119-via route is reproducible and useful for connectivity review, but it still needs an independent human/fabricator-rule review before production. That review should share local GND returns where practical, reduce unnecessary layer changes, preserve a continuous return plane, and give special attention to the high-impedance PIR input and the R21/U3/INA226 measurement loop.
+The 118-via route is reproducible and useful for connectivity review, but it still needs an independent human/fabricator-rule review before production. That review should share local GND returns where practical, reduce unnecessary layer changes, preserve a continuous return plane, and give special attention to the high-impedance PIR input and the R21/U3/INA226 measurement loop.

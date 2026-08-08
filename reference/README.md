@@ -21,7 +21,8 @@ Collected on 2026-08-07 from official Texas Instruments pages.
 ## Additional component evidence
 
 - [Molex 87898-0204 product page](https://www.molex.com/en-us/products/part-detail/0878980204) and [SD-87898-001 drawing](https://www.molex.com/content/dam/molex/molex-dot-com/products/automated/en-us/salesdrawingpdf/878/87898/878980654_sd.pdf): exact J3/J4 series, two circuits, 2.54-mm pitch, and the recommended 1.27 mm × 2.96 mm SMT lands.
-- [JLCPCB C5371819](https://jlcpcb.com/partdetail/GREENCONN-GPHD1010202A037R1BA/C5371819): selected orderable J3/J4 replacement; 1×2, 2.54-mm, right-angle SMT header. This is a mechanical replacement for the unavailable Molex part, not the original TI MPN.
+- [JLCPCB C3331260](https://jlcpcb.com/partdetail/MOLEX-0878980204/C3331260): exact TI J3/J4 Molex part, listed for pre-order but absent from the current tscircuit/EasyEDA importer.
+- [JLCPCB C5160785](https://jlcpcb.com/partdetail/DEALON-DZ254S_11_0248/C5160785): selected stocked J3/J4 replacement; 1×2, 2.54-mm vertical SMT header with 6-mm upright pins.
 - [JLCPCB C238122](https://jlcpcb.com/partdetail/Keystone-5001/C238122): exact Keystone 5001 through-hole test point used for TP1/TP2.
 - TI's TIDA-01398 BOM identifies the obsolete SMT A1 as `IRS-B210ST01-R1`. A TI engineering response says `IRA-S210ST01` performance should be similar or equal and identifies package as the difference. This supports the project's explicit substitute; it is not treated as an exact BOOSTXL BOM.
 - [TI TLV333 data sheet](https://www.ti.com/lit/ds/symlink/tlv333.pdf): operating limits and pinout for the explicit U3 substitute.
