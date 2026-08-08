@@ -1,6 +1,5 @@
 import type { ChipProps } from "@tscircuit/props";
 import objPath from "./SSQ_110_03_G_D.obj";
-import stepPath from "./SSQ_110_03_G_D.step";
 
 const pinLabels = {
 	pin1: ["pin1"],
@@ -222,7 +221,6 @@ export const SSQ_110_03_G_D = (props: ChipProps<typeof pinLabels>) => {
 			}
 			cadModel={{
 				objUrl: objPath,
-				stepUrl: stepPath,
 				pcbRotationOffset: 0,
 				modelOriginPosition: { x: 0.0004862999999293294, y: 0, z: -4.2500064 },
 			}}
