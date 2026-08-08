@@ -1,14 +1,34 @@
-category,designators,manufacturer,manufacturer_part_number,JLCPCB_part_number,footprint_source,status,required_action
-op_amp,U1,Texas Instruments,TLV8544PWR,C2867322,JLCPCB exact import,exact_part_imported,Reconfirm stock and assembly tier
-current_monitor,U2,Texas Instruments,INA226AIDGSR,C49851,JLCPCB exact import,exact_part_imported,Reconfirm stock and assembly tier
-switching_diode,D4 D5,Micro Commercial Components,1N4148X-TP,C507292,JLCPCB exact import,exact_part_imported,Reconfirm stock and assembly tier
-ferrite_bead,L1 L2,Murata,BLM18HE152SN1D,C82155,JLCPCB exact import,exact_part_imported,Reconfirm stock and assembly tier
-boosterpack_headers,J1 J2,Samtec,SSQ-110-03-G-D,C3323139,JLCPCB exact import,exact_part_imported,Reconfirm exact G-D variant and stock
-pir_sensor,A1,Murata,IRS-B210ST01-R1,,Custom from archived Murata package drawing,obsolete_no_exact_jlc_match,Verify land pattern and qualify available sensor or redesign
-current_jumpers,J3 J4,Molex,87898-0204,,Custom from Molex SD-87898-001,exact_mpn_no_jlc_match,Source separately and verify physical fit
-buffer_op_amp,U3,Unknown,BUFFER_MPN_NOT_PUBLISHED,,Provisional SOT-23-5,identity_blocker,Read physical top marking or obtain authoritative TI BOM
-pir_lens,H1,Unknown,IML-0669,,Silkscreen envelope only,mechanical_blocker,Identify supplier and model retention geometry
-resistors,R1-R21 NT1-NT3,TBD,TBD,,Native generic footprints,selection_required,Select resistance tolerance power rating package and LCSC IDs
-capacitors,C1-C29,TBD,TBD,,Native generic footprints,selection_required,Select dielectric tolerance voltage polarity package and LCSC IDs
-indicator_leds,D1-D3,TBD,TBD,,Native 0603 footprints,selection_required,Select colors polarity luminous intensity and LCSC IDs
-testpoints,TP1 TP2,TBD,TBD,,Native through-hole testpoint,selection_required,Confirm probe and hole requirements
+category,designators,manufacturer,manufacturer_part_number,JLCPCB_part_number,package_or_footprint,status,required_action
+op_amp,U1,Texas Instruments,TLV8544PWR,C2867322,TSSOP-14,exact_jlc_part,Reconfirm stock and assembly tier
+current_monitor,U2,Texas Instruments,INA226AIDGSR,C49851,VSSOP-10,exact_jlc_part,Reconfirm stock and assembly tier
+buffer_op_amp,U3,Texas Instruments,TLV333IDBVR,C473369,SOT-23-5,qualified_substitute,Validate INA226 reading against calibrated ammeter
+pir_sensor,A1,Murata,IRA-S210ST01,C152563,Exact imported 3-lead THT footprint,qualified_substitute,Reconfirm stock and wave-solder fixture or hand-install plan
+pir_lens,H1,Murata,IML-0688,,10.8 mm square mechanical envelope,matched_mechanical_part,Source separately and validate housing alignment and retention
+switching_diode,D4 D5,Micro Commercial Components,1N4148X-TP,C507292,SOD-523,exact_jlc_part,Reconfirm stock and polarity
+ferrite_bead,L1 L2,Murata,BLM18HE152SN1D,C82155,0603,exact_jlc_part,Reconfirm stock
+boosterpack_headers,J1 J2,Samtec,SSQ-110-03-G-D,C3323139,Exact imported 2x10 THT,exact_jlc_part,Reconfirm G-D variant stock and mating height
+current_jumpers,J3 J4,Molex,87898-0204,,Manufacturer land pattern,source_separately,Verify fit and fit removable shunts
+testpoints,TP1 TP2,Keystone,5001,,1.0 mm THT hole,hand_install,Confirm probe compatibility and source separately
+resistor,R1,Yageo,AC0805FR-07442RL,C228838,0805 442 ohm 1% 0.125 W,selected_jlc_part,Reconfirm stock
+resistor,R2 R3,Stackpole,RMCS0805FT487R,C7289906,0805 487 ohm 1% 0.125 W,selected_jlc_part,Reconfirm stock
+resistor,R4 R5 R10 R19,UniOhm,CQ03WAF1002T5E,C516551,0603 10 kohm 1%,selected_jlc_part,Reconfirm stock
+resistor,R6,SAE,1RC0603F6811,C54531559,0603 6.81 kohm 1%,selected_jlc_part,Reconfirm stock
+resistor,R7 R8 R11 R18 R20,VO,SCR0805F15M,C3016870,0805 15 Mohm 1% 150 V,selected_jlc_part,Clean flux and verify leakage control
+resistor,R9,SAE,1RC0603F1504,C54531218,0603 1.50 Mohm 1%,selected_jlc_part,Reconfirm stock
+resistor,R12,Yageo,RC0603FR-07619KL,C245988,0603 619 kohm 1%,selected_jlc_part,Reconfirm stock
+resistor,R13,KOA Speer,RK73H1JTTD6812F,C830353,0603 68.1 kohm 1%,selected_jlc_part,Reconfirm stock
+resistor,R14 R15 R17 NT1 NT2 NT3,UniOhm,0603WAF0000T5E,C21189,0603 0 ohm,selected_jlc_part,Reconfirm stock
+resistor,R16,SAE,1RC0603F1304,C54531191,0603 1.30 Mohm 1%,selected_jlc_part,Reconfirm stock
+resistor,R21,Yageo,RT0603BRD0715KL,C326733,0603 15.0 kohm 0.1%,selected_jlc_part,Validate current measurement calibration
+capacitor,C1 C2 C3 C4 C6 C14,Murata,GRM188R71H103KA01D,C77053,0603 0.01 uF 50 V X7R,selected_jlc_part,Reconfirm stock
+capacitor,C5,TDK,C2012X5R1A336MTJ00E,C342635,0805 33 uF 10 V X5R,selected_jlc_part,Check effective capacitance under DC bias
+capacitor,C7 C15,Murata,GRM1885C1H102JA01D,C77026,0603 1000 pF 50 V C0G,selected_jlc_part,Reconfirm stock
+capacitor,C8 C13 C17 C18 C19 C21 C22 C23 C24 C26 C27 C29,Murata,GRM188R71E104KA01D,C77050,0603 0.1 uF 25 V X7R,selected_jlc_part,Reconfirm stock
+capacitor,C9,TDK,C2012X5R1A335M125AA,C3851074,0805 3.3 uF 10 V X5R,selected_jlc_part,Check effective capacitance under DC bias
+capacitor,C10,HRE,CGA1206X5R107M100NT,C6119961,1206 100 uF 10 V X5R,selected_jlc_part,Verify vendor data and effective capacitance under DC bias
+capacitor,C11 C20 C25 C28,Murata,GRM188R60J106ME47D,C77041,0603 10 uF 6.3 V X5R,selected_jlc_part,Reconfirm stock and effective capacitance
+capacitor,C12,TDK,C1608X7R1C105KT000N,C76617,0603 1 uF 16 V X7R,selected_jlc_part,Reconfirm stock
+capacitor,C16,Murata,GRM1885C1H101JA01D,C71664,0603 100 pF 50 V C0G,selected_jlc_part,Reconfirm stock
+indicator_led,D1,Everlight,EL0603/R6C-A01/DT,C883165,0603 red,selected_jlc_part,Verify polarity and brightness
+indicator_led,D2,Everlight,19-213/Y2C-CQ2R2L/3T(CY),C72038,0603 yellow,selected_jlc_part,Verify polarity and brightness
+indicator_led,D3,Everlight,19-217/GHC-YN1P2B18X/6T,C2986031,0603 green,selected_jlc_part,Verify polarity and brightness

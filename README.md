@@ -1,38 +1,36 @@
 # BOOSTXL-TLV8544PIR tscircuit reconstruction
 
-This project is an engineering reconstruction of Texas Instruments' `BOOSTXL-TLV8544PIR` PIR motion-detector BoosterPack in tscircuit.
+This is an engineering reconstruction of Texas Instruments' `BOOSTXL-TLV8544PIR` PIR motion-detector BoosterPack.
 
 ## Current status
 
-- The tscircuit project is initialized and its dependencies are installed.
-- The entry point is `index.circuit.tsx`.
-- TI's exact two-page BoosterPack schematic has been downloaded, rendered, and visually verified.
-- TI's annotated top-view board rendering has also been extracted for placement and footprint research.
-- A first-pass component/value inventory has been transcribed to `reference/boostxl-tlv8544pir/component-inventory.csv`.
-- The complete 70-component, 40-net board is implemented directly in `index.circuit.tsx`; there are no local wrapper components or secondary board source files.
-- Native tscircuit elements are used throughout. JLCPCB/EasyEDA assets supply exact part metadata and 3D models; exact imported JSX is retained only for J1/J2 because their best footprinter match is below the 95% copper-IoU threshold. See `docs/footprint-conversion.md` and `imports/README.md`.
-- The PCB uses the 50.8 mm × 43.18 mm 40-pin BoosterPack envelope, 45.72 mm header spacing, chamfered corners, and a routed two-layer placement.
-- A1 is identified as Murata `IRS-B210ST01-R1` and uses a custom five-pad footprint based on the archived Murata package drawing.
-- J3/J4 use the exact Molex `87898-0204` 2.54-mm SMT land pattern from drawing `SD-87898-001`; the part is not available in JLCPCB's catalog.
-- The pinned tscircuit v6 local autorouter completes 133 PCB connections with 100 vias and a bottom-side GND pour. The current circuit JSON contains zero placement, routing, or connectivity errors; routing experiments are documented in `docs/autorouting-investigation.md`.
-- U3's published circuit requirements and the search for its missing MPN are documented in `docs/u3-investigation.md`; the source deliberately does not guess the device.
-- Exact imports, custom parts, generic selections, and purchasing blockers are tracked in `manufacturing/procurement-status.csv`.
-- Generated KiCad, SVG, and readable-netlist artifacts are described in `exports/README.md`.
+- The complete 70-component, 40-net design is written directly in `index.circuit.tsx`. There is no secondary board file and no project-local component wrapper layer.
+- Native tscircuit elements are used for ordinary parts. The only JSX components instantiated from imports are exact JLCPCB parts whose geometry did not meet the project's 95% footprinter-IoU threshold: J1/J2 and A1.
+- TI's two-page schematic was transcribed from SNOU148A Figures 27 and 28. C22 is correctly placed across R21, and NT1/NT2/NT3 preserve TI's rail split.
+- The unpublished original U3 identity is not guessed. `TLV333IDBVR` is explicitly selected as a qualified, orderable unity-gain-buffer substitute and uses a 95.98%-IoU SOT-23-5 footprinter string plus its imported JLCPCB model.
+- The obsolete SMT PIR is replaced by Murata `IRA-S210ST01` (JLCPCB C152563), using its exact imported three-lead through-hole footprint. The matching lens is Murata `IML-0688`.
+- Every populated component has a manufacturer part number. Every automatically assembled component also has a JLCPCB/LCSC part number; J3/J4 and TP1/TP2 are identified separately sourced parts.
+- The reconstructed board is 60.96 mm × 50.8 mm. Its 43.18-mm header-center spacing (45.72 mm between outer header columns), asymmetric overhang, three holes, and outline are inferred from TI's scale image and BoosterPack grid because TI did not publish native PCB CAD for this board.
+- The local v6 router completes 131 PCB traces with 102 vias and a bottom GND pour. The circuit JSON contains zero placement, routing, or connectivity errors.
+- `bun run release-check` enforces component count, net count, routing, zero circuit errors, critical MPNs, supplier coverage, and the corrected C22/NT/U3/A1 topology.
 
-## Engineering status
+## Release status
 
-The project is routed and internally DRC-clean, but it is still a reconstruction rather than TI's original PCB source. Do not send it directly to fabrication: `U3` is not identified in TI's published schematic, the mounting-hole positions and corner chamfers are inferred from the BoosterPack grid and board imagery, and the lens/mechanical clearances require measurement against physical hardware. See `docs/manufacturing-status.md`.
+This is an **orderable prototype release candidate**, not a production-proven clone. The electrical values, topology, MPNs, footprints, and supplier IDs are now traceable. Before paying for assembly, print the 1:1 mechanical overlay and confirm the reconstructed outline/header/hole/lens geometry against the intended LaunchPad. After assembly, execute `docs/bring-up-plan.md`; the IRA-S210 substitution and lens housing require first-article qualification.
 
-## Reference data
+See:
 
-See `reference/README.md` for the source inventory and the important distinction between the exact BoosterPack files and the related `TIDA-01398` reference design.
+- `docs/design-verification.md` for value provenance and calculated checkpoints;
+- `docs/manufacturing-status.md` for the remaining release gates;
+- `docs/mechanical-integration.md` for the board/sensor/lens fit evidence;
+- `manufacturing/procurement-status.csv` for exact purchasing selections; and
+- `exports/README.md` for generated deliverables.
 
 ## Commands
 
 ```sh
 bun install
-bun run typecheck
-bun run build
+bun run release-check
 bun run dev
 bunx tsci export index.circuit.tsx -f kicad_zip -o exports/BOOSTXL-TLV8544PIR-routed-kicad.zip --disable-parts-engine
 ```

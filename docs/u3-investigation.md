@@ -1,36 +1,46 @@
-# U3 identity investigation
+# U3 investigation and substitute qualification
 
-## Evidence-backed facts
+## What TI publishes
 
-TI's published `BOOSTXL-TLV8544PIR` schematic (SNOU148A, Figure 28 on page 23) defines U3 electrically but does not print a value or manufacturer part number.
+SNOU148A Figure 28 defines U3 electrically but does not identify its manufacturer part number. The schematic and official board image establish a single op-amp in the standard SOT-23-5 pinout:
 
-The published circuit establishes all of the following:
+- pin 1 `OUT`, pin 2 `V-`, pin 3 `IN+`, pin 4 `IN-`, pin 5 `V+`;
+- `OUT` tied to `IN-` as a unity-gain follower;
+- 5-V supply and ground;
+- `IN+` sensing `V+_TLV`; and
+- `OUT` buffering the low side of R21 into INA226 `VIN-` while INA226 `VIN+` senses `3.3VTLV`.
 
-- U3 is a single op-amp in the standard five-pin SOT-23 pinout: pin 1 `OUT`, pin 2 `V-`, pin 3 `IN+`, pin 4 `IN-`, and pin 5 `V+`.
-- It is wired as a unity-gain follower: `OUT` is connected directly to `IN-`.
-- It is powered from the filtered 5-V rail and ground.
-- `IN+` senses `V+_TLV`, the low side of the 15.0-kohm current-sense resistor R21.
-- Its output drives the INA226 `VIN-` input while the INA226 `VIN+` input senses `3.3VTLV`, the high side of R21.
-- TI's official top-view product image confirms a five-lead SOT-23-size package at U3. The available image does not resolve a usable top marking.
+TI's published material does not provide enough evidence to claim the exact original U3 identity.
+
+## Selected production substitute
+
+The reconstruction explicitly selects Texas Instruments `TLV333IDBVR`, JLCPCB/LCSC C473369. This is a substitute selection, not a claim about the original BOM.
+
+The TI data sheet qualifies it for this follower:
+
+- 1.8-V to 5.5-V operation, so a 5-V supply is valid;
+- unity-gain stable;
+- rail-to-rail input/output and common-mode range 0.1 V beyond both rails, covering the approximately 3.3-V sense node;
+- standard DBV SOT-23-5 pinout matching Figure 28;
+- 15-µV maximum input offset at 25 °C; and
+- input bias current in the picoamp range.
+
+At R21 = 15.0 kΩ, 15 µV corresponds to 1 nA of worst-case 25 °C input-referred current error. The INA226 shunt-voltage LSB of 2.5 µV corresponds to 0.167 nA through R21, so U3 offset is measurable but small relative to the board's microamp-scale current measurement.
+
+## Footprint decision
+
+`tsci import C473369 --jlcpcb --download --use-exact-footprint` supplies exact model provenance. The package-correct footprinter comparison produced 95.9821% copper IoU for:
+
+`sot25_w2.2157mm_pl1.0276mm_pin1location(leftside,bottom)`
+
+That clears the project's 95% rule, so `index.circuit.tsx` uses a native `chip` with explicit correct pin labels and the imported OBJ/STEP files. The generated import JSX is retained only as provenance because its automatically inferred aliases incorrectly combined pin functions.
+
+## Remaining validation
+
+The substitute is electrically and geometrically qualified on paper. First-article bring-up must still compare the INA226 reading with a calibrated series ammeter at room temperature and across the expected operating range. That test validates the complete signal chain, soldering, and actual offset rather than only the data-sheet limits.
 
 Sources:
 
-- [TI BOOSTXL-TLV8544PIR product page](https://www.ti.com/tool/BOOSTXL-TLV8544PIR)
-- [TI BOOSTXL-TLV8544PIR user guide, SNOU148A](https://www.ti.com/lit/ug/snou148a/snou148a.pdf)
-- [TI official top-view product image](https://www.ti.com/content/dam/ticom/images/products/ic/amplifiers/evm-boards/boostxl-tlv8544pir-top.png)
-
-## What a verified replacement must satisfy
-
-Any candidate must be checked for the exact pinout above, 5-V operation, unity-gain stability, input common-mode range at approximately 3.3 V, output swing at approximately 3.3 V, input-bias-current error, and input-offset-voltage error. Offset at U3 appears directly across the INA226 differential measurement and therefore becomes a current-measurement error through R21.
-
-Package compatibility alone is not enough. A plausible modern op-amp is not evidence that it is TI's original choice.
-
-## Current conclusion
-
-No authoritative exact-board BOM or native PCB package was found on TI's public product page, in SNOU148A, or in the related TIDA-01398 collateral. TIDA-01398 uses the same general PIR concept but is a different PCB and its `U3` designator is unrelated. Public board photographs confirm the package only; they do not identify its marking.
-
-The source therefore intentionally keeps `manufacturerPartNumber="BUFFER_MPN_NOT_PUBLISHED"` and a provisional `sot23_5` footprint. Do not replace that placeholder until one of these is obtained:
-
-1. a sharp macro photograph of U3's top marking from a physical BoosterPack;
-2. an authoritative TI BOM or assembly file for the exact BoosterPack; or
-3. written confirmation from TI identifying U3.
+- [TI BOOSTXL-TLV8544PIR user guide](https://www.ti.com/lit/ug/snou148a/snou148a.pdf)
+- [TI TLV333 data sheet](https://www.ti.com/lit/ds/symlink/tlv333.pdf)
+- [JLCPCB TLV333IDBVR C473369](https://jlcpcb.com/partdetail/TexasInstruments-TLV333IDBVR/C473369)

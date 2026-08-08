@@ -1,22 +1,24 @@
 # Manufacturing status
 
-## What is resolved
+## Resolved engineering blockers
 
-- The electrical design is reconstructed from the complete two-page TI schematic in SNOU148A: 70 source components and 40 nets.
-- U1, U2, D4/D5, and L1/L2 use native elements with converter-verified footprinter strings and downloaded JLCPCB 3D models. J1/J2 retain the exact generated JLCPCB component because conversion is below the 95% threshold.
-- A1 is identified as Murata `IRS-B210ST01-R1` and has a custom five-terminal SMT footprint derived from the archived package drawing.
-- J3/J4 are exact Molex `87898-0204` parts with the manufacturer's recommended two-pad SMT land pattern.
-- The board uses the TI 40-pin BoosterPack 50.8 mm × 43.18 mm maximum envelope and 45.72-mm header-column spacing.
-- Local autorouting completes every connection. The generated circuit JSON has zero tscircuit placement, routing, or connectivity errors.
-- A curated procurement ledger records exact imports, custom footprints, generic-part selections, and blockers in `manufacturing/procurement-status.csv`.
+- The 70-component/40-net electrical design is transcribed from TI SNOU148A Figures 27 and 28.
+- C22 is across R21 between `3.3VTLV` and `V+_TLV`; it is not a ground bypass. NT2 and NT3 branch from `3.3VTLV`, matching TI's functional rail split.
+- U3 is no longer an unidentified placeholder. `TLV333IDBVR` is documented as a qualified substitute with correct SOT-23-5 pinout, 5-V operation, common-mode range, unity-gain stability, offset, imported model, and JLCPCB ID.
+- The obsolete five-pad PIR reconstruction is removed. A1 is Murata `IRA-S210ST01` C152563 using the exact three-lead JLCPCB footprint and model; H1 is its matching `IML-0688` lens.
+- Every electrical component has a fixed value and manufacturer part number. Automatically assembled parts have JLCPCB/LCSC IDs; J3/J4 and TP1/TP2 are explicitly separately sourced.
+- All exact-import versus footprinter decisions are recorded against the 95% IoU policy.
+- The 60.96 mm × 50.8 mm two-layer board routes completely: 131 PCB traces, 102 vias, bottom GND pour, and zero generated circuit error elements.
+- `bun run release-check` fails if critical topology, MPN coverage, board geometry, routing, or error status regresses.
 
-## Must be resolved before fabrication
+## Prototype release gates
 
-1. Identify U3 from physical board markings or an authoritative BOOSTXL BOM, verify its pinout and electrical limits, then replace `BUFFER_MPN_NOT_PUBLISHED`. The evidence and acceptance criteria are recorded in `docs/u3-investigation.md`.
-2. Measure a physical BoosterPack to confirm the four mounting-hole centers, hole diameters, chamfer geometry, exact board outline, and PIR/lens retention details.
-3. Verify the reconstructed Murata footprint against the original PCB land pattern or a physical sensor. The package terminal locations are sourced, but the chosen solder-land dimensions are an engineering reconstruction.
-4. Confirm passive and LED case sizes, voltage/power ratings, polarities, and procurement choices against hardware.
-5. Review and optimize the two-layer autoroute, especially analog return paths, guard/keepout strategy around the PIR input, bottom GND-pour continuity, and the current 100-via count. See `docs/autorouting-investigation.md` for rejected automated alternatives.
-6. Run KiCad DRC with the intended PCB fabricator's constraints, inspect every Gerber/drill layer, and complete ERC, BOM, pick-and-place, assembly, and bring-up reviews.
+These are evidence-producing checks, not missing design decisions:
 
-The generated Gerbers are included to make review easier; their presence is not a fabrication release.
+1. Print/export the PCB at exactly 1:1 and overlay it on the target LaunchPad or physical TI board. Confirm both 2×10 header rows, three hole centers/diameters, outline/chamfers, USB/antenna clearances, sensor center, and 10.8-mm lens envelope. The outline is image/grid-derived because TI did not publish the original CAD.
+2. Design or select a housing that keeps `IML-0688` aligned and retained over `IRA-S210ST01`. Murata explicitly requires tab alignment and external retention against dislocation.
+3. Reconfirm live supplier inventory and the JLCPCB assembly process immediately before ordering. A1 is an extended, wave-soldered part and may require a fixture or manual installation.
+4. Run the generated KiCad PCB through the chosen fabricator's DRC and inspect copper, solder mask, silkscreen, outline, plated holes, and drill files in an independent Gerber viewer.
+5. Order a small first article, then execute `docs/bring-up-plan.md`. In particular, qualify motion sensitivity/false triggers with the substituted PIR/lens and compare INA226 current readings against a calibrated ammeter.
+
+Passing those checks promotes the board from prototype release candidate to a validated hardware revision. Generated Gerbers are provided for review, not as an unconditional production release.

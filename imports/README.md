@@ -1,22 +1,21 @@
 # JLCPCB / EasyEDA imports
 
-These components were imported with `tsci import --jlcpcb --download --use-exact-footprint`. The generated files are retained as exact geometry/model provenance. Production usage in `index.circuit.tsx` follows the project's 95% copper-IoU rule: native tscircuit elements use a footprinter string when conversion clears the threshold, while a generated JLCPCB component is used when it does not.
+These files were generated with `tsci import --jlcpcb --download --use-exact-footprint` and preserve exact supplier geometry and 3D-model provenance. `index.circuit.tsx` converts them to native elements only when a package-correct footprinter candidate reaches the project's 95% copper-IoU threshold.
 
-| Designator(s) | Manufacturer part number | JLCPCB/LCSC ID | Status |
+| Designator(s) | Manufacturer part number | JLCPCB/LCSC ID | Source usage |
 | --- | --- | --- | --- |
-| U1 | TLV8544PWR | C2867322 | Native `chip`; 100% copper-IoU footprinter string; imported STEP/OBJ. |
-| U2 | INA226AIDGSR | C49851 | Native `chip`; 96.23% package-correct VSSOP string; imported STEP/OBJ. |
-| D4, D5 | 1N4148X-TP | C507292 | Native `diode`; 100% copper-IoU string; imported STEP/OBJ. |
-| L1, L2 | BLM18HE152SN1D | C82155 | Native `chip`; 100% copper-IoU string; imported STEP/OBJ. |
-| J1, J2 | SSQ-110-03-G-D | C3323139 | Exact generated JLCPCB component retained; best conversion was only 14.84% copper IoU. |
+| U1 | TLV8544PWR | C2867322 | Native `chip`; 100% IoU; imported STEP/OBJ. |
+| U2 | INA226AIDGSR | C49851 | Native `chip`; 96.23% VSSOP candidate; imported STEP/OBJ. |
+| U3 | TLV333IDBVR | C473369 | Native `chip`; 95.9821% SOT-23-5 candidate; imported STEP/OBJ. |
+| D4, D5 | 1N4148X-TP | C507292 | Native `diode`; 100% IoU; imported STEP/OBJ. |
+| L1, L2 | BLM18HE152SN1D | C82155 | Native `chip`; 100% IoU; imported STEP/OBJ. |
+| J1, J2 | SSQ-110-03-G-D | C3323139 | Exact imported JSX retained; 14.84% best relevant IoU. |
+| A1 | IRA-S210ST01 | C152563 | Exact imported JSX retained; 13.87% copper and 1.31% hole IoU. |
 
-## Parts without an exact import
+## Separately sourced parts
 
-- J3/J4: JLCPCB returned no exact result for Molex `87898-0204`; native `pinheader` elements use a 100%-IoU footprinter representation of the land pattern from Molex drawing `SD-87898-001`.
-- A1: Cross-reference evidence from TI's related TIDA-01398 BOM and TI E2E identifies the sensor as Murata `IRS-B210ST01-R1`. It is obsolete and has no exact JLCPCB result, so the circuit uses a custom five-pad footprint based on the archived Murata package drawing.
-- U3: TI does not print the unity-gain buffer MPN; the circuit preserves the five-pin follower connection with a provisional SOT-23-5 footprint.
-- H1: `IML-0669` is a mechanical PIR lens; its nominal 12-mm envelope is represented on silkscreen, but its physical retention features are not modeled.
+- J3/J4 are Molex `87898-0204`. JLCPCB had no exact catalog result, so native `pinheader` elements represent the manufacturer land pattern from SD-87898-001. Source and fit these separately.
+- TP1/TP2 are Keystone `5001` through-hole test points and are intended for hand installation.
+- H1 is the Murata `IML-0688` Fresnel lens. It is mechanical rather than an electrical source component; its 10.8-mm envelope is shown on board silkscreen and its housing requirements are documented separately.
 
-Do not select a substitute for U3, A1, J3/J4, or H1 without checking electrical compatibility, mechanical fit, and current availability.
-
-The complete conversion evidence and chosen strings are recorded in `docs/footprint-conversion.md`.
+See `docs/footprint-conversion.md` for the comparison record.

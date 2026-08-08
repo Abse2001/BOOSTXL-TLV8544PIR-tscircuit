@@ -28,7 +28,8 @@ C1 C2 C3 C4,4,0.01 uF,LaunchPad signal filtering,high
 C5,1,33 uF,First amplifier feedback filter,high
 C6,1,0.01 uF,First amplifier feedback filter,high
 C7 C15,2,1000 pF,Analog filtering,high
-C8 C13 C17 C18 C19 C21 C22 C23,8,0.1 uF,Reference and supply decoupling,high
+C8 C13 C17 C18 C19 C21 C23,7,0.1 uF,Reference and supply decoupling,high
+C22,1,0.1 uF,Filtering across the R21 TLV supply-current shunt,high
 C9,1,3.3 uF,Interstage AC coupling,high
 C10,1,100 uF,PIR supply filtering,high
 C11 C20,2,10 uF,Supply and signal filtering,high
