@@ -465,12 +465,12 @@ C6 (0.01uF 0603)
 - pin2(neg, cathode, right): NETS(U1A_INV)
 
 D4 (1N4148X-TP)
-- pin1(cathode, neg): NETS(U1A_OUT)
-- pin2(anode, pos): NETS(U1A_INV)
+- pin1(cathode, neg, left): NETS(U1A_OUT)
+- pin2(anode, pos, right): NETS(U1A_INV)
 
 D5 (1N4148X-TP)
-- pin1(cathode, neg): NETS(U1A_INV)
-- pin2(anode, pos): NETS(U1A_OUT)
+- pin1(cathode, neg, left): NETS(U1A_INV)
+- pin2(anode, pos, right): NETS(U1A_OUT)
 
 R4 (10kΩ res0603)
 - pin1(anode, pos, left): NETS(U1A_OUT)
@@ -573,10 +573,8 @@ D3
 - pin2(cathode, neg, right): NETS(GND)
 
 L1 (BLM18HE152SN1D)
-- pin1: NETS(V3P3_LPD)
-- pin1: NOT_CONNECTED
-- pin2: NETS(V3P3_FILTERED)
-- pin2: NOT_CONNECTED
+- pin1(left): NETS(V3P3_LPD)
+- pin2(right): NETS(V3P3_FILTERED)
 
 C24 (0.1uF 0603)
 - pin1(pos, anode, left): NETS(V3P3_FILTERED)
@@ -587,10 +585,8 @@ C25 (10uF 0805)
 - pin2(neg, cathode, right): NETS(GND)
 
 L2 (BLM18HE152SN1D)
-- pin1: NETS(V5_LPD)
-- pin1: NOT_CONNECTED
-- pin2: NETS(V5_FILTERED)
-- pin2: NOT_CONNECTED
+- pin1(left): NETS(V5_LPD)
+- pin2(right): NETS(V5_FILTERED)
 
 C26 (0.1uF 0603)
 - pin1(pos, anode, left): NETS(V5_FILTERED)
@@ -621,12 +617,12 @@ NT3 (0Ω res0603)
 - pin2(cathode, neg, right): NETS(V3P3_INA)
 
 J3 (87898-0204)
-- pin1: NETS(V_POS_PIR)
-- pin2: NETS(V3P3_FILTERED)
+- pin1(left): NETS(V_POS_PIR)
+- pin2(right): NETS(V3P3_FILTERED)
 
 J4 (87898-0204)
-- pin1: NETS(V_POS_TLV)
-- pin2: NETS(V3P3_FILTERED)
+- pin1(left): NETS(V_POS_TLV)
+- pin2(right): NETS(V3P3_FILTERED)
 
 R21 (15kΩ res0603)
 - pin1(anode, pos, left): NETS(V3P3_TLV)
