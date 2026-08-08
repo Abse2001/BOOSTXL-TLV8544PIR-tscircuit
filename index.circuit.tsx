@@ -86,34 +86,34 @@ export default function Circuit() {
 			autorouterVersion="v6"
 		>
 			<schematicsheet
-				name="PAGE1"
+				name="PIR Signal Conditioning"
 				displayName="PIR Sensor Signal Conditioning"
 				sheetIndex={1}
 			/>
 			<schematicsheet
-				name="PAGE2"
+				name="LaunchPad Interface"
 				displayName="LaunchPad Interface and Headers"
 				sheetIndex={2}
 			/>
 			<schematicsheet
-				name="PAGE3"
+				name="User Status LEDs"
 				displayName="User Status LEDs"
 				sheetIndex={3}
 			/>
 			<schematicsheet
-				name="PAGE4"
+				name="Power Rail Distribution"
 				displayName="Power Filtering and Rail Distribution"
 				sheetIndex={4}
 			/>
 			<schematicsheet
-				name="PAGE5"
+				name="INA226 Current Monitor"
 				displayName="INA226 Current Monitor and Buffer"
 				sheetIndex={5}
 			/>
 
 			<group
-				name="PAGE2_LAUNCHPAD_INTERFACE"
-				schSheetName="PAGE2"
+				name="LAUNCHPAD_INTERFACE"
+				schSheetName="LaunchPad Interface"
 				schX={7}
 				schY={2}
 				pcbX={0}
@@ -233,8 +233,8 @@ export default function Circuit() {
 			</group>
 
 			<group
-				name="PAGE1_PIR_SIGNAL"
-				schSheetName="PAGE1"
+				name="PIR_SIGNAL_CHAIN"
+				schSheetName="PIR Signal Conditioning"
 				schY={-5.5}
 				pcbX={0}
 				pcbY={0}
@@ -883,8 +883,8 @@ export default function Circuit() {
 			</group>
 
 			<group
-				name="PAGE3_USER_LEDS"
-				schSheetName="PAGE3"
+				name="USER_STATUS_LEDS"
+				schSheetName="User Status LEDs"
 				schX={-8}
 				schY={1}
 				pcbX={0}
@@ -982,8 +982,8 @@ export default function Circuit() {
 			</group>
 
 			<group
-				name="PAGE4_POWER_FILTERING"
-				schSheetName="PAGE4"
+				name="POWER_RAIL_DISTRIBUTION"
+				schSheetName="Power Rail Distribution"
 				schX={5}
 				schY={-1.5}
 				pcbX={0}
@@ -1181,8 +1181,8 @@ export default function Circuit() {
 			</group>
 
 			<group
-				name="PAGE5_CURRENT_MONITOR"
-				schSheetName="PAGE5"
+				name="INA226_CURRENT_MONITOR"
+				schSheetName="INA226 Current Monitor"
 				schX={-9}
 				schY={-2}
 				pcbX={0}

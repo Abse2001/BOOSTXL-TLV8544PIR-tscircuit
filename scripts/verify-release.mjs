@@ -70,7 +70,13 @@ const sheetIdByName = new Map(
 );
 assert.deepEqual(
 	[...sheetIdByName.keys()].sort(),
-	["PAGE1", "PAGE2", "PAGE3", "PAGE4", "PAGE5"],
+	[
+		"INA226 Current Monitor",
+		"LaunchPad Interface",
+		"PIR Signal Conditioning",
+		"Power Rail Distribution",
+		"User Status LEDs",
+	],
 	"Expected five purpose-specific schematic sheets",
 );
 
