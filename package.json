@@ -1,28 +1,28 @@
 {
-	"name": "@tsci/abse.boostxl-tlv8544pir",
-	"version": "1.0.13",
-	"description": "tscircuit reconstruction of the TI BOOSTXL-TLV8544PIR BoosterPack",
-	"main": "index.circuit.tsx",
-	"keywords": [
-		"tscircuit",
-		"circuit",
-		"pcb",
-		"electronics"
-	],
-	"scripts": {
-		"dev": "tsci dev",
-		"build": "tsci build index.circuit.tsx --disable-parts-engine",
-		"check:shorts": "tsci check shorts index.circuit.tsx",
-		"verify": "bun scripts/verify-release.mjs",
-		"release-check": "bun run typecheck && bun run build && bun run verify && bun run check:shorts",
-		"snapshot": "tsci snapshot",
-		"snapshot:update": "tsci snapshot --update",
-		"start": "tsci dev",
-		"typecheck": "tsc --noEmit"
-	},
-	"devDependencies": {
-		"tscircuit": "latest",
-		"typescript": "^5.0.0"
-	},
-	"author": "abse"
+  "name": "@tsci/abse.boostxl-tlv8544pir",
+  "version": "1.0.16",
+  "description": "tscircuit reconstruction of the TI BOOSTXL-TLV8544PIR BoosterPack",
+  "main": "index.circuit.tsx",
+  "keywords": [
+    "tscircuit",
+    "circuit",
+    "pcb",
+    "electronics"
+  ],
+  "scripts": {
+    "dev": "tsci dev",
+    "build": "tsci build index.circuit.tsx --disable-parts-engine",
+    "check:shorts": "tsci check shorts index.circuit.tsx",
+    "verify": "bun scripts/verify-release.mjs",
+    "release-check": "bun run typecheck && bun run build && bun run verify && bun run check:shorts",
+    "snapshot": "tsci snapshot",
+    "snapshot:update": "tsci snapshot --update",
+    "start": "tsci dev",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "tscircuit": "latest",
+    "typescript": "^5.0.0"
+  },
+  "author": "abse"
 }
