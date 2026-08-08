@@ -12,42 +12,42 @@ import { TLV333IDBVR } from "./imports/TLV333IDBVR/TLV333IDBVR";
 import { TLV8544PWR } from "./imports/TLV8544PWR/TLV8544PWR";
 
 /**
- * Nets are named after the labels in TI schematic SNOU148A, Figures 27 and 28.
- * Extra internal names describe unlabeled junctions without changing the circuit.
+ * Keys preserve TI's SNOU148A terminology. Compact net/trace names keep the
+ * rendered labels inside their schematic sections without changing connectivity.
  */
 const N = {
 	GND: "net.GND",
 	V5_LPD: "net.V5_LPD",
-	V3P3_LPD: "net.V3P3_LPD",
-	V5: "net.V5_FILTERED",
-	V3P3: "net.V3P3_FILTERED",
-	V3P3_TLV: "net.V3P3_TLV",
-	V3P3_REF: "net.V3P3_REF",
-	V3P3_INA: "net.V3P3_INA",
-	V_TLV: "net.V_POS_TLV",
-	V_PIR: "net.V_POS_PIR",
-	PIR_VIN1: "net.PIR_VIN1",
-	PIR_VOUT_RAW: "net.PIR_VOUT_RAW",
+	V3P3_LPD: "net.V33_LPD",
+	V5: "net.V5_FILT",
+	V3P3: "net.V33_FILT",
+	V3P3_TLV: "net.V33_TLV",
+	V3P3_REF: "net.V33_REF",
+	V3P3_INA: "net.V33_INA",
+	V_TLV: "net.V_TLV",
+	V_PIR: "net.V_PIR",
+	PIR_VIN1: "net.PIR_IN",
+	PIR_VOUT_RAW: "net.PIR_RAW",
 	PIR_VO: "net.PIR_VO",
-	U1A_INV: "net.U1A_INV",
-	U1A_AC_RETURN: "net.U1A_AC_RETURN",
-	U1A_OUT: "net.U1A_OUT",
-	INTERSTAGE: "net.INTERSTAGE",
-	U1B_INV: "net.U1B_INV",
-	U1B_REF: "net.U1B_REF",
-	U1B_OUT: "net.U1B_OUT",
-	PIR_SIGNAL_BUS: "net.PIR_SIGNAL_BUS",
-	REF_HIGH: "net.REF_HIGH",
+	U1A_INV: "net.A_INV",
+	U1A_AC_RETURN: "net.AC_RET",
+	U1A_OUT: "net.A_OUT",
+	INTERSTAGE: "net.INTER",
+	U1B_INV: "net.B_INV",
+	U1B_REF: "net.B_REF",
+	U1B_OUT: "net.B_OUT",
+	PIR_SIGNAL_BUS: "net.PIR_BUS",
+	REF_HIGH: "net.REF_HI",
 	REF_MID: "net.REF_MID",
-	REF_LOW: "net.REF_LOW",
-	U1C_OUT: "net.U1C_OUT",
-	U1D_OUT: "net.U1D_OUT",
-	BUFFER_OUT: "net.BUFFER_OUT",
+	REF_LOW: "net.REF_LO",
+	U1C_OUT: "net.C_OUT",
+	U1D_OUT: "net.D_OUT",
+	BUFFER_OUT: "net.BUF_OUT",
 	// tscircuit net identifiers cannot begin with a digit; this is TI's 1STAG_AOUT.
-	FIRST_STAGE_AOUT: "net.FIRST_STAGE_AOUT",
-	PIR_SGL_AOUT: "net.PIR_SGL_AOUT",
-	PIR_OUT_HI: "net.PIR_OUT_HI",
-	PIR_OUT_LO: "net.PIR_OUT_LO",
+	FIRST_STAGE_AOUT: "net.STG1_OUT",
+	PIR_SGL_AOUT: "net.PIR_SGL",
+	PIR_OUT_HI: "net.PIR_HI",
+	PIR_OUT_LO: "net.PIR_LO",
 	I2C_CS: "net.I2C_CS",
 	I2C_SCL: "net.I2C_SCL",
 	I2C_SDA: "net.I2C_SDA",
@@ -929,28 +929,6 @@ export default function Circuit() {
 				displayName="Current Monitor and Buffer"
 				sectionTitleFontSize="0.26mm"
 			/>
-			<netlabel
-				net="V5_LPD"
-				connectsTo=".L2 > .pin1"
-				schX={-13.5}
-				schY={-1}
-				anchorSide="right"
-			/>
-			<netlabel
-				net="V5_FILTERED"
-				connectsTo=".L2 > .pin2"
-				schX={-11.5}
-				schY={-1}
-				anchorSide="left"
-			/>
-			<netlabel
-				net="V5_FILTERED"
-				connectsTo=".U3A > .pin5"
-				schX={7.5}
-				schY={3.6}
-				anchorSide="bottom"
-			/>
-
 			{/* 3.3-V and 5-V filtering at the LaunchPad connector. */}
 			<BLM18HE152SN1D
 				name="L1"
@@ -998,7 +976,18 @@ export default function Circuit() {
 				schY={-1}
 				pcbX={-11}
 				pcbY={18.5}
-				connections={{ pin1: N.V5_LPD, pin2: N.V5 }}
+			/>
+			<trace
+				name="V5_IN"
+				schDisplayLabel="V5_LPD"
+				from=".L2 > .pin1"
+				to={N.V5_LPD}
+			/>
+			<trace
+				name="V5_FILT"
+				schDisplayLabel="V5_FILT"
+				from=".L2 > .pin2"
+				to={N.V5}
 			/>
 			<capacitor
 				name="C26"
@@ -1190,14 +1179,22 @@ export default function Circuit() {
 				}}
 			/>
 			<trace
-				name="U3_FEEDBACK_SCH"
+				name="U3_FB"
+				schDisplayLabel="FB"
 				from=".U3A > .pin4"
 				to=".U3A > .pin2"
 			/>
 			<trace
-				name="U3_BUFFER_OUT_SCH"
+				name="U3_BUF"
+				schDisplayLabel="BUF"
 				from=".U3A > .pin4"
 				to=".U2 > .VIN_NEG"
+			/>
+			<trace
+				name="U3_V5"
+				schDisplayLabel="V5_FILT"
+				from=".U3A > .pin5"
+				to={N.V5}
 			/>
 			<capacitor
 				name="C23"

@@ -41,6 +41,46 @@ assert.deepEqual(
 assert.equal(ofType("source_net").length, 40, "Unexpected source net count");
 assert(ofType("pcb_trace").length > 0, "PCB was not routed");
 
+const oversizedSchematicLabels = ofType("schematic_net_label")
+	.map((label) => label.text)
+	.filter((text) => text.length > 8);
+assert.deepEqual(
+	oversizedSchematicLabels,
+	[],
+	"Schematic net labels must stay compact enough to fit their sections",
+);
+assert.equal(
+	ofType("schematic_element_outside_sheet_warning").length,
+	0,
+	"A schematic element extends outside its sheet",
+);
+
+const sheetIdByName = new Map(
+	ofType("schematic_sheet").map((sheet) => [sheet.name, sheet.schematic_sheet_id]),
+);
+const page1DividerLabels = ofType("schematic_net_label").filter(
+	(label) =>
+		label.schematic_sheet_id === sheetIdByName.get("PAGE1") &&
+		label.anchor_position.y > 0 &&
+		label.anchor_position.y < 1.5,
+);
+assert.deepEqual(
+	page1DividerLabels.map((label) => label.text),
+	[],
+	"A Page 1 net label intrudes into the horizontal section divider",
+);
+const page2DividerLabels = ofType("schematic_net_label").filter(
+	(label) =>
+		label.schematic_sheet_id === sheetIdByName.get("PAGE2") &&
+		label.anchor_position.x > 1.5 &&
+		label.anchor_position.x < 2.5,
+);
+assert.deepEqual(
+	page2DividerLabels.map((label) => label.text),
+	[],
+	"A Page 2 net label intrudes into the vertical section divider",
+);
+
 const board = ofType("pcb_board")[0];
 assert(board, "PCB board is missing");
 assert.equal(board.width, 60.96, "Unexpected board width");
@@ -129,20 +169,29 @@ for (const forbiddenNativeTag of [
 const traceNames = new Set(
 	ofType("source_trace").map((trace) => trace.display_name),
 );
+const explicitTraceNames = new Set(
+	ofType("source_trace").map((trace) => trace.name).filter(Boolean),
+);
+for (const traceName of ["V5_IN", "V5_FILT", "U3_FB", "U3_BUF", "U3_V5"]) {
+	assert(
+		explicitTraceNames.has(traceName),
+		`Required compact named trace is missing: ${traceName}`,
+	);
+}
 const requiredConnections = [
-	".C22 > .pin1 to net.V3P3_TLV",
-	".C22 > .pin2 to net.V_POS_TLV",
-	".NT2 > .pin1 to net.V3P3_TLV",
-	".NT2 > .pin2 to net.V3P3_REF",
-	".NT3 > .pin1 to net.V3P3_TLV",
-	".NT3 > .pin2 to net.V3P3_INA",
-	".U3 > .OUT to net.BUFFER_OUT",
-	".U3 > .IN_NEG to net.BUFFER_OUT",
-	".U3 > .IN_POS to net.V_POS_TLV",
-	".U3 > .V_POS to net.V5_FILTERED",
+	".C22 > .pin1 to net.V33_TLV",
+	".C22 > .pin2 to net.V_TLV",
+	".NT2 > .pin1 to net.V33_TLV",
+	".NT2 > .pin2 to net.V33_REF",
+	".NT3 > .pin1 to net.V33_TLV",
+	".NT3 > .pin2 to net.V33_INA",
+	".U3 > .OUT to net.BUF_OUT",
+	".U3 > .IN_NEG to net.BUF_OUT",
+	".U3 > .IN_POS to net.V_TLV",
+	".U3 > .V_POS to net.V5_FILT",
 	".U3 > .V_NEG to net.GND",
-	".A1 > .d to net.PIR_VIN1",
-	".A1 > .s to net.PIR_VOUT_RAW",
+	".A1 > .d to net.PIR_IN",
+	".A1 > .s to net.PIR_RAW",
 	".A1 > .g to net.GND",
 ];
 

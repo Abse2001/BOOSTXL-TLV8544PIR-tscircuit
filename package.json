@@ -1,6 +1,6 @@
 {
 	"name": "@tsci/abse.boostxl-tlv8544pir",
-	"version": "1.0.11",
+	"version": "1.0.12",
 	"description": "tscircuit reconstruction of the TI BOOSTXL-TLV8544PIR BoosterPack",
 	"main": "index.circuit.tsx",
 	"keywords": [
