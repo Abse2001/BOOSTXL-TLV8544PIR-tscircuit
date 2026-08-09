@@ -1,6 +1,5 @@
 import type { ChipProps } from "@tscircuit/props";
 import objPath from "./TLV333IDBVR.obj";
-import stepPath from "./TLV333IDBVR.step";
 
 const pinLabels = {
 	pin1: ["OUT"],
@@ -197,7 +196,6 @@ export const TLV333IDBVR = (props: ChipProps<typeof pinLabels>) => {
 			}
 			cadModel={{
 				objUrl: objPath,
-				stepUrl: stepPath,
 				pcbRotationOffset: 0,
 				modelOriginPosition: { x: 0, y: 0, z: -0.75 },
 			}}

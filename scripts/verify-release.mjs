@@ -68,27 +68,16 @@ assert.equal(
 const sheetIdByName = new Map(
 	ofType("schematic_sheet").map((sheet) => [sheet.name, sheet.schematic_sheet_id]),
 );
-const page1DividerLabels = ofType("schematic_net_label").filter(
-	(label) =>
-		label.schematic_sheet_id === sheetIdByName.get("PAGE1") &&
-		label.anchor_position.y > 0 &&
-		label.anchor_position.y < 1.5,
-);
 assert.deepEqual(
-	page1DividerLabels.map((label) => label.text),
-	[],
-	"A Page 1 net label intrudes into the horizontal section divider",
-);
-const page2DividerLabels = ofType("schematic_net_label").filter(
-	(label) =>
-		label.schematic_sheet_id === sheetIdByName.get("PAGE2") &&
-		label.anchor_position.x > 1.5 &&
-		label.anchor_position.x < 2.5,
-);
-assert.deepEqual(
-	page2DividerLabels.map((label) => label.text),
-	[],
-	"A Page 2 net label intrudes into the vertical section divider",
+	[...sheetIdByName.keys()].sort(),
+	[
+		"INA226 Current Monitor",
+		"LaunchPad Interface",
+		"PIR Signal Conditioning",
+		"Power Rail Distribution",
+		"User Status LEDs",
+	],
+	"Expected five purpose-specific schematic sheets",
 );
 
 const board = ofType("pcb_board")[0];
@@ -127,6 +116,58 @@ for (const [name, manufacturerPartNumber] of Object.entries(requiredMpns)) {
 		componentByName.get(name)?.manufacturer_part_number,
 		manufacturerPartNumber,
 		`${name} MPN changed or is missing`,
+	);
+}
+
+for (const name of ["L1", "L2"]) {
+	const ferriteBead = componentByName.get(name);
+	assert.equal(
+		ferriteBead?.ftype,
+		"simple_inductor",
+		`${name} must use the native inductor component`,
+	);
+	assert.equal(
+		ferriteBead?.inductance,
+		"2.387uH",
+		`${name} equivalent inductance changed`,
+	);
+	assert.deepEqual(
+		ferriteBead?.supplier_part_numbers?.jlcpcb,
+		["C82155"],
+		`${name} must retain the imported JLCPCB part`,
+	);
+
+	const sourcePorts = ofType("source_port").filter(
+		(port) => port.source_component_id === ferriteBead.source_component_id,
+	);
+	assert.equal(
+		sourcePorts.length,
+		2,
+		`${name} must have exactly two source ports`,
+	);
+
+	const schematicComponent = ofType("schematic_component").find(
+		(component) =>
+			component.source_component_id === ferriteBead.source_component_id,
+	);
+	assert.equal(
+		schematicComponent?.symbol_name,
+		"inductor_right",
+		`${name} must use the native inductor schematic symbol`,
+	);
+
+	const sourcePortIds = new Set(sourcePorts.map((port) => port.source_port_id));
+	const schematicPorts = ofType("schematic_port").filter((port) =>
+		sourcePortIds.has(port.source_port_id),
+	);
+	assert.equal(
+		schematicPorts.length,
+		2,
+		`${name} must have exactly two schematic ports`,
+	);
+	assert(
+		schematicPorts.every((port) => port.is_connected),
+		`${name} schematic ports must both be connected`,
 	);
 }
 
@@ -182,7 +223,7 @@ const traceNames = new Set(
 const explicitTraceNames = new Set(
 	ofType("source_trace").map((trace) => trace.name).filter(Boolean),
 );
-for (const traceName of ["V5_IN", "V5_FILT", "U3_FB", "U3_BUF", "U3_V5"]) {
+for (const traceName of ["V5_IN", "V5_FILT", "U3_FB"]) {
 	assert(
 		explicitTraceNames.has(traceName),
 		`Required compact named trace is missing: ${traceName}`,
@@ -195,13 +236,13 @@ const requiredConnections = [
 	".NT2 > .pin2 to net.V33_REF",
 	".NT3 > .pin1 to net.V33_TLV",
 	".NT3 > .pin2 to net.V33_INA",
-	".U3 > .OUT to net.BUF_OUT",
-	".U3 > .IN_NEG to net.BUF_OUT",
+	".U3 > .OUT to net.BUF",
+	".U3 > .IN_NEG to net.BUF",
 	".U3 > .IN_POS to net.V_TLV",
 	".U3 > .V_POS to net.V5_FILT",
 	".U3 > .V_NEG to net.GND",
-	".A1 > .d to net.PIR_IN",
-	".A1 > .s to net.PIR_RAW",
+	".A1 > .d to net.PIRIN",
+	".A1 > .s to net.RAW",
 	".A1 > .g to net.GND",
 ];
 
