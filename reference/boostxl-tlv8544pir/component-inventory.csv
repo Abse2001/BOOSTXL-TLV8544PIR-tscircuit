@@ -4,7 +4,7 @@ U2,1,INA226AIDGSR,I2C current and power monitor,high
 U3,1,Not printed,Five-pin unity-gain buffer in current-measurement path,low
 A1,1,IRS-B210ST01-R1,Passive infrared sensing element; cross-identified from related TI BOM and E2E evidence,medium-high
 H1,1,IML-0669,PIR lens,high
-J1 J2,2,SSQ-110-03-G-D,LaunchPad 1x10 female headers,high
+J1 J2,2,SSQ-110-03-G-D,Bottom-mounted LaunchPad 2x10 female socket headers,high
 J3 J4,2,87898-0204,Two-pin current-measurement jumper headers,high
 L1 L2,2,BLM18HE152SN1D,1500-ohm ferrite beads,high
 NT1 NT2 NT3,3,Net tie,Power-rail configuration links,high

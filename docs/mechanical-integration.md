@@ -13,6 +13,10 @@ The source uses millimetres with the board centered at `(0, 0)`:
 
 The outline and placements are scaled from TI's official top view using the known 2.54-mm header grid. The TI BoosterPack standard defines the connector grid, but this particular board visibly extends asymmetrically beyond the basic BoosterPack envelope. Because no exact native board CAD was published, the numbers above are controlled reconstruction dimensions—not metrology of an original unit.
 
+## J1/J2 LaunchPad sockets
+
+J1 and J2 are exact JLCPCB C3323139 / Samtec `SSQ-110-03-G-D` 2×10 female socket imports. They are mounted on the **bottom** side of the BoosterPack: the female housings face the LaunchPad below, while only the through-hole contacts and solder joints appear on the populated top side, matching TI's top view. Bottom-side placement also mirrors the connector footprint into TI's documented top-view numbering: J1 pin 1 (3.3 V) is the right-hand contact and pin 2 (5 V) is the left-hand contact at the upper end of J1.
+
 ## J3/J4 current jumpers
 
 TI's rendering and Molex's catalog show `87898-0204` as a 1×2, 2.54-mm vertical SMT header fitted with a removable shunt. JLCPCB lists that exact Molex part as C3331260 for pre-order, but it is not available through the current tscircuit/EasyEDA importer. The board therefore uses the stocked, exactly imported DEALON `DZ254S-11-02-48`, JLCPCB C5160785. It preserves the electrical function, pitch, row count, vertical SMT mounting, 6-mm upright pins, and removable-shunt interface.

@@ -89,6 +89,18 @@ assert.equal(board.num_layers, 2, "Unexpected copper-layer count");
 const componentByName = new Map(
 	components.map((component) => [component.name, component]),
 );
+const pcbComponentBySourceId = new Map(
+	ofType("pcb_component").map((component) => [
+		component.source_component_id,
+		component,
+	]),
+);
+const cadComponentBySourceId = new Map(
+	ofType("cad_component").map((component) => [
+		component.source_component_id,
+		component,
+	]),
+);
 const requiredMpns = {
 	A1: "IRA-S210ST01",
 	U1: "TLV8544PWR",
@@ -118,6 +130,46 @@ for (const [name, manufacturerPartNumber] of Object.entries(requiredMpns)) {
 		`${name} MPN changed or is missing`,
 	);
 }
+
+for (const name of ["J1", "J2"]) {
+	const connector = componentByName.get(name);
+	const pcbConnector = pcbComponentBySourceId.get(
+		connector?.source_component_id,
+	);
+	const cadConnector = cadComponentBySourceId.get(
+		connector?.source_component_id,
+	);
+	assert.equal(
+		pcbConnector?.layer,
+		"bottom",
+		`${name} female socket must face downward from the BoosterPack`,
+	);
+	assert(
+		cadConnector?.position?.z < 0,
+		`${name} CAD body must render below the PCB`,
+	);
+}
+
+const j1 = componentByName.get("J1");
+const j1PortsByName = new Map(
+	ofType("source_port")
+		.filter((port) => port.source_component_id === j1.source_component_id)
+		.map((port) => [port.name, port]),
+);
+const pcbPortsBySourcePortId = new Map(
+	ofType("pcb_port").map((port) => [port.source_port_id, port]),
+);
+const j1PcbPort = (name) =>
+	pcbPortsBySourcePortId.get(j1PortsByName.get(name)?.source_port_id);
+assert(
+	j1PcbPort("pin1").y > j1PcbPort("pin19").y &&
+		j1PcbPort("pin2").y > j1PcbPort("pin20").y,
+	"J1 3.3-V/5-V end must remain at the top of the board",
+);
+assert(
+	j1PcbPort("pin1").x > j1PcbPort("pin2").x,
+	"J1 pin 1 must remain right of pin 2 in TI's top view",
+);
 
 for (const name of ["L1", "L2"]) {
 	const ferriteBead = componentByName.get(name);

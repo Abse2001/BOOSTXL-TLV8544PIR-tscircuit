@@ -131,9 +131,11 @@ export default function Circuit() {
 				fontSize={0.22}
 				anchor="center_left"
 			/>
-			{/* LaunchPad BoosterPack headers. Exact Samtec part imported from JLCPCB. */}
+			{/* LaunchPad BoosterPack headers. Exact Samtec female sockets imported from
+			    JLCPCB and mounted on the bottom so the BoosterPack mates downward. */}
 			<SSQ_110_03_G_D
 				name="J1"
+				layer="bottom"
 				schSectionName="LAUNCHPAD_CONNECTORS"
 				schX={-9}
 				schY={-2}
@@ -159,6 +161,7 @@ export default function Circuit() {
 			/>
 			<SSQ_110_03_G_D
 				name="J2"
+				layer="bottom"
 				schSectionName="LAUNCHPAD_CONNECTORS"
 				schX={-1.8}
 				schY={-2}
